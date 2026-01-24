@@ -8,15 +8,15 @@ public enum CommandType {
     UNMARK("unmark"),
     UNKNOWN("");
 
-    public final String command;
+    public final String input;
 
-    CommandType(String command) {
-        this.command = command;
+    CommandType(String input) {
+        this.input = input;
     }
 
-    public static CommandType getCommandType(String command) {
+    public static CommandType getCommandType(String input) {
         for (CommandType type : CommandType.values()) {
-            if (type.command.equals(command)) {
+            if (type.input.equals(input)) {
                 return type;
             }
         }
