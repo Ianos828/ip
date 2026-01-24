@@ -10,7 +10,7 @@ BOLD='\033[1m'
 
 # Print header
 echo -e "${BOLD}===============================================${NC}"
-echo -e "${BLUE}               Duke Test Runner               ${NC}"
+echo -e "${BLUE}               Duchess Test Runner             ${NC}"
 echo -e "${BOLD}===============================================${NC}\n"
 
 # Print Java version for debugging

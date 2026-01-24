@@ -10,6 +10,7 @@ public class TaskList {
 
     public void addTask(Task task) {
         tasks.add(task);
+        printSuccessMessage(task);
     }
 
     public void markTaskAsComplete(int index) {
@@ -40,6 +41,16 @@ public class TaskList {
 
     public int getSize() {
         return tasks.size();
+    }
+
+    public boolean isEmpty() {
+        return tasks.isEmpty();
+    }
+
+    private void printSuccessMessage(Task task) {
+        System.out.println("Got it. I've added this task:");
+        System.out.println(task);
+        System.out.printf("Now you have %d tasks in the list.\n", getSize());
     }
 
     @Override

@@ -1,5 +1,5 @@
-public class ToDoTask extends Task{
-    public ToDoTask(String name) {
+public class ToDo extends Task{
+    public ToDo(String name) {
         super(name);
     }
 

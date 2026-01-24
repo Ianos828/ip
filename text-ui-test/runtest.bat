@@ -2,7 +2,7 @@
 chcp 65001 > nul
 
 echo ===============================================
-echo                Duke Test Runner                
+echo                Duchess Test Runner
 echo ===============================================
 echo.
 
