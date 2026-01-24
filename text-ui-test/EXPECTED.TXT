@@ -1,7 +1,31 @@
-Hello from
- ____        _        
-|  _ \ _   _| | _____ 
-| | | | | | | |/ / _ \
-| |_| | |_| |   <  __/
-|____/ \__,_|_|\_\___|
-
+Hello! I'm Duchess!
+What can I do for you?
+Expected 1 argument for todo, received 0 argument(s) instead.
+OOPS!!! The description of a todo cannot be empty.
+Got it. I've added this task:
+[T][ ] a
+Now you have 1 task(s) in the list.
+OOPS!!! The specified task index does not exist in the list.
+Nice! I've marked this task as done:
+[T][X] a
+Expected 2 arguments for deadline, received 1 argument(s) instead.
+Please enter a deadline in the format "task_name /by deadline_date"!
+Expected 2 arguments for deadline, received 1 argument(s) instead.
+Please enter a deadline in the format "task_name /by deadline_date"!
+Got it. I've added this task:
+[D][ ] a (by: Sunday)
+Now you have 2 task(s) in the list.
+OK, I've marked this task as not done yet:
+[D][ ] a (by: Sunday)
+Expected 1 argument for unmark, received 4 argument(s) instead.
+Please enter an unmark command in the format "unmark list_index"!
+Expected 3 arguments for event, received 0 arguments instead.
+Please enter an event in the format "task_name /from start_date /to end_date"!
+Got it. I've added this task:
+[E][ ] a (from: a to: b)
+Now you have 3 task(s) in the list.
+Expected 3 arguments for event, received 2 argument(s) instead.
+Please enter an event in the format "task_name /from start_date /to end_date"!
+OOPS!!! I'm sorry, but I don't know what that means :-(
+OOPS!!! I'm sorry, but I don't know what that means :-(
+Bye. Hope to see you again soon!

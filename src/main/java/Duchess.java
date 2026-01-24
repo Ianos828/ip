@@ -22,6 +22,9 @@ public class Duchess {
                     break;
                 case DEADLINE:
                     try {
+                        if (splitInput.length < 2) {
+                            throw new ArgumentMismatchException("Expected 2 arguments for deadline, received 0 arguments instead.");
+                        }
                         String[] taskInstructions = splitInput[1].split(" /by ");
                         if (taskInstructions.length != 2) {
                             throw new ArgumentMismatchException(String.format("Expected 2 arguments for deadline, received %d argument(s) instead.", taskInstructions.length));
@@ -35,6 +38,9 @@ public class Duchess {
                     break;
                 case EVENT:
                     try {
+                        if (splitInput.length < 2) {
+                            throw new ArgumentMismatchException("Expected 3 arguments for event, received 0 arguments instead.");
+                        }
                         String[] taskInstructions = splitInput[1].split(" /from | /to ");
                         if (taskInstructions.length != 3) {
                             throw new ArgumentMismatchException(String.format("Expected 3 arguments for event, received %d argument(s) instead.", taskInstructions.length));
@@ -84,13 +90,13 @@ public class Duchess {
                 case UNMARK:
                     try {
                         String[] taskInstructions = splitInput[1].split(" ");
-                        if (splitInput.length != 2) {
+                        if (taskInstructions.length != 1) {
                             throw new ArgumentMismatchException(String.format("Expected 1 argument for unmark, received %d argument(s) instead.", taskInstructions.length));
                         }
                         list.markTaskAsIncomplete(Integer.parseInt(taskInstructions[0]));
                     } catch (ArgumentMismatchException e) {
                         System.out.println(e.getMessage());
-                        System.out.println("Please enter a mark command in the format \"mark list_index\"!");
+                        System.out.println("Please enter an unmark command in the format \"unmark list_index\"!");
                     } catch (NumberFormatException e) {
                         System.out.println("Please enter a valid number!");
                     } catch (IndexOutOfBoundsException e) {
