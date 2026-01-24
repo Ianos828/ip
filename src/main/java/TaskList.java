@@ -38,6 +38,10 @@ public class TaskList {
         return index > 0 && index <= tasks.size();
     }
 
+    public int getSize() {
+        return tasks.size();
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
