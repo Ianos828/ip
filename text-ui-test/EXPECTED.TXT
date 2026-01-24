@@ -1,11 +1,11 @@
 Hello! I'm Duchess!
 What can I do for you?
-Expected 1 argument for todo, received 0 argument(s) instead.
-OOPS!!! The description of a todo cannot be empty.
+Expected 1 argument for todo, received 0 arguments instead.
+The description of a todo cannot be empty.
 Got it. I've added this task:
 [T][ ] a
 Now you have 1 task(s) in the list.
-OOPS!!! The specified task index does not exist in the list.
+The specified task index does not exist in the list.
 Nice! I've marked this task as done:
 [T][X] a
 Expected 2 arguments for deadline, received 1 argument(s) instead.
@@ -26,6 +26,13 @@ Got it. I've added this task:
 Now you have 3 task(s) in the list.
 Expected 3 arguments for event, received 2 argument(s) instead.
 Please enter an event in the format "task_name /from start_date /to end_date"!
-OOPS!!! I'm sorry, but I don't know what that means :-(
-OOPS!!! I'm sorry, but I don't know what that means :-(
+I'm sorry, but I don't know what that means :(
+I'm sorry, but I don't know what that means :(
+Got it. I've added this task:
+[E][ ] a (from: the first time to: in forever)
+Now you have 4 task(s) in the list.
+The specified task index does not exist in the list.
+Noted. I've removed this task:
+[E][ ] a (from: the first time to: in forever)
+Now you have 3 task(s) in the list.
 Bye. Hope to see you again soon!

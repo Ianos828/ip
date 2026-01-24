@@ -13,6 +13,17 @@ public class TaskList {
         printSuccessMessage(task);
     }
 
+    public void removeTask(int index) {
+        if (!isValidIndex(index)) {
+            throw new IndexOutOfBoundsException("Invalid task index!");
+        }
+
+        System.out.println("Noted. I've removed this task:");
+        System.out.println(tasks.get(index - 1));
+        tasks.remove(index - 1);
+        System.out.printf("Now you have %d task(s) in the list.\n", getSize());
+    }
+
     public void markTaskAsComplete(int index) {
         if (!isValidIndex(index)) {
             throw new IndexOutOfBoundsException("Invalid task index!");

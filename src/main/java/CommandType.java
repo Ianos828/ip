@@ -6,7 +6,8 @@ public enum CommandType {
     MARK("mark"),
     TODO("todo"),
     UNMARK("unmark"),
-    UNKNOWN("");
+    UNKNOWN(""),
+    DELETE("delete");
 
     public final String input;
 

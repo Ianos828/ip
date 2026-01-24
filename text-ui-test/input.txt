@@ -12,4 +12,7 @@ event a /from a /to b
 event b /from /to
 blah
 bleh 2
+event a /from the first time /to in forever
+delete 10
+delete 4
 bye 0
