@@ -1,5 +1,7 @@
 package task;
 
+import exception.InvalidArgumentException;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,6 +20,7 @@ public class TaskList {
 
     /**
      * Adds a task to the list.
+     *
      * @param task the task to add
      */
     public void addTask(Task task) {
@@ -27,11 +30,12 @@ public class TaskList {
 
     /**
      * Removes a task from the list.
+     *
      * @param index the index of the task to remove
      */
-    public void removeTask(int index) {
+    public void removeTask(int index) throws InvalidArgumentException {
         if (!isValidIndex(index)) {
-            throw new IndexOutOfBoundsException("Invalid task index!");
+            throw new InvalidArgumentException("Invalid task index!");
         }
 
         System.out.println("Noted. I've removed this task:");
@@ -42,11 +46,12 @@ public class TaskList {
 
     /**
      * Marks a task as complete.
+     *
      * @param index the index of the task to mark as complete
      */
-    public void markTaskAsComplete(int index) {
+    public void markTaskAsComplete(int index) throws InvalidArgumentException {
         if (!isValidIndex(index)) {
-            throw new IndexOutOfBoundsException("Invalid task index!");
+            throw new InvalidArgumentException("Invalid task index!");
         }
 
         Task task = tasks.get(index - 1);
@@ -57,11 +62,12 @@ public class TaskList {
 
     /**
      * Marks a task as incomplete.
+     *
      * @param index the index of the task to mark as incomplete
      */
-    public void markTaskAsIncomplete(int index) {
+    public void markTaskAsIncomplete(int index) throws InvalidArgumentException {
         if (!isValidIndex(index)) {
-            throw new IndexOutOfBoundsException("Invalid task index!");
+            throw new InvalidArgumentException("Invalid task index!");
         }
 
         Task task = tasks.get(index - 1);
@@ -72,6 +78,7 @@ public class TaskList {
 
     /**
      * Checks if the specified index is valid.
+     *
      * @param index the index to check
      * @return  true if the index is valid, false otherwise
      */
@@ -81,6 +88,7 @@ public class TaskList {
 
     /**
      * Returns the size of the list.
+     *
      * @return the size of the list
      */
     public int getSize() {
@@ -89,6 +97,7 @@ public class TaskList {
 
     /**
      * Checks if the list is empty.
+     *
      * @return true if the list is empty, false otherwise
      */
     public boolean isEmpty() {
@@ -97,6 +106,7 @@ public class TaskList {
 
     /**
      * Prints a success message when a task is added to the list.
+     *
      * @param task the task that was added
      */
     private void printSuccessMessage(Task task) {
@@ -107,6 +117,7 @@ public class TaskList {
 
     /**
      * Returns a string representation of the list.
+     *
      * @return a string representation of the list
      */
     @Override

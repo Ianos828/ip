@@ -8,6 +8,7 @@ public class Deadline extends Task {
 
     /**
      * Constructor for Deadline class.
+     *
      * @param taskName the name of the task
      * @param deadline the deadline for the task
      */
@@ -16,6 +17,11 @@ public class Deadline extends Task {
         this.deadline = deadline;
     }
 
+    /**
+     * Returns a string representation of the deadline task
+     *
+     * @return a string representation of the deadline task
+     */
     @Override
     public String toString() {
         return String.format("[D]%s (by: %s)", super.toString(), deadline);

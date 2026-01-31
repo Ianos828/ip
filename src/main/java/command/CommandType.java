@@ -18,6 +18,7 @@ public enum CommandType {
 
     /**
      * Constructor for CommandType enum.
+     *
      * @param input the input string
      */
     CommandType(String input) {
@@ -26,6 +27,7 @@ public enum CommandType {
 
     /**
      * Returns the command type of the input.
+     *
      * @param input the input string
      * @return the command type of the input
      */

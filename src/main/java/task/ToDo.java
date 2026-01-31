@@ -1,12 +1,13 @@
 package task;
 
 /**
- * ToDo class for tasks with no additional information.
+ * Class representing a task with a name and no additional information.
  */
 public class ToDo extends Task {
     /**
      * Constructor for ToDo class.
-     * @param name the name of the todo
+     *
+     * @param name the name of the ToDo task
      */
     public ToDo(String name) {
         super(name);
@@ -14,6 +15,7 @@ public class ToDo extends Task {
 
     /**
      * Returns a string representation of the todo.
+     *
      * @return a string representation of the todo
      */
     @Override

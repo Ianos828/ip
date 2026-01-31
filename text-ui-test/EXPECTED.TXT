@@ -1,37 +1,31 @@
 Hello! I'm Duchess!
 What can I do for you?
-Expected 1 argument for todo, received 0 arguments instead.
-The description of a todo cannot be empty.
+Task name cannot be empty!
 Got it. I've added this task:
 [T][ ] a
 Now you have 1 task(s) in the list.
-The specified task index does not exist in the list.
+Invalid task index!
 Nice! I've marked this task as done:
 [T][X] a
-Expected 2 arguments for deadline, received 1 argument(s) instead.
-Please enter a deadline in the format "task_name /by deadline_date"!
-Expected 2 arguments for deadline, received 1 argument(s) instead.
-Please enter a deadline in the format "task_name /by deadline_date"!
+Task name cannot be empty!
+Please provide deadline for task!
 Got it. I've added this task:
 [D][ ] a (by: Sunday)
 Now you have 2 task(s) in the list.
 OK, I've marked this task as not done yet:
 [D][ ] a (by: Sunday)
-Expected 1 argument for unmark, received 4 argument(s) instead.
-Please enter an unmark command in the format "unmark list_index"!
-Expected 3 arguments for event, received 0 arguments instead.
-Please enter an event in the format "task_name /from start_date /to end_date"!
+Index provided is not a single number!
+Event name cannot be empty!
 Got it. I've added this task:
 [E][ ] a (from: a to: b)
 Now you have 3 task(s) in the list.
-Expected 3 arguments for event, received 2 argument(s) instead.
-Please enter an event in the format "task_name /from start_date /to end_date"!
+Event start date cannot be empty!
 I'm sorry, but I don't know what that means :(
 I'm sorry, but I don't know what that means :(
 Got it. I've added this task:
 [E][ ] a (from: the first time to: in forever)
 Now you have 4 task(s) in the list.
-The specified task index does not exist in the list.
+Invalid task index!
 Noted. I've removed this task:
 [E][ ] a (from: the first time to: in forever)
 Now you have 3 task(s) in the list.

@@ -9,6 +9,7 @@ public class Event extends Task {
 
     /**
      * Constructor for Event class.
+     *
      * @param taskName the name of the task
      * @param startDate the start date of the event
      * @param endDate the end date of the event
@@ -20,8 +21,9 @@ public class Event extends Task {
     }
 
     /**
-     * Returns a string representation of the event.
-     * @return a string representation of the event
+     * Returns a string representation of the event task
+     *
+     * @return a string representation of the event task
      */
     @Override
     public String toString() {

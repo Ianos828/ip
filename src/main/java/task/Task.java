@@ -3,12 +3,13 @@ package task;
 /**
  * Class representing a task.
  */
-public class Task {
+public abstract class Task {
     private final String name;
     private boolean isComplete;
 
     /**
      * Constructor for Task class.
+     *
      * @param name the name of the task
      */
     public Task(String name) {
@@ -32,6 +33,7 @@ public class Task {
 
     /**
      * Returns a string representation of the task.
+     *
      * @return a string representation of the task
      */
     @Override
