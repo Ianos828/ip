@@ -25,7 +25,6 @@ public class TaskList {
      */
     public void addTask(Task task) {
         tasks.add(task);
-        printSuccessMessage(task);
     }
 
     /**
@@ -113,7 +112,7 @@ public class TaskList {
      *
      * @param task the task that was added
      */
-    private void printSuccessMessage(Task task) {
+    public void printSuccessMessage(Task task) {
         System.out.println("Got it. I've added this task:");
         System.out.println(task);
         System.out.printf("Now you have %d task(s) in the list.\n", getSize());
