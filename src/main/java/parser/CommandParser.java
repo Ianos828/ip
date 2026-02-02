@@ -11,7 +11,7 @@ import java.util.Set;
 /**
  * CommandParser class for parsing user input into commands.
  */
-public class CommandParser {
+public class CommandParser extends Parser{
     /**
      * Returns the command type of the input based on its string representation.
      *
@@ -29,7 +29,7 @@ public class CommandParser {
      * @return a command containing its respective arguments
      */
     public static Command getCommand(String input) {
-        String[] splitInput = splitIntoPair(input);
+        String[] splitInput = splitIntoPair(input, " ");
         CommandType commandType = CommandParser.getCommandType(splitInput[0].toLowerCase());
 
         Command command = null;
@@ -73,19 +73,6 @@ public class CommandParser {
             break;
         }
         return command;
-    }
-
-    /**
-     * Returns the specified input as an array of length 2, after splitting with whitespace as the delimiter.
-     *
-     * @param input the input command string from the user
-     * @return a String array of length 2, with the first item representing the command type and the second representing
-     * the rest of the original specified input.
-     */
-    private static String[] splitIntoPair(String input) {
-        String[] splitInput = (input + " ").split(" ", 2);
-        splitInput[1] =  splitInput[1].strip().trim();
-        return splitInput;
     }
 
     /**
