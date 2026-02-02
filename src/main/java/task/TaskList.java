@@ -95,6 +95,10 @@ public class TaskList {
         return tasks.size();
     }
 
+    public Task getTask(int index) {
+        return tasks.get(index);
+    }
+
     /**
      * Checks if the list is empty.
      *

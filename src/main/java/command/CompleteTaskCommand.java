@@ -2,7 +2,8 @@ package command;
 
 import exception.InvalidArgumentException;
 import exception.MissingArgumentException;
-import parser.Parser;
+import parser.CommandParser;
+import storage.TaskSaver;
 import task.TaskList;
 
 import java.util.Map;
@@ -34,9 +35,11 @@ public class CompleteTaskCommand extends Command {
      * @throws InvalidArgumentException if the index provided is not a single number
      */
     @Override
-    public void execute (TaskList list) throws MissingArgumentException, InvalidArgumentException {
+    public void execute (TaskList list, TaskSaver saver) throws MissingArgumentException, InvalidArgumentException {
+
         String indexAsString = commandArgs.get("/default");
-        int index = Parser.parseInt(indexAsString);
+        int index = CommandParser.parseInt(indexAsString);
         list.markTaskAsComplete(index);
+        saver.saveTasksToFile(list);
     }
 }

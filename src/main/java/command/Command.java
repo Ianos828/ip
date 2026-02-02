@@ -2,6 +2,7 @@ package command;
 
 import exception.InvalidArgumentException;
 import exception.MissingArgumentException;
+import storage.TaskSaver;
 import task.TaskList;
 
 /**
@@ -35,7 +36,7 @@ public abstract class Command{
      * @throws MissingArgumentException if commands do not receive their expected number of arguments
      * @throws InvalidArgumentException if commands do not receive their expected arguments in the correct format
      */
-    public abstract void execute(TaskList list) throws MissingArgumentException, InvalidArgumentException;
+    public abstract void execute(TaskList list, TaskSaver saver) throws MissingArgumentException, InvalidArgumentException;
 }
 
 

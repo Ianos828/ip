@@ -1,6 +1,7 @@
 package command;
 
 import exception.MissingArgumentException;
+import storage.TaskSaver;
 import task.Task;
 import task.TaskList;
 import task.ToDo;
@@ -33,7 +34,7 @@ public class CreateToDoCommand extends Command {
      * @throws MissingArgumentException if the user does not specify the name of the task
      */
     @Override
-    public void execute(TaskList list) throws MissingArgumentException {
+    public void execute(TaskList list, TaskSaver saver) throws MissingArgumentException {
         String name = commandArgs.get("/default");
 
         if (name == null || name.isEmpty()) {
@@ -42,5 +43,6 @@ public class CreateToDoCommand extends Command {
 
         Task toDo = new ToDo(name);
         list.addTask(toDo);
+        saver.saveTasksToFile(list);
     }
 }

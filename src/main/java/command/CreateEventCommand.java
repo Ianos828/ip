@@ -2,6 +2,7 @@ package command;
 
 import exception.MissingArgumentException;
 
+import storage.TaskSaver;
 import task.Event;
 import task.Task;
 import task.TaskList;
@@ -33,7 +34,7 @@ public class CreateEventCommand extends Command {
      * @param list list of tasks that commands will operate on
      * @throws MissingArgumentException if the user does not specify the name, start or end dates of the task
      */
-    public void execute(TaskList list) throws MissingArgumentException {
+    public void execute(TaskList list, TaskSaver saver) throws MissingArgumentException {
         String name = commandArgs.get("/default");
         String startDate = commandArgs.get("/from");
         String endDate = commandArgs.get("/to");
@@ -52,5 +53,6 @@ public class CreateEventCommand extends Command {
 
         Task event = new Event(name, startDate, endDate);
         list.addTask(event);
+        saver.saveTasksToFile(list);
     }
 }

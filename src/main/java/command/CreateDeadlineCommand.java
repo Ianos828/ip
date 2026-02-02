@@ -1,6 +1,7 @@
 package command;
 
 import exception.MissingArgumentException;
+import storage.TaskSaver;
 import task.Deadline;
 import task.Task;
 import task.TaskList;
@@ -33,7 +34,7 @@ public class CreateDeadlineCommand extends Command {
      * @throws MissingArgumentException if the user does not specify the name or deadline of the task
      */
     @Override
-    public void execute(TaskList list) throws MissingArgumentException {
+    public void execute(TaskList list, TaskSaver saver) throws MissingArgumentException {
         String name = commandArgs.get("/default");
         String endDate = commandArgs.get("/by");
 
@@ -47,5 +48,6 @@ public class CreateDeadlineCommand extends Command {
 
         Task deadline = new Deadline(name, endDate);
         list.addTask(deadline);
+        saver.saveTasksToFile(list);
     }
 }

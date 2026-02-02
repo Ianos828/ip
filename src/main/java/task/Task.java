@@ -41,5 +41,5 @@ public abstract class Task {
         return String.format("[%s] %s", isComplete ? "X" : " ", name);
     }
 
-    abstract String toSaveString();
+    public abstract String toSaveString();
 }
