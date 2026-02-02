@@ -17,6 +17,12 @@ public class Deadline extends Task {
         this.deadline = deadline;
     }
 
+    public Deadline(String taskName, String deadline, boolean isComplete) {
+        super(taskName);
+        this.deadline = deadline;
+        this.isComplete = isComplete;
+    }
+
     /**
      * Returns a string representation of the deadline task
      *

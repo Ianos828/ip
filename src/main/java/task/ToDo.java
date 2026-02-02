@@ -13,6 +13,11 @@ public class ToDo extends Task {
         super(name);
     }
 
+    public ToDo(String name, boolean isComplete) {
+        super(name);
+        this.isComplete = isComplete;
+    }
+
     /**
      * Returns a string representation of the todo.
      *

@@ -20,6 +20,13 @@ public class Event extends Task {
         this.endDate = endDate;
     }
 
+    public Event(String taskName, String startDate, String endDate, boolean isComplete) {
+        super(taskName);
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.isComplete = isComplete;
+    }
+
     /**
      * Returns a string representation of the event task
      *
