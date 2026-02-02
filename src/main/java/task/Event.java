@@ -29,4 +29,9 @@ public class Event extends Task {
     public String toString() {
         return String.format("[E]%s (from: %s to: %s)", super.toString(), startDate, endDate);
     }
+
+    @Override
+    public String toSaveString() {
+        return String.format("E | %s | %s | %s | %s", isComplete ? "1" : "0", name, startDate, endDate);
+    }
 }

@@ -22,4 +22,9 @@ public class ToDo extends Task {
     public String toString() {
         return String.format("[T]%s", super.toString());
     }
+
+    @Override
+    public String toSaveString() {
+        return String.format("T | %s | %s", isComplete ? "1" : "0", name);
+    }
 }
