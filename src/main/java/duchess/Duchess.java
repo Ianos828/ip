@@ -3,7 +3,7 @@ package duchess;
 import command.Command;
 import exception.InvalidArgumentException;
 import exception.MissingArgumentException;
-import parser.Parser;
+import parser.CommandParser;
 import task.TaskList;
 
 import java.util.Arrays;
@@ -29,7 +29,7 @@ public class Duchess {
 
         while (!shouldTerminate) {
             String input = scanner.nextLine();
-            Command command = Parser.getCommand(input);
+            Command command = CommandParser.getCommand(input);
 
             try {
                 command.execute(list);

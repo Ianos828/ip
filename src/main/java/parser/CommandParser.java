@@ -9,9 +9,9 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * Parser class for parsing user input into commands.
+ * CommandParser class for parsing user input into commands.
  */
-public class Parser {
+public class CommandParser {
     /**
      * Returns the command type of the input based on its string representation.
      *
@@ -30,7 +30,7 @@ public class Parser {
      */
     public static Command getCommand(String input) {
         String[] splitInput = splitIntoPair(input);
-        CommandType commandType = Parser.getCommandType(splitInput[0].toLowerCase());
+        CommandType commandType = CommandParser.getCommandType(splitInput[0].toLowerCase());
 
         Command command = null;
         Map<String, String> arguments;
