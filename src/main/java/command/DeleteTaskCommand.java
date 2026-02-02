@@ -2,7 +2,8 @@ package command;
 
 import exception.InvalidArgumentException;
 import exception.MissingArgumentException;
-import parser.Parser;
+import parser.CommandParser;
+import storage.Storage;
 import task.TaskList;
 
 import java.util.Map;
@@ -29,14 +30,15 @@ public class DeleteTaskCommand extends Command {
     /**
      * Deletes the task at the specified index in the specified task list.
      *
-     * @param list list of tasks that commands will operate on
+     * @param tasks list of tasks that commands will operate on
      * @throws MissingArgumentException if no list index is provided
      * @throws InvalidArgumentException if the index provided is not a single number
      */
     @Override
-    public void execute (TaskList list) throws MissingArgumentException, InvalidArgumentException {
+    public void execute (TaskList tasks, Storage storage) throws MissingArgumentException, InvalidArgumentException {
         String indexAsString = commandArgs.get("/default");
-        int index = Parser.parseInt(indexAsString);
-        list.removeTask(index);
+        int index = CommandParser.parseInt(indexAsString);
+        tasks.removeTask(index);
+        storage.saveTasksToFile(tasks);
     }
 }

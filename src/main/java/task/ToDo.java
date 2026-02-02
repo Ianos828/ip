@@ -13,6 +13,11 @@ public class ToDo extends Task {
         super(name);
     }
 
+    public ToDo(String name, boolean isComplete) {
+        super(name);
+        this.isComplete = isComplete;
+    }
+
     /**
      * Returns a string representation of the todo.
      *
@@ -21,5 +26,10 @@ public class ToDo extends Task {
     @Override
     public String toString() {
         return String.format("[T]%s", super.toString());
+    }
+
+    @Override
+    public String toSaveString() {
+        return String.format("T | %s | %s", isComplete ? "1" : "0", name);
     }
 }

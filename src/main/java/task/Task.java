@@ -4,8 +4,8 @@ package task;
  * Class representing a task.
  */
 public abstract class Task {
-    private final String name;
-    private boolean isComplete;
+    protected final String name;
+    protected boolean isComplete;
 
     /**
      * Constructor for Task class.
@@ -40,4 +40,6 @@ public abstract class Task {
     public String toString() {
         return String.format("[%s] %s", isComplete ? "X" : " ", name);
     }
+
+    public abstract String toSaveString();
 }

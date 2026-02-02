@@ -17,6 +17,12 @@ public class Deadline extends Task {
         this.deadline = deadline;
     }
 
+    public Deadline(String taskName, String deadline, boolean isComplete) {
+        super(taskName);
+        this.deadline = deadline;
+        this.isComplete = isComplete;
+    }
+
     /**
      * Returns a string representation of the deadline task
      *
@@ -25,5 +31,10 @@ public class Deadline extends Task {
     @Override
     public String toString() {
         return String.format("[D]%s (by: %s)", super.toString(), deadline);
+    }
+
+    @Override
+    public String toSaveString() {
+        return String.format("D | %s | %s | %s", isComplete ? "1" : "0", name, deadline);
     }
 }

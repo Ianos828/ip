@@ -1,6 +1,7 @@
 package command;
 
 import exception.MissingArgumentException;
+import storage.Storage;
 import task.Task;
 import task.TaskList;
 import task.ToDo;
@@ -29,11 +30,11 @@ public class CreateToDoCommand extends Command {
     /**
      * Extracts the name from the command and creates a todo task with the specified argument.
      *
-     * @param list list of tasks that commands will operate on
+     * @param tasks list of tasks that commands will operate on
      * @throws MissingArgumentException if the user does not specify the name of the task
      */
     @Override
-    public void execute(TaskList list) throws MissingArgumentException {
+    public void execute(TaskList tasks, Storage storage) throws MissingArgumentException {
         String name = commandArgs.get("/default");
 
         if (name == null || name.isEmpty()) {
@@ -41,6 +42,8 @@ public class CreateToDoCommand extends Command {
         }
 
         Task toDo = new ToDo(name);
-        list.addTask(toDo);
+        tasks.addTask(toDo);
+        tasks.printSuccessMessage(toDo);
+        storage.saveTasksToFile(tasks);
     }
 }

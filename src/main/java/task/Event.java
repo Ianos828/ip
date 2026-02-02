@@ -20,6 +20,13 @@ public class Event extends Task {
         this.endDate = endDate;
     }
 
+    public Event(String taskName, String startDate, String endDate, boolean isComplete) {
+        super(taskName);
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.isComplete = isComplete;
+    }
+
     /**
      * Returns a string representation of the event task
      *
@@ -28,5 +35,10 @@ public class Event extends Task {
     @Override
     public String toString() {
         return String.format("[E]%s (from: %s to: %s)", super.toString(), startDate, endDate);
+    }
+
+    @Override
+    public String toSaveString() {
+        return String.format("E | %s | %s | %s | %s", isComplete ? "1" : "0", name, startDate, endDate);
     }
 }

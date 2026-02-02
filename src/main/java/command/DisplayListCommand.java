@@ -1,5 +1,6 @@
 package command;
 
+import storage.Storage;
 import task.TaskList;
 
 /**
@@ -18,14 +19,14 @@ public class DisplayListCommand extends Command {
     /**
      * Prints the task list if the list is not empty. Otherwise, print an error message.
      *
-     * @param list list of tasks that commands will operate on
+     * @param tasks list of tasks that commands will operate on
      */
     @Override
-    public void execute(TaskList list) {
-        if (list.isEmpty()) {
+    public void execute(TaskList tasks, Storage storage) {
+        if (tasks.isEmpty()) {
             System.out.println("Your list is empty!");
             return;
         }
-        System.out.print(list);
+        System.out.print(tasks);
     }
 }
