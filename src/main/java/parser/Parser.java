@@ -13,7 +13,7 @@ import java.util.Set;
  */
 public class Parser {
     /**
-     * Returns the type of command of the input based on its string representation.
+     * Returns the command type of the input based on its string representation.
      *
      * @param input the input string
      * @return the type of command of the input
@@ -78,7 +78,7 @@ public class Parser {
     /**
      * Returns the specified input as an array of length 2, after splitting with whitespace as the delimiter.
      *
-     * @param input the input command string from user
+     * @param input the input command string from the user
      * @return a String array of length 2, with the first item representing the command type and the second representing
      * the rest of the original specified input.
      */
@@ -124,7 +124,7 @@ public class Parser {
     }
 
     /**
-     * Returns an index to a list as an integer, after extracting the argument from the delimiter-argument pair.
+     * Returns an index to a list as an integer after extracting the argument from the delimiter-argument pair.
      *
      * @param indexAsString map containing a delimiter-argument pair
      * @return an integer denoting the list index

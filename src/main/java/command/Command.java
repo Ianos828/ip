@@ -20,7 +20,7 @@ public abstract class Command{
     }
 
     /**
-     * Returns true if program should end the main program, else false.
+     * Returns true if the command should end the main program, else false.
      *
      * @return boolean representing if the command should terminate the main program
      */
