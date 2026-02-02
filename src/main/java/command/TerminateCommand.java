@@ -1,6 +1,6 @@
 package command;
 
-import storage.TaskSaver;
+import storage.Storage;
 import task.TaskList;
 
 /**
@@ -29,10 +29,10 @@ public class TerminateCommand extends Command {
     /**
      * Prints a terminating message.
      *
-     * @param taskList list of tasks that commands will operate on
+     * @param tasks list of tasks that commands will operate on
      */
     @Override
-    public void execute(TaskList taskList, TaskSaver saver) {
+    public void execute(TaskList tasks, Storage storage) {
         System.out.println("Bye. Hope to see you again soon!");
     }
 }

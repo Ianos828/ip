@@ -3,7 +3,7 @@ package command;
 import exception.InvalidArgumentException;
 import exception.MissingArgumentException;
 import parser.CommandParser;
-import storage.TaskSaver;
+import storage.Storage;
 import task.TaskList;
 
 import java.util.Map;
@@ -30,16 +30,16 @@ public class CompleteTaskCommand extends Command {
     /**
      * Marks the task at the specified index as completed in the specified task list.
      *
-     * @param list list of tasks that commands will operate on
+     * @param tasks list of tasks that commands will operate on
      * @throws MissingArgumentException if the user does not specify the index
      * @throws InvalidArgumentException if the index provided is not a single number
      */
     @Override
-    public void execute (TaskList list, TaskSaver saver) throws MissingArgumentException, InvalidArgumentException {
+    public void execute (TaskList tasks, Storage storage) throws MissingArgumentException, InvalidArgumentException {
 
         String indexAsString = commandArgs.get("/default");
         int index = CommandParser.parseInt(indexAsString);
-        list.markTaskAsComplete(index);
-        saver.saveTasksToFile(list);
+        tasks.markTaskAsComplete(index);
+        storage.saveTasksToFile(tasks);
     }
 }

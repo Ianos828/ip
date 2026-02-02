@@ -1,6 +1,6 @@
 package command;
 
-import storage.TaskSaver;
+import storage.Storage;
 import task.TaskList;
 
 /**
@@ -19,10 +19,10 @@ public class UnknownCommand extends Command {
     /**
      * Prints an error message.
      *
-     * @param list list of tasks that commands will operate on
+     * @param tasks list of tasks that commands will operate on
      */
     @Override
-    public void execute(TaskList list, TaskSaver saver) {
+    public void execute(TaskList tasks, Storage storage) {
         System.out.println("I'm sorry, but I don't know what that means :(");
     }
 }

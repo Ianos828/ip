@@ -2,7 +2,7 @@ package command;
 
 import exception.InvalidArgumentException;
 import exception.MissingArgumentException;
-import storage.TaskSaver;
+import storage.Storage;
 import task.TaskList;
 
 /**
@@ -32,11 +32,11 @@ public abstract class Command{
     /**
      * Abstract generic execute method for all commands to complete their specified actions.
      *
-     * @param list list of tasks that commands will operate on
+     * @param tasks list of tasks that commands will operate on
      * @throws MissingArgumentException if commands do not receive their expected number of arguments
      * @throws InvalidArgumentException if commands do not receive their expected arguments in the correct format
      */
-    public abstract void execute(TaskList list, TaskSaver saver) throws MissingArgumentException, InvalidArgumentException;
+    public abstract void execute(TaskList tasks, Storage storage) throws MissingArgumentException, InvalidArgumentException;
 }
 
 
