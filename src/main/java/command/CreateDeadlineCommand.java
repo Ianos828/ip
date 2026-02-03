@@ -1,12 +1,17 @@
 package command;
 
+import exception.InvalidArgumentException;
 import exception.MissingArgumentException;
+
+import parser.Utility;
+
 import storage.Storage;
+
 import task.Deadline;
 import task.Task;
 import task.TaskList;
-import utility.Utility;
 
+import java.time.LocalDate;
 import java.util.Map;
 import java.util.Set;
 
@@ -35,19 +40,18 @@ public class CreateDeadlineCommand extends Command {
      * @throws MissingArgumentException if the user does not specify the name or deadline of the task
      */
     @Override
-    public void execute(TaskList tasks, Storage storage) throws MissingArgumentException {
+    public void execute(TaskList tasks, Storage storage) throws InvalidArgumentException, MissingArgumentException {
         String name = commandArgs.get("/default");
-        String endDate = commandArgs.get("/by");
+        String endDateAsString = commandArgs.get("/by");
 
-        if (Utility.isNotValidName(name)) {
+        if (Utility.isInvalidString(name)) {
             throw new MissingArgumentException("Task name cannot be empty!");
         }
 
-        if (endDate == null || endDate.isEmpty()) {
-            throw new MissingArgumentException("Please provide deadline for task!");
-        }
+        LocalDate endDate = Utility.parseDate(endDateAsString);
 
         Task deadline = new Deadline(name, endDate);
+
         tasks.addTask(deadline);
         tasks.printSuccessMessage(deadline);
         storage.saveTasksToFile(tasks);

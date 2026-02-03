@@ -1,6 +1,6 @@
 package task;
 
-public enum Tasktype {
+public enum TaskType {
     DEADLINE("D"),
     EVENT("E"),
     TODO("T"),
@@ -14,18 +14,18 @@ public enum Tasktype {
      *
      * @param input the input string
      */
-    Tasktype(String input) {
+    TaskType(String input) {
         this.input = input;
     }
 
     /**
-     * Returns the command type of the input.
+     * Returns the task type of the input.
      *
      * @param input the input string
-     * @return the command type of the input
+     * @return the task type of the input
      */
-    public static Tasktype getCommandType(String input) {
-        for (Tasktype type : Tasktype.values()) {
+    public static TaskType getTaskType(String input) {
+        for (TaskType type : TaskType.values()) {
             if (type.input.equals(input)) {
                 return type;
             }

@@ -12,7 +12,10 @@ public enum CommandType {
     TODO("todo"),
     UNMARK("unmark"),
     UNKNOWN(""),
-    DELETE("delete");
+    DELETE("delete"),
+    FILTER_BEFORE("before"),
+    FILTER_AFTER("after"),
+    FILTER_ON("on");
 
     public final String input;
 

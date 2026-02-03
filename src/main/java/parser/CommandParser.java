@@ -1,9 +1,6 @@
 package parser;
 
 import command.*;
-import exception.InvalidArgumentException;
-import exception.MissingArgumentException;
-import utility.Utility;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -44,12 +41,12 @@ public class CommandParser {
             command = new DisplayListCommand(commandType);
             break;
         case MARK:
-            arguments = parseArguments(CompleteTaskCommand.delimiters, splitInput[1]);
-            command = new CompleteTaskCommand(commandType, arguments);
+            arguments = parseArguments(MarkTaskCompleteCommand.delimiters, splitInput[1]);
+            command = new MarkTaskCompleteCommand(commandType, arguments);
             break;
         case UNMARK:
-            arguments = parseArguments(UncompleteTaskCommand.delimiters, splitInput[1]);
-            command = new UncompleteTaskCommand(commandType, arguments);
+            arguments = parseArguments(MarkTaskIncompleteCommand.delimiters, splitInput[1]);
+            command = new MarkTaskIncompleteCommand(commandType, arguments);
             break;
         case DELETE:
             arguments = parseArguments(DeleteTaskCommand.delimiters, splitInput[1]);
@@ -66,6 +63,18 @@ public class CommandParser {
         case TODO:
             arguments = parseArguments(CreateToDoCommand.delimiters, splitInput[1]);
             command = new CreateToDoCommand(commandType, arguments);
+            break;
+        case FILTER_BEFORE:
+            arguments = parseArguments(GetTasksBeforeDateCommand.delimiters, splitInput[1]);
+            command = new GetTasksBeforeDateCommand(commandType, arguments);
+            break;
+        case FILTER_AFTER:
+            arguments = parseArguments(GetTasksAfterDateCommand.delimiters, splitInput[1]);
+            command = new GetTasksAfterDateCommand(commandType, arguments);
+            break;
+        case FILTER_ON:
+            arguments = parseArguments(GetTasksOnDateCommand.delimiters, splitInput[1]);
+            command = new GetTasksOnDateCommand(commandType, arguments);
             break;
         case UNKNOWN:
             command = new UnknownCommand(commandType);
@@ -109,29 +118,5 @@ public class CommandParser {
         argumentsMap.put(currentDelimiter, currentArgument.toString().strip().trim());
 
         return argumentsMap;
-    }
-
-    /**
-     * Returns an index to a list as an integer after extracting the argument from the delimiter-argument pair.
-     *
-     * @param indexAsString map containing a delimiter-argument pair
-     * @return an integer denoting the list index
-     * @throws MissingArgumentException if argument is empty string or null
-     * @throws InvalidArgumentException if the argument is not a number or multiple numbers are specified
-     */
-    public static int parseInt(String indexAsString) throws MissingArgumentException, InvalidArgumentException {
-        if (indexAsString == null || indexAsString.isEmpty()) {
-            throw new MissingArgumentException("No index provided!");
-        }
-
-        int index;
-
-        try {
-            index = Integer.parseInt(indexAsString);
-        } catch (NumberFormatException e) {
-            throw new InvalidArgumentException("Index provided is not a single number!");
-        }
-
-        return index;
     }
 }

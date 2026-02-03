@@ -10,11 +10,11 @@ public class ToDo extends Task {
      * @param name the name of the ToDo task
      */
     public ToDo(String name) {
-        super(name);
+        super(TaskType.TODO, name);
     }
 
     public ToDo(String name, boolean isComplete) {
-        super(name);
+        super(TaskType.TODO, name);
         this.isComplete = isComplete;
     }
 

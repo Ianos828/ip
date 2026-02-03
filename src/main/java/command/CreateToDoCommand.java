@@ -1,11 +1,14 @@
 package command;
 
 import exception.MissingArgumentException;
+
+import parser.Utility;
+
 import storage.Storage;
+
 import task.Task;
 import task.TaskList;
 import task.ToDo;
-import utility.Utility;
 
 import java.util.Map;
 import java.util.Set;
@@ -38,11 +41,12 @@ public class CreateToDoCommand extends Command {
     public void execute(TaskList tasks, Storage storage) throws MissingArgumentException {
         String name = commandArgs.get("/default");
 
-        if (Utility.isNotValidName(name)) {
+        if (Utility.isInvalidString(name)) {
             throw new MissingArgumentException("Task name cannot be empty!");
         }
 
         Task toDo = new ToDo(name);
+
         tasks.addTask(toDo);
         tasks.printSuccessMessage(toDo);
         storage.saveTasksToFile(tasks);

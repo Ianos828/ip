@@ -2,8 +2,11 @@ package command;
 
 import exception.InvalidArgumentException;
 import exception.MissingArgumentException;
-import parser.CommandParser;
+
+import parser.Utility;
+
 import storage.Storage;
+
 import task.TaskList;
 
 import java.util.Map;
@@ -37,7 +40,7 @@ public class DeleteTaskCommand extends Command {
     @Override
     public void execute (TaskList tasks, Storage storage) throws MissingArgumentException, InvalidArgumentException {
         String indexAsString = commandArgs.get("/default");
-        int index = CommandParser.parseInt(indexAsString);
+        int index = Utility.parseInt(indexAsString);
         tasks.removeTask(index);
         storage.saveTasksToFile(tasks);
     }

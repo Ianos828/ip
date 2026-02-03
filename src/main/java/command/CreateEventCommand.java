@@ -1,13 +1,17 @@
 package command;
 
+import exception.InvalidArgumentException;
 import exception.MissingArgumentException;
 
+import parser.Utility;
+
 import storage.Storage;
+
 import task.Event;
 import task.Task;
 import task.TaskList;
-import utility.Utility;
 
+import java.time.LocalDate;
 import java.util.Map;
 import java.util.Set;
 
@@ -35,24 +39,24 @@ public class CreateEventCommand extends Command {
      * @param tasks list of tasks that commands will operate on
      * @throws MissingArgumentException if the user does not specify the name, start or end dates of the task
      */
-    public void execute(TaskList tasks, Storage storage) throws MissingArgumentException {
+    public void execute(TaskList tasks, Storage storage) throws InvalidArgumentException, MissingArgumentException {
         String name = commandArgs.get("/default");
-        String startDate = commandArgs.get("/from");
-        String endDate = commandArgs.get("/to");
+        String startDateAsString = commandArgs.get("/from");
+        String endDateAsString = commandArgs.get("/to");
 
-        if (Utility.isNotValidName(name)) {
+        if (Utility.isInvalidString(name)) {
             throw new MissingArgumentException("Event name cannot be empty!");
         }
 
-        if (startDate == null || startDate.isEmpty()) {
-            throw new MissingArgumentException("Event start date cannot be empty!");
-        }
+        LocalDate startDate = Utility.parseDate(startDateAsString);
+        LocalDate endDate = Utility.parseDate(endDateAsString);
 
-        if (endDate == null || endDate.isEmpty()) {
-            throw new MissingArgumentException("Event end date cannot be empty!");
+        if (startDate.isAfter(endDate)) {
+            throw new InvalidArgumentException("Start date cannot be after end date!");
         }
 
         Task event = new Event(name, startDate, endDate);
+
         tasks.addTask(event);
         tasks.printSuccessMessage(event);
         storage.saveTasksToFile(tasks);

@@ -1,6 +1,7 @@
 package storage;
 
-import exception.MangledTaskException;
+import exception.InvalidArgumentException;
+import exception.MissingArgumentException;
 import parser.FileParser;
 import task.Task;
 import task.TaskList;
@@ -32,9 +33,9 @@ public class Storage {
                     if (task != null) {
                         tasks.addTask(task);
                     }
-                } catch (MangledTaskException e) {
+                } catch (InvalidArgumentException | MissingArgumentException e) {
                     System.out.println(e.getMessage());
-                    System.out.printf("Failed to parse task: %s. Skipping...%n", e.getRawTask());
+                    System.out.printf("Failed to parse task: %s. Skipping...%n", rawTask);
                 }
             }
         } catch (FileNotFoundException e) {
@@ -42,6 +43,7 @@ public class Storage {
         } catch (IOException e) {
             System.out.println("Error reading file.");
         }
+
         return tasks;
     }
 

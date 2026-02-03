@@ -1,10 +1,14 @@
 package task;
 
+import parser.Utility;
+
+import java.time.LocalDate;
+
 /**
  * Deadline class for tasks with deadlines.
  */
 public class Deadline extends Task {
-    private final String deadline;
+    private final LocalDate deadline;
 
     /**
      * Constructor for Deadline class.
@@ -12,15 +16,19 @@ public class Deadline extends Task {
      * @param taskName the name of the task
      * @param deadline the deadline for the task
      */
-    public Deadline(String taskName, String deadline) {
-        super(taskName);
+    public Deadline(String taskName, LocalDate deadline) {
+        super(TaskType.DEADLINE, taskName);
         this.deadline = deadline;
     }
 
-    public Deadline(String taskName, String deadline, boolean isComplete) {
-        super(taskName);
+    public Deadline(String taskName, LocalDate deadline, boolean isComplete) {
+        super(TaskType.DEADLINE, taskName);
         this.deadline = deadline;
         this.isComplete = isComplete;
+    }
+
+    public LocalDate getDeadline() {
+        return deadline;
     }
 
     /**
@@ -30,7 +38,7 @@ public class Deadline extends Task {
      */
     @Override
     public String toString() {
-        return String.format("[D]%s (by: %s)", super.toString(), deadline);
+        return String.format("[D]%s (by: %s)", super.toString(), Utility.formatDate(deadline));
     }
 
     @Override
