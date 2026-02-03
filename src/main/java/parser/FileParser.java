@@ -7,7 +7,6 @@ import task.Tasktype;
 import task.ToDo;
 import task.Event;
 import task.Deadline;
-import utility.Utility;
 
 import java.util.Set;
 
@@ -31,7 +30,7 @@ public class FileParser {
         Task task = null;
         String name = taskComponents[1];
 
-        if (Utility.isNotValidName(name)) {
+        if (Utility.isInvalidString(name)) {
             throw new MangledTaskException("Invalid task name!", rawTask);
         }
 

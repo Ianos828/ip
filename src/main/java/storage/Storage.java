@@ -42,6 +42,7 @@ public class Storage {
         } catch (IOException e) {
             System.out.println("Error reading file.");
         }
+
         return tasks;
     }
 

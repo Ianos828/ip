@@ -1,10 +1,18 @@
 package parser;
 
-import command.*;
-import exception.InvalidArgumentException;
-import exception.MissingArgumentException;
-import utility.Utility;
+import command.Command;
+import command.CommandType;
+import command.CompleteTaskCommand;
+import command.CreateDeadlineCommand;
+import command.CreateEventCommand;
+import command.CreateToDoCommand;
+import command.DeleteTaskCommand;
+import command.DisplayListCommand;
+import command.TerminateCommand;
+import command.UncompleteTaskCommand;
+import command.UnknownCommand;
 
+import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -109,29 +117,5 @@ public class CommandParser {
         argumentsMap.put(currentDelimiter, currentArgument.toString().strip().trim());
 
         return argumentsMap;
-    }
-
-    /**
-     * Returns an index to a list as an integer after extracting the argument from the delimiter-argument pair.
-     *
-     * @param indexAsString map containing a delimiter-argument pair
-     * @return an integer denoting the list index
-     * @throws MissingArgumentException if argument is empty string or null
-     * @throws InvalidArgumentException if the argument is not a number or multiple numbers are specified
-     */
-    public static int parseInt(String indexAsString) throws MissingArgumentException, InvalidArgumentException {
-        if (indexAsString == null || indexAsString.isEmpty()) {
-            throw new MissingArgumentException("No index provided!");
-        }
-
-        int index;
-
-        try {
-            index = Integer.parseInt(indexAsString);
-        } catch (NumberFormatException e) {
-            throw new InvalidArgumentException("Index provided is not a single number!");
-        }
-
-        return index;
     }
 }
