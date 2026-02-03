@@ -67,7 +67,7 @@ public class GetTasksOnDateCommand extends Command{
         String onDateAsString = commandArgs.get("/default");
 
         if (Utility.isInvalidString(onDateAsString)) {
-            throw new MissingArgumentException("No dates provided! Please specify a date using /on");
+            throw new MissingArgumentException("No date provided! Please specify a date using \"on YYYY-MM-DD\"");
         }
 
         LocalDate onDate = Utility.parseDate(onDateAsString);
