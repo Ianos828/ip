@@ -66,10 +66,6 @@ public class GetTasksBeforeDateCommand extends Command{
     public void execute(TaskList tasks, Storage storage) throws MissingArgumentException, InvalidArgumentException {
         String beforeDateAsString = commandArgs.get("/default");
 
-        if (Utility.isInvalidString(beforeDateAsString)) {
-            throw new MissingArgumentException("No date provided! Please specify a date using \"before YYYY-MM-DD\"");
-        }
-
         LocalDate beforeDate = Utility.parseDate(beforeDateAsString);
         String tasksBeforeDate = getTasksBeforeDate(tasks, beforeDate);
 

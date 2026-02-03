@@ -55,7 +55,7 @@ public class Utility {
 
     public static LocalDate parseDate(String dateAsString) throws MissingArgumentException, InvalidArgumentException {
         if (isInvalidString(dateAsString)) {
-            throw new MissingArgumentException("No date provided!");
+            throw new MissingArgumentException("No date provided! Expected format: YYYY-MM-DD");
         }
 
         LocalDate date;

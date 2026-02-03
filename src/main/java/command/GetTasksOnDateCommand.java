@@ -66,10 +66,6 @@ public class GetTasksOnDateCommand extends Command{
     public void execute(TaskList tasks, Storage storage) throws MissingArgumentException, InvalidArgumentException {
         String onDateAsString = commandArgs.get("/default");
 
-        if (Utility.isInvalidString(onDateAsString)) {
-            throw new MissingArgumentException("No date provided! Please specify a date using \"on YYYY-MM-DD\"");
-        }
-
         LocalDate onDate = Utility.parseDate(onDateAsString);
         String tasksOnDate = getTasksOnDate(tasks, onDate);
 

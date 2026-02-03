@@ -67,10 +67,6 @@ public class GetTasksAfterDateCommand extends Command{
     public void execute(TaskList tasks, Storage storage) throws MissingArgumentException, InvalidArgumentException {
         String afterDateAsString = commandArgs.get("/default");
 
-        if (Utility.isInvalidString(afterDateAsString)) {
-            throw new MissingArgumentException("No date provided! Please specify a date using \"after YYYY-MM-DD\"");
-        }
-
         LocalDate afterDate = Utility.parseDate(afterDateAsString);
         String tasksAfterDate = getTasksAfterDate(tasks, afterDate);
 
