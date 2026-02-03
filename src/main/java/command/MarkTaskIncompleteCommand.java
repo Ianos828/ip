@@ -13,35 +13,35 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * Class representing a command to mark a task as completed.
+ * Class representing a command to mark a task as uncompleted.
  */
-public class CompleteTaskCommand extends Command {
+public class MarkTaskIncompleteCommand extends Command {
     private final Map<String, String> commandArgs;
     public static final Set<String> delimiters = Set.of("/default");
 
     /**
-     * Constructor for CompleteTaskCommand class.
+     * Constructor for MarkTaskIncompleteCommand class.
      *
      * @param commandType the type of command
      * @param commandArgs a map with a single delimiter-argument pair representing a list index
      */
-    public CompleteTaskCommand(CommandType commandType, Map<String, String> commandArgs) {
+    public MarkTaskIncompleteCommand(CommandType commandType, Map<String, String> commandArgs) {
         super(commandType);
         this.commandArgs = commandArgs;
     }
 
     /**
-     * Marks the task at the specified index as completed in the specified task list.
+     * Marks the task at the specified index as uncompleted in the specified task list.
      *
      * @param tasks list of tasks that commands will operate on
-     * @throws MissingArgumentException if the user does not specify the index
+     * @throws MissingArgumentException if no list index is provided
      * @throws InvalidArgumentException if the index provided is not a single number
      */
     @Override
     public void execute (TaskList tasks, Storage storage) throws MissingArgumentException, InvalidArgumentException {
         String indexAsString = commandArgs.get("/default");
         int index = Utility.parseInt(indexAsString);
-        tasks.markTaskAsComplete(index);
+        tasks.markTaskAsIncomplete(index);
         storage.saveTasksToFile(tasks);
     }
 }

@@ -2,17 +2,16 @@ package parser;
 
 import command.Command;
 import command.CommandType;
-import command.CompleteTaskCommand;
 import command.CreateDeadlineCommand;
 import command.CreateEventCommand;
 import command.CreateToDoCommand;
 import command.DeleteTaskCommand;
 import command.DisplayListCommand;
+import command.MarkTaskCompleteCommand;
+import command.MarkTaskIncompleteCommand;
 import command.TerminateCommand;
-import command.UncompleteTaskCommand;
 import command.UnknownCommand;
 
-import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -52,12 +51,12 @@ public class CommandParser {
             command = new DisplayListCommand(commandType);
             break;
         case MARK:
-            arguments = parseArguments(CompleteTaskCommand.delimiters, splitInput[1]);
-            command = new CompleteTaskCommand(commandType, arguments);
+            arguments = parseArguments(MarkTaskCompleteCommand.delimiters, splitInput[1]);
+            command = new MarkTaskCompleteCommand(commandType, arguments);
             break;
         case UNMARK:
-            arguments = parseArguments(UncompleteTaskCommand.delimiters, splitInput[1]);
-            command = new UncompleteTaskCommand(commandType, arguments);
+            arguments = parseArguments(MarkTaskIncompleteCommand.delimiters, splitInput[1]);
+            command = new MarkTaskIncompleteCommand(commandType, arguments);
             break;
         case DELETE:
             arguments = parseArguments(DeleteTaskCommand.delimiters, splitInput[1]);
