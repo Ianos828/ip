@@ -51,6 +51,10 @@ public class CreateEventCommand extends Command {
         LocalDate startDate = Utility.parseDate(startDateAsString);
         LocalDate endDate = Utility.parseDate(endDateAsString);
 
+        if (startDate.isAfter(endDate)) {
+            throw new InvalidArgumentException("Start date cannot be after end date!");
+        }
+
         Task event = new Event(name, startDate, endDate);
 
         tasks.addTask(event);
