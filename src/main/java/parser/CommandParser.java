@@ -1,16 +1,6 @@
 package parser;
 
-import command.Command;
-import command.CommandType;
-import command.CreateDeadlineCommand;
-import command.CreateEventCommand;
-import command.CreateToDoCommand;
-import command.DeleteTaskCommand;
-import command.DisplayListCommand;
-import command.MarkTaskCompleteCommand;
-import command.MarkTaskIncompleteCommand;
-import command.TerminateCommand;
-import command.UnknownCommand;
+import command.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -73,6 +63,18 @@ public class CommandParser {
         case TODO:
             arguments = parseArguments(CreateToDoCommand.delimiters, splitInput[1]);
             command = new CreateToDoCommand(commandType, arguments);
+            break;
+        case FILTER_BEFORE:
+            arguments = parseArguments(GetTasksBeforeDateCommand.delimiters, splitInput[1]);
+            command = new GetTasksBeforeDateCommand(commandType, arguments);
+            break;
+        case FILTER_AFTER:
+            arguments = parseArguments(GetTasksAfterDateCommand.delimiters, splitInput[1]);
+            command = new GetTasksAfterDateCommand(commandType, arguments);
+            break;
+        case FILTER_ON:
+            arguments = parseArguments(GetTasksOnDateCommand.delimiters, splitInput[1]);
+            command = new GetTasksOnDateCommand(commandType, arguments);
             break;
         case UNKNOWN:
             command = new UnknownCommand(commandType);
