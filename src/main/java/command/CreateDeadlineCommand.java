@@ -1,11 +1,14 @@
 package command;
 
 import exception.MissingArgumentException;
+
+import parser.Utility;
+
 import storage.Storage;
+
 import task.Deadline;
 import task.Task;
 import task.TaskList;
-import utility.Utility;
 
 import java.util.Map;
 import java.util.Set;
@@ -39,7 +42,7 @@ public class CreateDeadlineCommand extends Command {
         String name = commandArgs.get("/default");
         String endDate = commandArgs.get("/by");
 
-        if (Utility.isNotValidName(name)) {
+        if (Utility.isInvalidString(name)) {
             throw new MissingArgumentException("Task name cannot be empty!");
         }
 

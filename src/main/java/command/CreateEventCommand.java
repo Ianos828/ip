@@ -2,11 +2,13 @@ package command;
 
 import exception.MissingArgumentException;
 
+import parser.Utility;
+
 import storage.Storage;
+
 import task.Event;
 import task.Task;
 import task.TaskList;
-import utility.Utility;
 
 import java.util.Map;
 import java.util.Set;
@@ -40,7 +42,7 @@ public class CreateEventCommand extends Command {
         String startDate = commandArgs.get("/from");
         String endDate = commandArgs.get("/to");
 
-        if (Utility.isNotValidName(name)) {
+        if (Utility.isInvalidString(name)) {
             throw new MissingArgumentException("Event name cannot be empty!");
         }
 
