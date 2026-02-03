@@ -19,12 +19,12 @@ public enum TaskType {
     }
 
     /**
-     * Returns the command type of the input.
+     * Returns the task type of the input.
      *
      * @param input the input string
-     * @return the command type of the input
+     * @return the task type of the input
      */
-    public static TaskType getCommandType(String input) {
+    public static TaskType getTaskType(String input) {
         for (TaskType type : TaskType.values()) {
             if (type.input.equals(input)) {
                 return type;

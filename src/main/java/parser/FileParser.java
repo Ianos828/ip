@@ -4,7 +4,7 @@ import exception.InvalidArgumentException;
 import exception.MissingArgumentException;
 
 import task.Task;
-import task.Tasktype;
+import task.TaskType;
 import task.ToDo;
 import task.Event;
 import task.Deadline;
@@ -20,7 +20,7 @@ public class FileParser {
 
     public static Task getTask(String rawTask) throws MissingArgumentException, InvalidArgumentException {
         String[] splitInput = Utility.splitIntoPair(rawTask, " \\| ");
-        Tasktype taskType = getTasktype(splitInput[0].toUpperCase());
+        TaskType taskType = getTaskType(splitInput[0].toUpperCase());
         String[] taskComponents = splitInput[1].split(" \\| ");
 
         if (!validCompletionMarkers.contains(taskComponents[0])) {
@@ -79,7 +79,7 @@ public class FileParser {
         return task;
     }
 
-    private static Tasktype getTasktype(String input) {
-        return Tasktype.getCommandType(input);
+    private static TaskType getTaskType(String input) {
+        return TaskType.getTaskType(input);
     }
 }
