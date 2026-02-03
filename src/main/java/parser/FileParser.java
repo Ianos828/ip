@@ -31,7 +31,7 @@ public class FileParser {
         Task task = null;
         String name = taskComponents[1];
 
-        if (name == null || name.isEmpty()) {
+        if (Utility.isNotValidName(name)) {
             throw new MangledTaskException("Invalid task name!", rawTask);
         }
 
