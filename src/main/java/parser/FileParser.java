@@ -1,6 +1,7 @@
 package parser;
 
-import exception.MangledTaskException;
+import exception.InvalidArgumentException;
+import exception.MissingArgumentException;
 
 import task.Task;
 import task.Tasktype;
@@ -8,6 +9,7 @@ import task.ToDo;
 import task.Event;
 import task.Deadline;
 
+import java.time.LocalDate;
 import java.util.Set;
 
 public class FileParser {
@@ -16,13 +18,13 @@ public class FileParser {
     private static final int EVENT_NUMBER_OF_COMPONENTS = 4;
     private static final Set<String> validCompletionMarkers = Set.of("1", "0");
 
-    public static Task getTask(String rawTask) throws MangledTaskException {
+    public static Task getTask(String rawTask) throws MissingArgumentException, InvalidArgumentException {
         String[] splitInput = Utility.splitIntoPair(rawTask, " \\| ");
         Tasktype taskType = getTasktype(splitInput[0].toUpperCase());
         String[] taskComponents = splitInput[1].split(" \\| ");
 
         if (!validCompletionMarkers.contains(taskComponents[0])) {
-            throw new MangledTaskException("Invalid task completion marker!", rawTask);
+            throw new InvalidArgumentException("Invalid task completion marker!");
         }
 
         boolean isComplete = taskComponents[0].equals("1");
@@ -31,50 +33,45 @@ public class FileParser {
         String name = taskComponents[1];
 
         if (Utility.isInvalidString(name)) {
-            throw new MangledTaskException("Invalid task name!", rawTask);
+            throw new InvalidArgumentException("Invalid task name!");
         }
 
         switch(taskType) {
         case TODO:
             if (taskComponents.length != TODO_NUMBER_OF_COMPONENTS) {
-                throw new MangledTaskException("Invalid ToDo task format!", rawTask);
+                throw new MissingArgumentException(String.format("Expected %d arguments for ToDo, received %d",
+                        TODO_NUMBER_OF_COMPONENTS, taskComponents.length));
             }
 
             task = new ToDo(name, isComplete);
             break;
         case EVENT:
             if (taskComponents.length != EVENT_NUMBER_OF_COMPONENTS) {
-                throw new MangledTaskException("Invalid Event task format!", rawTask);
+                throw new MissingArgumentException(String.format("Expected %d arguments for Event, received %d",
+                        TODO_NUMBER_OF_COMPONENTS, taskComponents.length));
             }
 
-            String startDate = taskComponents[2];
-            String endDate = taskComponents[3];
+            String startDateAsString = taskComponents[2];
+            String endDateAsString = taskComponents[3];
 
-            if (startDate == null || startDate.isEmpty()) {
-                throw new MangledTaskException("Invalid start date!", rawTask);
-            }
-
-            if (endDate == null || endDate.isEmpty()) {
-                throw new MangledTaskException("Invalid end date!", rawTask);
-            }
+            LocalDate startDate = Utility.parseDate(startDateAsString);
+            LocalDate endDate = Utility.parseDate(endDateAsString);
 
             task = new Event(name, startDate, endDate, isComplete);
             break;
         case DEADLINE:
             if (taskComponents.length != DEADLINE_NUMBER_OF_COMPONENTS) {
-                throw new MangledTaskException("Invalid Deadline task format!", rawTask);
+                throw new MissingArgumentException(String.format("Expected %d arguments for Deadline, received %d",
+                        TODO_NUMBER_OF_COMPONENTS, taskComponents.length));
             }
 
-            String deadline = taskComponents[2];
-
-            if (deadline == null || deadline.isEmpty()) {
-                throw new MangledTaskException("Invalid deadline!", rawTask);
-            }
+            String deadlineAsString = taskComponents[2];
+            LocalDate deadline = Utility.parseDate(deadlineAsString);
 
             task = new Deadline(name, deadline, isComplete);
             break;
         case UNKNOWN:
-            throw new MangledTaskException("Unknown task type!", rawTask);
+            throw new InvalidArgumentException("Unknown task type!");
         default:
             break;
         }

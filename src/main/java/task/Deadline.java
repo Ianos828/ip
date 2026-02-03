@@ -1,10 +1,12 @@
 package task;
 
+import java.time.LocalDate;
+
 /**
  * Deadline class for tasks with deadlines.
  */
 public class Deadline extends Task {
-    private final String deadline;
+    private final LocalDate deadline;
 
     /**
      * Constructor for Deadline class.
@@ -12,12 +14,12 @@ public class Deadline extends Task {
      * @param taskName the name of the task
      * @param deadline the deadline for the task
      */
-    public Deadline(String taskName, String deadline) {
+    public Deadline(String taskName, LocalDate deadline) {
         super(taskName);
         this.deadline = deadline;
     }
 
-    public Deadline(String taskName, String deadline, boolean isComplete) {
+    public Deadline(String taskName, LocalDate deadline, boolean isComplete) {
         super(taskName);
         this.deadline = deadline;
         this.isComplete = isComplete;

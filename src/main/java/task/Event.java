@@ -1,11 +1,13 @@
 package task;
 
+import java.time.LocalDate;
+
 /**
  * Event class for tasks with start and end dates.
  */
 public class Event extends Task {
-    private final String startDate;
-    private final String endDate;
+    private final LocalDate startDate;
+    private final LocalDate endDate;
 
     /**
      * Constructor for Event class.
@@ -14,13 +16,13 @@ public class Event extends Task {
      * @param startDate the start date of the event
      * @param endDate the end date of the event
      */
-    public Event(String taskName, String startDate, String endDate) {
+    public Event(String taskName, LocalDate startDate, LocalDate endDate) {
         super(taskName);
         this.startDate = startDate;
         this.endDate = endDate;
     }
 
-    public Event(String taskName, String startDate, String endDate, boolean isComplete) {
+    public Event(String taskName, LocalDate startDate, LocalDate endDate, boolean isComplete) {
         super(taskName);
         this.startDate = startDate;
         this.endDate = endDate;

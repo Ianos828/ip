@@ -46,6 +46,7 @@ public class CreateToDoCommand extends Command {
         }
 
         Task toDo = new ToDo(name);
+
         tasks.addTask(toDo);
         tasks.printSuccessMessage(toDo);
         storage.saveTasksToFile(tasks);
