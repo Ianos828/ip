@@ -3,6 +3,7 @@ package parser;
 import command.*;
 import exception.InvalidArgumentException;
 import exception.MissingArgumentException;
+import utility.Utility;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -11,7 +12,7 @@ import java.util.Set;
 /**
  * CommandParser class for parsing user input into commands.
  */
-public class CommandParser extends Parser{
+public class CommandParser {
     /**
      * Returns the command type of the input based on its string representation.
      *
@@ -29,7 +30,7 @@ public class CommandParser extends Parser{
      * @return a command containing its respective arguments
      */
     public static Command getCommand(String input) {
-        String[] splitInput = splitIntoPair(input, " ");
+        String[] splitInput = Utility.splitIntoPair(input, " ");
         CommandType commandType = CommandParser.getCommandType(splitInput[0].toLowerCase());
 
         Command command = null;

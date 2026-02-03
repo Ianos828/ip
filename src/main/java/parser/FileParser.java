@@ -7,17 +7,18 @@ import task.Tasktype;
 import task.ToDo;
 import task.Event;
 import task.Deadline;
+import utility.Utility;
 
 import java.util.Set;
 
-public class FileParser extends Parser{
+public class FileParser {
     private static final int TODO_NUMBER_OF_COMPONENTS = 2;
     private static final int DEADLINE_NUMBER_OF_COMPONENTS = 3;
     private static final int EVENT_NUMBER_OF_COMPONENTS = 4;
     private static final Set<String> validCompletionMarkers = Set.of("1", "0");
 
     public static Task getTask(String rawTask) throws MangledTaskException {
-        String[] splitInput = splitIntoPair(rawTask, " \\| ");
+        String[] splitInput = Utility.splitIntoPair(rawTask, " \\| ");
         Tasktype taskType = getTasktype(splitInput[0].toUpperCase());
         String[] taskComponents = splitInput[1].split(" \\| ");
 
