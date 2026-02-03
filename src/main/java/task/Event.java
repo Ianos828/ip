@@ -1,5 +1,7 @@
 package task;
 
+import parser.Utility;
+
 import java.time.LocalDate;
 
 /**
@@ -36,7 +38,8 @@ public class Event extends Task {
      */
     @Override
     public String toString() {
-        return String.format("[E]%s (from: %s to: %s)", super.toString(), startDate, endDate);
+        return String.format("[E]%s (from: %s to: %s)", super.toString(),
+                Utility.formatDate(startDate), Utility.formatDate(endDate));
     }
 
     @Override

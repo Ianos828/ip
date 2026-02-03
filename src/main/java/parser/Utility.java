@@ -4,6 +4,7 @@ import exception.InvalidArgumentException;
 import exception.MissingArgumentException;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
 public class Utility {
@@ -66,5 +67,9 @@ public class Utility {
         }
 
         return date;
+    }
+
+    public static String formatDate(LocalDate date) {
+        return date.format(DateTimeFormatter.ofPattern("EEE, dd LLL yyyy"));
     }
 }

@@ -1,5 +1,7 @@
 package task;
 
+import parser.Utility;
+
 import java.time.LocalDate;
 
 /**
@@ -32,7 +34,7 @@ public class Deadline extends Task {
      */
     @Override
     public String toString() {
-        return String.format("[D]%s (by: %s)", super.toString(), deadline);
+        return String.format("[D]%s (by: %s)", super.toString(), Utility.formatDate(deadline));
     }
 
     @Override
