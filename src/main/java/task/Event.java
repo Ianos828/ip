@@ -19,16 +19,24 @@ public class Event extends Task {
      * @param endDate the end date of the event
      */
     public Event(String taskName, LocalDate startDate, LocalDate endDate) {
-        super(taskName);
+        super(TaskType.EVENT, taskName);
         this.startDate = startDate;
         this.endDate = endDate;
     }
 
     public Event(String taskName, LocalDate startDate, LocalDate endDate, boolean isComplete) {
-        super(taskName);
+        super(TaskType.EVENT, taskName);
         this.startDate = startDate;
         this.endDate = endDate;
         this.isComplete = isComplete;
+    }
+
+    public LocalDate getStartDate() {
+        return startDate;
+    }
+
+    public LocalDate getEndDate() {
+        return endDate;
     }
 
     /**

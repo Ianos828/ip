@@ -4,17 +4,18 @@ package task;
  * Class representing a task.
  */
 public abstract class Task {
+    protected final TaskType taskType;
     protected final String name;
-    protected boolean isComplete;
+    protected boolean isComplete = false;
 
     /**
      * Constructor for Task class.
      *
      * @param name the name of the task
      */
-    public Task(String name) {
+    public Task(TaskType taskType, String name) {
+        this.taskType = taskType;
         this.name = name;
-        this.isComplete = false;
     }
 
     /**
@@ -30,6 +31,10 @@ public abstract class Task {
     public void markAsIncomplete() {
         isComplete = false;
     }
+
+    public TaskType getType() {
+        return taskType;
+    };
 
     /**
      * Returns a string representation of the task.

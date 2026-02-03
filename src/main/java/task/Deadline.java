@@ -17,14 +17,18 @@ public class Deadline extends Task {
      * @param deadline the deadline for the task
      */
     public Deadline(String taskName, LocalDate deadline) {
-        super(taskName);
+        super(TaskType.DEADLINE, taskName);
         this.deadline = deadline;
     }
 
     public Deadline(String taskName, LocalDate deadline, boolean isComplete) {
-        super(taskName);
+        super(TaskType.DEADLINE, taskName);
         this.deadline = deadline;
         this.isComplete = isComplete;
+    }
+
+    public LocalDate getDeadline() {
+        return deadline;
     }
 
     /**
