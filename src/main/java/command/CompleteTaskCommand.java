@@ -36,7 +36,6 @@ public class CompleteTaskCommand extends Command {
      */
     @Override
     public void execute (TaskList tasks, Storage storage) throws MissingArgumentException, InvalidArgumentException {
-
         String indexAsString = commandArgs.get("/default");
         int index = CommandParser.parseInt(indexAsString);
         tasks.markTaskAsComplete(index);

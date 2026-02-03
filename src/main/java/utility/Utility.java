@@ -15,4 +15,8 @@ public class Utility {
         split[1] = split[1].strip();
         return split;
     }
+
+    public static boolean isNotValidName(String name) {
+        return name == null || name.isEmpty();
+    }
 }
