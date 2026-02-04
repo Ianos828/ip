@@ -58,8 +58,7 @@ public class Storage {
 
         try {
             StringBuilder fileString = new StringBuilder();
-            for (int i = 0; i < tasks.getSize(); i++) {
-                Task task = tasks.getTask(i);
+            for (Task task : tasks) {
                 fileString.append(task.toSaveString()).append("\n");
             }
             Files.writeString(Path.of(file.getPath()), fileString, StandardCharsets.UTF_8);
