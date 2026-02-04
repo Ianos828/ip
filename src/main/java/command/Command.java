@@ -7,6 +7,8 @@ import storage.Storage;
 
 import task.TaskList;
 
+import java.io.IOException;
+
 /**
  * Class representing a generic user command.
  */
@@ -38,7 +40,7 @@ public abstract class Command{
      * @throws MissingArgumentException if commands do not receive their expected number of arguments
      * @throws InvalidArgumentException if commands do not receive their expected arguments in the correct format
      */
-    public abstract void execute(TaskList tasks, Storage storage) throws MissingArgumentException, InvalidArgumentException;
+    public abstract String execute(TaskList tasks, Storage storage) throws MissingArgumentException, InvalidArgumentException, IOException;
 }
 
 

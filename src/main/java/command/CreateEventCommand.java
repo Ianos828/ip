@@ -11,6 +11,7 @@ import task.Event;
 import task.Task;
 import task.TaskList;
 
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.Map;
 import java.util.Set;
@@ -39,7 +40,7 @@ public class CreateEventCommand extends Command {
      * @param tasks list of tasks that commands will operate on
      * @throws MissingArgumentException if the user does not specify the name, start or end dates of the task
      */
-    public void execute(TaskList tasks, Storage storage) throws InvalidArgumentException, MissingArgumentException {
+    public String execute(TaskList tasks, Storage storage) throws InvalidArgumentException, MissingArgumentException, IOException {
         String name = commandArgs.get("/default");
         String startDateAsString = commandArgs.get("/from");
         String endDateAsString = commandArgs.get("/to");
@@ -58,7 +59,8 @@ public class CreateEventCommand extends Command {
         Task event = new Event(name, startDate, endDate);
 
         tasks.addTask(event);
-        tasks.printSuccessMessage(event);
         storage.saveTasksToFile(tasks);
+
+        return String.format("Got it! I've added this task:\n%s\nNow you have %d task(s) in the list.", event, tasks.getSize());
     }
 }

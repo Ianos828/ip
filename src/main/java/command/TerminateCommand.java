@@ -33,7 +33,7 @@ public class TerminateCommand extends Command {
      * @param tasks list of tasks that commands will operate on
      */
     @Override
-    public void execute(TaskList tasks, Storage storage) {
-        System.out.println("Bye. Hope to see you again soon!");
+    public String execute(TaskList tasks, Storage storage) {
+        return "Bye. Hope to see you again soon!";
     }
 }

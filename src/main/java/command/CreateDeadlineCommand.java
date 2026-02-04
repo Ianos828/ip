@@ -11,6 +11,7 @@ import task.Deadline;
 import task.Task;
 import task.TaskList;
 
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.Map;
 import java.util.Set;
@@ -40,7 +41,7 @@ public class CreateDeadlineCommand extends Command {
      * @throws MissingArgumentException if the user does not specify the name or deadline of the task
      */
     @Override
-    public void execute(TaskList tasks, Storage storage) throws InvalidArgumentException, MissingArgumentException {
+    public String execute(TaskList tasks, Storage storage) throws MissingArgumentException, InvalidArgumentException, IOException {
         String name = commandArgs.get("/default");
         String endDateAsString = commandArgs.get("/by");
 
@@ -53,7 +54,8 @@ public class CreateDeadlineCommand extends Command {
         Task deadline = new Deadline(name, endDate);
 
         tasks.addTask(deadline);
-        tasks.printSuccessMessage(deadline);
         storage.saveTasksToFile(tasks);
+
+        return String.format("Got it! I've added this task:\n%s\nNow you have %d task(s) in the list.", deadline, tasks.getSize());
     }
 }

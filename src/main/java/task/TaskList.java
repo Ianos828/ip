@@ -38,15 +38,14 @@ public class TaskList implements Iterable<Task>{
      *
      * @param index the index of the task to remove
      */
-    public void removeTask(int index) throws InvalidArgumentException {
+    public Task removeTask(int index) throws InvalidArgumentException {
         if (isInvalidIndex(index)) {
             throw new InvalidArgumentException("Invalid task index!");
         }
 
-        System.out.println("Noted. I've removed this task:");
-        System.out.println(tasks.get(index - 1));
+        Task task = tasks.get(index - 1);
         tasks.remove(index - 1);
-        System.out.printf("Now you have %d task(s) in the list.\n", getSize());
+        return task;
     }
 
     /**
@@ -54,15 +53,14 @@ public class TaskList implements Iterable<Task>{
      *
      * @param index the index of the task to mark as complete
      */
-    public void markTaskAsComplete(int index) throws InvalidArgumentException {
+    public Task markTaskAsComplete(int index) throws InvalidArgumentException {
         if (isInvalidIndex(index)) {
             throw new InvalidArgumentException("Invalid task index!");
         }
 
         Task task = tasks.get(index - 1);
         task.markAsComplete();
-        System.out.println("Nice! I've marked this task as done:");
-        System.out.println(task);
+        return task;
     }
 
     /**
@@ -70,15 +68,14 @@ public class TaskList implements Iterable<Task>{
      *
      * @param index the index of the task to mark as incomplete
      */
-    public void markTaskAsIncomplete(int index) throws InvalidArgumentException {
+    public Task markTaskAsIncomplete(int index) throws InvalidArgumentException {
         if (isInvalidIndex(index)) {
             throw new InvalidArgumentException("Invalid task index!");
         }
 
         Task task = tasks.get(index - 1);
         task.markAsIncomplete();
-        System.out.println("OK, I've marked this task as not done yet:");
-        System.out.println(task);
+        return task;
     }
 
     /**
@@ -109,17 +106,6 @@ public class TaskList implements Iterable<Task>{
         return tasks.isEmpty();
     }
 
-    /**
-     * Prints a success message when a task is added to the list.
-     *
-     * @param task the task that was added
-     */
-    public void printSuccessMessage(Task task) {
-        System.out.println("Got it. I've added this task:");
-        System.out.println(task);
-        System.out.printf("Now you have %d task(s) in the list.\n", getSize());
-    }
-
     public TaskList getOutstandingTasks(LocalDate date) {
         List<Task> outstandingTasks = tasks.stream()
                 .filter(task -> task.isOutstanding(date))
@@ -142,12 +128,21 @@ public class TaskList implements Iterable<Task>{
     public String toString() {
         StringBuilder sb = new StringBuilder();
         int taskIndex = 1;
-        sb.append("Here are the tasks in your list:\n");
+
         for (Task task : tasks) {
-            sb.append(String.format("%d. %s\n", taskIndex, task.toString()));
-            taskIndex++;
+            sb.append(String.format("%d. %s\n", taskIndex++, task.toString()));
         }
 
-        return sb.toString();
+        return sb.toString().strip().trim();
+    }
+
+    public String toSaveString() {
+        StringBuilder sb = new StringBuilder();
+
+        for (Task task : tasks) {
+            sb.append(task.toSaveString()).append("\n");
+        }
+
+        return sb.toString().strip().trim();
     }
 }

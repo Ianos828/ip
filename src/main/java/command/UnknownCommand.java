@@ -23,7 +23,7 @@ public class UnknownCommand extends Command {
      * @param tasks list of tasks that commands will operate on
      */
     @Override
-    public void execute(TaskList tasks, Storage storage) {
-        System.out.println("I'm sorry, but I don't know what that means :(");
+    public String execute(TaskList tasks, Storage storage) {
+        return "I'm sorry, but I don't know what that means :(";
     }
 }

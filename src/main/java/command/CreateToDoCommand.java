@@ -10,6 +10,7 @@ import task.Task;
 import task.TaskList;
 import task.ToDo;
 
+import java.io.IOException;
 import java.util.Map;
 import java.util.Set;
 
@@ -38,7 +39,7 @@ public class CreateToDoCommand extends Command {
      * @throws MissingArgumentException if the user does not specify the name of the task
      */
     @Override
-    public void execute(TaskList tasks, Storage storage) throws MissingArgumentException {
+    public String execute(TaskList tasks, Storage storage) throws MissingArgumentException, IOException {
         String name = commandArgs.get("/default");
 
         if (Utility.isInvalidString(name)) {
@@ -48,7 +49,8 @@ public class CreateToDoCommand extends Command {
         Task toDo = new ToDo(name);
 
         tasks.addTask(toDo);
-        tasks.printSuccessMessage(toDo);
         storage.saveTasksToFile(tasks);
+
+        return String.format("Got it! I've added this task:\n%s\nNow you have %d task(s) in the list.", toDo, tasks.getSize());
     }
 }
