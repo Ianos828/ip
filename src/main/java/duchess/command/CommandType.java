@@ -27,10 +27,10 @@ public enum CommandType {
     }
 
     /**
-     * Returns the duchess.command type of the input.
+     * Returns the command type of the input.
      *
      * @param input the input string
-     * @return the duchess.command type of the input
+     * @return the command type of the input
      */
     public static CommandType getCommandType(String input) {
         for (CommandType type : CommandType.values()) {

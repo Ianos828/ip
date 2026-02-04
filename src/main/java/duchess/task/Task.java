@@ -3,7 +3,7 @@ package duchess.task;
 import java.time.LocalDate;
 
 /**
- * Class representing a duchess.task.
+ * Class representing a task.
  */
 public abstract class Task {
     protected final String name;
@@ -12,21 +12,21 @@ public abstract class Task {
     /**
      * Constructor for Task class.
      *
-     * @param name the name of the duchess.task
+     * @param name the name of the task
      */
     public Task(String name) {
         this.name = name;
     }
 
     /**
-     * Marks the duchess.task as complete.
+     * Marks the task as complete.
      */
     public void markAsComplete() {
         complete = true;
     }
 
     /**
-     * Marks the duchess.task as incomplete.
+     * Marks the task as incomplete.
      */
     public void markAsIncomplete() {
         complete = false;
@@ -45,9 +45,9 @@ public abstract class Task {
     }
 
     /**
-     * Returns a string representation of the duchess.task.
+     * Returns a string representation of the task.
      *
-     * @return a string representation of the duchess.task
+     * @return a string representation of the task
      */
     @Override
     public String toString() {

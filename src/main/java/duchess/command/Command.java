@@ -10,7 +10,7 @@ import duchess.task.TaskList;
 import java.io.IOException;
 
 /**
- * Class representing a generic user duchess.command.
+ * Class representing a generic user command.
  */
 public abstract class Command{
     CommandType type;
@@ -18,16 +18,16 @@ public abstract class Command{
     /**
      * Constructor for Command class.
      *
-     * @param type the duchess.command type
+     * @param type the command type
      */
     public Command(CommandType type) {
         this.type = type;
     }
 
     /**
-     * Returns true if the duchess.command should end the main program, else false.
+     * Returns true if the command should end the main program, else false.
      *
-     * @return boolean representing if the duchess.command should terminate the main program
+     * @return boolean representing if the command should terminate the main program
      */
     public boolean isTerminatingCommand() {
         return false;

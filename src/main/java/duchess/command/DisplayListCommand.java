@@ -5,20 +5,20 @@ import duchess.storage.Storage;
 import duchess.task.TaskList;
 
 /**
- * Class representing a duchess.command to display the current duchess.task list.
+ * Class representing a command to display the current task list.
  */
 public class DisplayListCommand extends Command {
     /**
      * Constructor for DisplayListCommand class.
      *
-     * @param commandType the type of duchess.command
+     * @param commandType the type of command
      */
     public DisplayListCommand(CommandType commandType) {
         super(commandType);
     }
 
     /**
-     * Prints the duchess.task list if the list is not empty. Otherwise, print an error message.
+     * Prints the task list if the list is not empty. Otherwise, print an error message.
      *
      * @param tasks list of tasks that commands will operate on
      */

@@ -17,7 +17,7 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * Class representing a duchess.command to create an event.
+ * Class representing a command to create an event.
  */
 public class CreateEventCommand extends Command {
     private final Map<String, String> commandArgs;
@@ -26,8 +26,8 @@ public class CreateEventCommand extends Command {
     /**
      * Constructor for CreateEventCommand class.
      *
-     * @param type the type of duchess.command
-     * @param commandArgs a map of delimiter-argument pairs specifying the name, start and end dates of the duchess.task
+     * @param type the type of command
+     * @param commandArgs a map of delimiter-argument pairs specifying the name, start and end dates of the task
      */
     public CreateEventCommand(CommandType type, Map<String, String> commandArgs) {
         super(type);
@@ -35,10 +35,10 @@ public class CreateEventCommand extends Command {
     }
 
     /**
-     * Extracts the name, start and end dates from the duchess.command and creates an Event duchess.task with the specified arguments.
+     * Extracts the name, start and end dates from the command and creates an Event task with the specified arguments.
      *
      * @param tasks list of tasks that commands will operate on
-     * @throws MissingArgumentException if the user does not specify the name, start or end dates of the duchess.task
+     * @throws MissingArgumentException if the user does not specify the name, start or end dates of the task
      */
     public String execute(TaskList tasks, Storage storage) throws InvalidArgumentException, MissingArgumentException, IOException {
         String name = commandArgs.get("/default");
@@ -61,6 +61,6 @@ public class CreateEventCommand extends Command {
         tasks.addTask(event);
         storage.saveTasksToFile(tasks);
 
-        return String.format("Got it! I've added this duchess.task:\n%s\nNow you have %d duchess.task(s) in the list.", event, tasks.getSize());
+        return String.format("Got it! I've added this task:\n%s\nNow you have %d task(s) in the list.", event, tasks.getSize());
     }
 }

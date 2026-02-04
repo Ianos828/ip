@@ -11,7 +11,7 @@ public class Utility {
     /**
      * Returns the specified input as an array of length 2, after splitting with a specified string as the delimiter.
      *
-     * @param input the input duchess.command string from the user
+     * @param input the input command string from the user
      * @return a String array of length 2
      */
     public static String[] splitIntoPair(String input, String delimiter) {

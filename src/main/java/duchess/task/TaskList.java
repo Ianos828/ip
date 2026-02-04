@@ -25,18 +25,18 @@ public class TaskList implements Iterable<Task>{
     }
 
     /**
-     * Adds a duchess.task to the list.
+     * Adds a task to the list.
      *
-     * @param task the duchess.task to add
+     * @param task the task to add
      */
     public void addTask(Task task) {
         tasks.add(task);
     }
 
     /**
-     * Removes a duchess.task from the list.
+     * Removes a task from the list.
      *
-     * @param index the index of the duchess.task to remove
+     * @param index the index of the task to remove
      */
     public Task removeTask(int index) throws InvalidArgumentException {
         if (isInvalidIndex(index)) {
@@ -49,9 +49,9 @@ public class TaskList implements Iterable<Task>{
     }
 
     /**
-     * Marks a duchess.task as complete.
+     * Marks a task as complete.
      *
-     * @param index the index of the duchess.task to mark as complete
+     * @param index the index of the task to mark as complete
      */
     public Task markTaskAsComplete(int index) throws InvalidArgumentException {
         if (isInvalidIndex(index)) {
@@ -64,9 +64,9 @@ public class TaskList implements Iterable<Task>{
     }
 
     /**
-     * Marks a duchess.task as incomplete.
+     * Marks a task as incomplete.
      *
-     * @param index the index of the duchess.task to mark as incomplete
+     * @param index the index of the task to mark as incomplete
      */
     public Task markTaskAsIncomplete(int index) throws InvalidArgumentException {
         if (isInvalidIndex(index)) {

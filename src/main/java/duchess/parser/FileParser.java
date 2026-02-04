@@ -33,7 +33,7 @@ public class FileParser {
         String name = taskComponents[1];
 
         if (Utility.isInvalidString(name)) {
-            throw new InvalidArgumentException("Invalid duchess.task name!");
+            throw new InvalidArgumentException("Invalid task name!");
         }
 
         switch(taskType) {
@@ -71,7 +71,7 @@ public class FileParser {
             task = new Deadline(name, deadline, isComplete);
             break;
         case UNKNOWN:
-            throw new InvalidArgumentException("Unknown duchess.task type!");
+            throw new InvalidArgumentException("Unknown task type!");
         default:
             break;
         }

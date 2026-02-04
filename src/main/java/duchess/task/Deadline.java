@@ -13,8 +13,8 @@ public class Deadline extends Task {
     /**
      * Constructor for Deadline class.
      *
-     * @param taskName the name of the duchess.task
-     * @param deadline the deadline for the duchess.task
+     * @param taskName the name of the task
+     * @param deadline the deadline for the task
      */
     public Deadline(String taskName, LocalDate deadline) {
         super(taskName);
@@ -33,9 +33,9 @@ public class Deadline extends Task {
     }
 
     /**
-     * Returns a string representation of the deadline duchess.task
+     * Returns a string representation of the deadline task
      *
-     * @return a string representation of the deadline duchess.task
+     * @return a string representation of the deadline task
      */
     @Override
     public String toString() {
