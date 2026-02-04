@@ -43,7 +43,7 @@ if exist ACTUAL.TXT (
 
 echo.
 echo [3/4] Compiling source files...
-javac -cp ..\src\main\java -Xlint:none -d ..\bin ..\src\main\java\duchess\*.java
+javac -cp ..\src\main\java\ -Xlint:none -d ..\bin ..\src\main\java\duchess\ui\Duchess.java
 IF ERRORLEVEL 1 (
     echo.
     echo =============== ERROR ===============
