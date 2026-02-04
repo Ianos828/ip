@@ -13,9 +13,7 @@ public enum CommandType {
     UNMARK("unmark"),
     UNKNOWN(""),
     DELETE("delete"),
-    FILTER_BEFORE("before"),
-    FILTER_AFTER("after"),
-    FILTER_ON("on");
+    OUTSTANDING("outstanding");
 
     public final String input;
 
