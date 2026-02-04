@@ -19,10 +19,10 @@ public enum TaskType {
     }
 
     /**
-     * Returns the duchess.task type of the input.
+     * Returns the task type of the input.
      *
      * @param input the input string
-     * @return the duchess.task type of the input
+     * @return the task type of the input
      */
     public static TaskType getTaskType(String input) {
         for (TaskType type : TaskType.values()) {

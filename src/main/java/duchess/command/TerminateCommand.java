@@ -5,7 +5,7 @@ import duchess.storage.Storage;
 import duchess.task.TaskList;
 
 /**
- * Class representing a duchess.command to terminate the program.
+ * Class representing a command to terminate the program.
  */
 public class TerminateCommand extends Command {
     /**

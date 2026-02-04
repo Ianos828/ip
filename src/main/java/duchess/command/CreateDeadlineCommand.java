@@ -17,7 +17,7 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * Class representing a duchess.command to create a duchess.task with a deadline.
+ * Class representing a command to create a task with a deadline.
  */
 public class CreateDeadlineCommand extends Command {
     private final Map<String, String> commandArgs;
@@ -26,8 +26,8 @@ public class CreateDeadlineCommand extends Command {
     /**
      * Constructor for CreateDeadlineCommand class.
      *
-     * @param type the type of duchess.command
-     * @param commandArgs a map of delimiter-argument pairs specifying the name and deadline of the duchess.task
+     * @param type the type of command
+     * @param commandArgs a map of delimiter-argument pairs specifying the name and deadline of the task
      */
     public CreateDeadlineCommand(CommandType type, Map<String, String> commandArgs) {
         super(type);
@@ -35,10 +35,10 @@ public class CreateDeadlineCommand extends Command {
     }
 
     /**
-     * Extracts the name and deadline from the duchess.command and creates a Deadline duchess.task with the specified arguments.
+     * Extracts the name and deadline from the command and creates a Deadline task with the specified arguments.
      *
      * @param tasks list of tasks that commands will operate on
-     * @throws MissingArgumentException if the user does not specify the name or deadline of the duchess.task
+     * @throws MissingArgumentException if the user does not specify the name or deadline of the task
      */
     @Override
     public String execute(TaskList tasks, Storage storage) throws MissingArgumentException, InvalidArgumentException, IOException {
@@ -56,6 +56,6 @@ public class CreateDeadlineCommand extends Command {
         tasks.addTask(deadline);
         storage.saveTasksToFile(tasks);
 
-        return String.format("Got it! I've added this duchess.task:\n%s\nNow you have %d duchess.task(s) in the list.", deadline, tasks.getSize());
+        return String.format("Got it! I've added this task:\n%s\nNow you have %d task(s) in the list.", deadline, tasks.getSize());
     }
 }

@@ -15,7 +15,7 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * Class representing a duchess.command to create a todo duchess.task.
+ * Class representing a command to create a todo task.
  */
 public class CreateToDoCommand extends Command {
     private final Map<String, String> commandArgs;
@@ -24,8 +24,8 @@ public class CreateToDoCommand extends Command {
     /**
      * Constructor for CreateToDoCommand class.
      *
-     * @param type the type of duchess.command
-     * @param commandArgs a map with a single delimiter-argument pair specifying the name of the duchess.task
+     * @param type the type of command
+     * @param commandArgs a map with a single delimiter-argument pair specifying the name of the task
      */
     public CreateToDoCommand(CommandType type, Map<String, String> commandArgs) {
         super(type);
@@ -33,10 +33,10 @@ public class CreateToDoCommand extends Command {
     }
 
     /**
-     * Extracts the name from the duchess.command and creates a todo duchess.task with the specified argument.
+     * Extracts the name from the command and creates a todo task with the specified argument.
      *
      * @param tasks list of tasks that commands will operate on
-     * @throws MissingArgumentException if the user does not specify the name of the duchess.task
+     * @throws MissingArgumentException if the user does not specify the name of the task
      */
     @Override
     public String execute(TaskList tasks, Storage storage) throws MissingArgumentException, IOException {
@@ -51,6 +51,6 @@ public class CreateToDoCommand extends Command {
         tasks.addTask(toDo);
         storage.saveTasksToFile(tasks);
 
-        return String.format("Got it! I've added this duchess.task:\n%s\nNow you have %d duchess.task(s) in the list.", toDo, tasks.getSize());
+        return String.format("Got it! I've added this task:\n%s\nNow you have %d task(s) in the list.", toDo, tasks.getSize());
     }
 }

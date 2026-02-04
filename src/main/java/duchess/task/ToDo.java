@@ -1,13 +1,13 @@
 package duchess.task;
 
 /**
- * Class representing a duchess.task with a name and no additional information.
+ * Class representing a task with a name and no additional information.
  */
 public class ToDo extends Task {
     /**
      * Constructor for ToDo class.
      *
-     * @param name the name of the ToDo duchess.task
+     * @param name the name of the ToDo task
      */
     public ToDo(String name) {
         super(name);

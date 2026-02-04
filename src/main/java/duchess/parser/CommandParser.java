@@ -11,20 +11,20 @@ import java.util.Set;
  */
 public class CommandParser {
     /**
-     * Returns the duchess.command type of the input based on its string representation.
+     * Returns the command type of the input based on its string representation.
      *
      * @param input the input string
-     * @return the type of duchess.command of the input
+     * @return the type of command of the input
      */
     private static CommandType getCommandType(String input) {
         return CommandType.getCommandType(input);
     }
 
     /**
-     * Returns a duchess.command from the specified input string
+     * Returns a command from the specified input string
      *
      * @param input the user input string
-     * @return a duchess.command containing its respective arguments
+     * @return a command containing its respective arguments
      */
     public static Command getCommand(String input) {
         String[] splitInput = Utility.splitIntoPair(input, " ");
@@ -85,8 +85,8 @@ public class CommandParser {
      * latest argument for that delimiter will be captured.
      * </p>
      *
-     * @param delimiters the delimiters the duchess.command expects
-     * @param userInput the user input string without the duchess.command type
+     * @param delimiters the delimiters the command expects
+     * @param userInput the user input string without the command type
      * @return a map containing delimiter-argument pairs
      */
     private static Map<String, String> parseArguments(Set<String> delimiters, String userInput) {

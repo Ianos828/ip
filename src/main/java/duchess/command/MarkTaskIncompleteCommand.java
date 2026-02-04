@@ -15,7 +15,7 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * Class representing a duchess.command to mark a duchess.task as uncompleted.
+ * Class representing a command to mark a task as uncompleted.
  */
 public class MarkTaskIncompleteCommand extends Command {
     private final Map<String, String> commandArgs;
@@ -24,7 +24,7 @@ public class MarkTaskIncompleteCommand extends Command {
     /**
      * Constructor for MarkTaskIncompleteCommand class.
      *
-     * @param commandType the type of duchess.command
+     * @param commandType the type of command
      * @param commandArgs a map with a single delimiter-argument pair representing a list index
      */
     public MarkTaskIncompleteCommand(CommandType commandType, Map<String, String> commandArgs) {
@@ -33,7 +33,7 @@ public class MarkTaskIncompleteCommand extends Command {
     }
 
     /**
-     * Marks the duchess.task at the specified index as uncompleted in the specified duchess.task list.
+     * Marks the task at the specified index as uncompleted in the specified task list.
      *
      * @param tasks list of tasks that commands will operate on
      * @throws MissingArgumentException if no list index is provided
@@ -46,6 +46,6 @@ public class MarkTaskIncompleteCommand extends Command {
         Task task = tasks.markTaskAsIncomplete(index);
         storage.saveTasksToFile(tasks);
 
-        return String.format("OK, I've marked this duchess.task as not done yet:\n%s", task);
+        return String.format("OK, I've marked this task as not done yet:\n%s", task);
     }
 }

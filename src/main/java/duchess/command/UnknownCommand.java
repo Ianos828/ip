@@ -5,13 +5,13 @@ import duchess.storage.Storage;
 import duchess.task.TaskList;
 
 /**
- * Class representing an unsupported duchess.command.
+ * Class representing an unsupported command.
  */
 public class UnknownCommand extends Command {
     /**
      * Constructor for UnknownCommand class.
      *
-     * @param commandType the type of duchess.command
+     * @param commandType the type of command
      */
     public UnknownCommand(CommandType commandType) {
         super(commandType);

@@ -15,7 +15,7 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * Class representing a duchess.command to mark a duchess.task as completed.
+ * Class representing a command to mark a task as completed.
  */
 public class MarkTaskCompleteCommand extends Command {
     private final Map<String, String> commandArgs;
@@ -24,7 +24,7 @@ public class MarkTaskCompleteCommand extends Command {
     /**
      * Constructor for MarkTaskCompleteCommand class.
      *
-     * @param commandType the type of duchess.command
+     * @param commandType the type of command
      * @param commandArgs a map with a single delimiter-argument pair representing a list index
      */
     public MarkTaskCompleteCommand(CommandType commandType, Map<String, String> commandArgs) {
@@ -33,7 +33,7 @@ public class MarkTaskCompleteCommand extends Command {
     }
 
     /**
-     * Marks the duchess.task at the specified index as completed in the specified duchess.task list.
+     * Marks the task at the specified index as completed in the specified task list.
      *
      * @param tasks list of tasks that commands will operate on
      * @throws MissingArgumentException if the user does not specify the index
@@ -46,6 +46,6 @@ public class MarkTaskCompleteCommand extends Command {
         Task task = tasks.markTaskAsComplete(index);
         storage.saveTasksToFile(tasks);
 
-        return String.format("Nice! I've marked this duchess.task as done:\n%s", task);
+        return String.format("Nice! I've marked this task as done:\n%s", task);
     }
 }
