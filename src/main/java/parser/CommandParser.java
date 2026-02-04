@@ -64,17 +64,9 @@ public class CommandParser {
             arguments = parseArguments(CreateToDoCommand.delimiters, splitInput[1]);
             command = new CreateToDoCommand(commandType, arguments);
             break;
-        case FILTER_BEFORE:
-            arguments = parseArguments(GetTasksBeforeDateCommand.delimiters, splitInput[1]);
-            command = new GetTasksBeforeDateCommand(commandType, arguments);
-            break;
-        case FILTER_AFTER:
-            arguments = parseArguments(GetTasksAfterDateCommand.delimiters, splitInput[1]);
-            command = new GetTasksAfterDateCommand(commandType, arguments);
-            break;
-        case FILTER_ON:
-            arguments = parseArguments(GetTasksOnDateCommand.delimiters, splitInput[1]);
-            command = new GetTasksOnDateCommand(commandType, arguments);
+        case OUTSTANDING:
+            arguments = parseArguments(FindOutstandingCommand.delimiters, splitInput[1]);
+            command = new FindOutstandingCommand(commandType, arguments);
             break;
         case UNKNOWN:
             command = new UnknownCommand(commandType);

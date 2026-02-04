@@ -2,20 +2,26 @@ package task;
 
 import exception.InvalidArgumentException;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 /**
  * Class representing a list of tasks.
  */
-public class TaskList {
-    private List<Task> tasks;
+public class TaskList implements Iterable<Task>{
+    private final List<Task> tasks;
 
     /**
      * Constructor for TaskList class.
      */
     public TaskList() {
         tasks = new ArrayList<>();
+    }
+
+    public TaskList(List<Task> tasks) {
+        this.tasks = tasks;
     }
 
     /**
@@ -33,7 +39,7 @@ public class TaskList {
      * @param index the index of the task to remove
      */
     public void removeTask(int index) throws InvalidArgumentException {
-        if (!isValidIndex(index)) {
+        if (isInvalidIndex(index)) {
             throw new InvalidArgumentException("Invalid task index!");
         }
 
@@ -49,7 +55,7 @@ public class TaskList {
      * @param index the index of the task to mark as complete
      */
     public void markTaskAsComplete(int index) throws InvalidArgumentException {
-        if (!isValidIndex(index)) {
+        if (isInvalidIndex(index)) {
             throw new InvalidArgumentException("Invalid task index!");
         }
 
@@ -65,7 +71,7 @@ public class TaskList {
      * @param index the index of the task to mark as incomplete
      */
     public void markTaskAsIncomplete(int index) throws InvalidArgumentException {
-        if (!isValidIndex(index)) {
+        if (isInvalidIndex(index)) {
             throw new InvalidArgumentException("Invalid task index!");
         }
 
@@ -81,8 +87,8 @@ public class TaskList {
      * @param index the index to check
      * @return  true if the index is valid, false otherwise
      */
-    private boolean isValidIndex(int index) {
-        return index > 0 && index <= tasks.size();
+    private boolean isInvalidIndex(int index) {
+        return index <= 0 || index > tasks.size();
     }
 
     /**
@@ -92,10 +98,6 @@ public class TaskList {
      */
     public int getSize() {
         return tasks.size();
-    }
-
-    public Task getTask(int index) {
-        return tasks.get(index);
     }
 
     /**
@@ -116,6 +118,19 @@ public class TaskList {
         System.out.println("Got it. I've added this task:");
         System.out.println(task);
         System.out.printf("Now you have %d task(s) in the list.\n", getSize());
+    }
+
+    public TaskList getOutstandingTasks(LocalDate date) {
+        List<Task> outstandingTasks = tasks.stream()
+                .filter(task -> task.isOutstanding(date))
+                .toList();
+
+        return new TaskList(outstandingTasks);
+    }
+
+    @Override
+    public Iterator<Task> iterator() {
+        return tasks.iterator();
     }
 
     /**

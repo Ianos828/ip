@@ -19,24 +19,23 @@ public class Event extends Task {
      * @param endDate the end date of the event
      */
     public Event(String taskName, LocalDate startDate, LocalDate endDate) {
-        super(TaskType.EVENT, taskName);
+        super(taskName);
         this.startDate = startDate;
         this.endDate = endDate;
     }
 
-    public Event(String taskName, LocalDate startDate, LocalDate endDate, boolean isComplete) {
-        super(TaskType.EVENT, taskName);
+    public Event(String taskName, LocalDate startDate, LocalDate endDate, boolean complete) {
+        super(taskName);
         this.startDate = startDate;
         this.endDate = endDate;
-        this.isComplete = isComplete;
+        setComplete(complete);
     }
 
-    public LocalDate getStartDate() {
-        return startDate;
-    }
-
-    public LocalDate getEndDate() {
-        return endDate;
+    @Override
+    public boolean isOutstanding(LocalDate date) {
+        return (date.isAfter(startDate) || date.isEqual(startDate))
+                && (date.isBefore(endDate) || date.isEqual(startDate))
+                && !isComplete();
     }
 
     /**
@@ -52,6 +51,6 @@ public class Event extends Task {
 
     @Override
     public String toSaveString() {
-        return String.format("E | %s | %s | %s | %s", isComplete ? "1" : "0", name, startDate, endDate);
+        return String.format("E | %s | %s | %s | %s", isComplete() ? "1" : "0", name, startDate, endDate);
     }
 }

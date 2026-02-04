@@ -17,18 +17,19 @@ public class Deadline extends Task {
      * @param deadline the deadline for the task
      */
     public Deadline(String taskName, LocalDate deadline) {
-        super(TaskType.DEADLINE, taskName);
+        super(taskName);
         this.deadline = deadline;
     }
 
-    public Deadline(String taskName, LocalDate deadline, boolean isComplete) {
-        super(TaskType.DEADLINE, taskName);
+    public Deadline(String taskName, LocalDate deadline, boolean complete) {
+        super(taskName);
         this.deadline = deadline;
-        this.isComplete = isComplete;
+        setComplete(complete);
     }
 
-    public LocalDate getDeadline() {
-        return deadline;
+    @Override
+    public boolean isOutstanding(LocalDate date) {
+        return deadline.isAfter(date) && !isComplete();
     }
 
     /**
@@ -43,6 +44,6 @@ public class Deadline extends Task {
 
     @Override
     public String toSaveString() {
-        return String.format("D | %s | %s | %s", isComplete ? "1" : "0", name, deadline);
+        return String.format("D | %s | %s | %s", isComplete() ? "1" : "0", name, deadline);
     }
 }
