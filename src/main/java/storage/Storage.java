@@ -20,56 +20,41 @@ public class Storage {
                     .toFile();
     }
 
-    public TaskList loadTasksFromFile() {
+    public TaskList loadTasksFromFile() throws IOException {
         String rawTask;
         TaskList tasks = new TaskList();
 
-        try {
-            BufferedReader reader = new BufferedReader(new FileReader(file.getPath()));
+        BufferedReader reader = new BufferedReader(new FileReader(file.getPath()));
 
-            while ((rawTask = reader.readLine()) != null) {
-                try {
-                    Task task = FileParser.getTask(rawTask);
-                    if (task != null) {
-                        tasks.addTask(task);
-                    }
-                } catch (InvalidArgumentException | MissingArgumentException e) {
-                    System.out.println(e.getMessage());
-                    System.out.printf("Failed to parse task: %s. Skipping...%n", rawTask);
+        while ((rawTask = reader.readLine()) != null) {
+            try {
+                Task task = FileParser.getTask(rawTask);
+                if (task != null) {
+                    tasks.addTask(task);
                 }
+            } catch (InvalidArgumentException | MissingArgumentException e) {
+                // Ignore invalid tasks
             }
-        } catch (FileNotFoundException e) {
-            System.out.println("File not found.");
-        } catch (IOException e) {
-            System.out.println("Error reading file.");
         }
+
 
         return tasks;
     }
 
-    public void saveTasksToFile(TaskList tasks) {
-        try {
-            if (!file.exists()) {
-                createFile();
-            }
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
+    public void saveTasksToFile(TaskList tasks) throws IOException{
+        if (!file.exists()) {
+            createFile();
         }
 
-        try {
-            StringBuilder fileString = new StringBuilder();
-            for (Task task : tasks) {
-                fileString.append(task.toSaveString()).append("\n");
-            }
-            Files.writeString(Path.of(file.getPath()), fileString, StandardCharsets.UTF_8);
-        } catch (IOException e) {
-            System.out.println("Error saving tasks to file.");
-        }
+        String fileString = tasks.toSaveString();
+        Files.writeString(Path.of(file.getPath()), fileString, StandardCharsets.UTF_8);
     }
 
     private void createFile() throws IOException{
         boolean isFolderCreated = file.getParentFile().mkdirs();
-        boolean isFileCreated = file.createNewFile();
+        boolean isFileCreated;
+
+        isFileCreated = file.createNewFile();
 
         if (!isFolderCreated) {
             throw new IOException("Failed to create folder for file.");

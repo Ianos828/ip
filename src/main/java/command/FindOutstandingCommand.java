@@ -23,16 +23,16 @@ public class FindOutstandingCommand extends Command{
     }
 
     @Override
-    public void execute(TaskList tasks, Storage storage) throws MissingArgumentException, InvalidArgumentException {
+    public String execute(TaskList tasks, Storage storage) throws MissingArgumentException, InvalidArgumentException {
         String afterDateAsString = commandArgs.get("/default");
 
         LocalDate afterDate = Utility.parseDate(afterDateAsString);
         TaskList outstandingTasks = tasks.getOutstandingTasks(afterDate);
 
         if (outstandingTasks.isEmpty()) {
-            System.out.println("There are no outstanding tasks after " + afterDateAsString + "!");
+            return String.format("There are no outstanding tasks after %s!", Utility.formatDate(afterDate));
         }
 
-        System.out.print(outstandingTasks);
+        return String.format("Here are the outstanding tasks in your list:\n%s", tasks);
     }
 }

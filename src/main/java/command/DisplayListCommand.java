@@ -23,11 +23,11 @@ public class DisplayListCommand extends Command {
      * @param tasks list of tasks that commands will operate on
      */
     @Override
-    public void execute(TaskList tasks, Storage storage) {
+    public String execute(TaskList tasks, Storage storage) {
         if (tasks.isEmpty()) {
-            System.out.println("Your list is empty!");
-            return;
+            return "Your list is empty!";
         }
-        System.out.print(tasks);
+
+        return String.format("Here are the tasks in your list:\n%s", tasks);
     }
 }
