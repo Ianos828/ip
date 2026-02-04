@@ -1,0 +1,46 @@
+package duchess.command;
+
+import duchess.exception.InvalidArgumentException;
+import duchess.exception.MissingArgumentException;
+
+import duchess.storage.Storage;
+
+import duchess.task.TaskList;
+
+import java.io.IOException;
+
+/**
+ * Class representing a generic user duchess.command.
+ */
+public abstract class Command{
+    CommandType type;
+
+    /**
+     * Constructor for Command class.
+     *
+     * @param type the duchess.command type
+     */
+    public Command(CommandType type) {
+        this.type = type;
+    }
+
+    /**
+     * Returns true if the duchess.command should end the main program, else false.
+     *
+     * @return boolean representing if the duchess.command should terminate the main program
+     */
+    public boolean isTerminatingCommand() {
+        return false;
+    }
+
+    /**
+     * Abstract generic execute method for all commands to complete their specified actions.
+     *
+     * @param tasks list of tasks that commands will operate on
+     * @throws MissingArgumentException if commands do not receive their expected number of arguments
+     * @throws InvalidArgumentException if commands do not receive their expected arguments in the correct format
+     */
+    public abstract String execute(TaskList tasks, Storage storage) throws MissingArgumentException, InvalidArgumentException, IOException;
+}
+
+
