@@ -10,12 +10,12 @@ public class ToDo extends Task {
      * @param name the name of the ToDo task
      */
     public ToDo(String name) {
-        super(TaskType.TODO, name);
+        super(name);
     }
 
-    public ToDo(String name, boolean isComplete) {
-        super(TaskType.TODO, name);
-        this.isComplete = isComplete;
+    public ToDo(String name, boolean complete) {
+        super(name);
+        setComplete(complete);
     }
 
     /**
@@ -30,6 +30,6 @@ public class ToDo extends Task {
 
     @Override
     public String toSaveString() {
-        return String.format("T | %s | %s", isComplete ? "1" : "0", name);
+        return String.format("T | %s | %s", isComplete() ? "1" : "0", name);
     }
 }

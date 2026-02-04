@@ -1,20 +1,20 @@
 package task;
 
+import java.time.LocalDate;
+
 /**
  * Class representing a task.
  */
 public abstract class Task {
-    protected final TaskType taskType;
     protected final String name;
-    protected boolean isComplete = false;
+    private boolean complete = false;
 
     /**
      * Constructor for Task class.
      *
      * @param name the name of the task
      */
-    public Task(TaskType taskType, String name) {
-        this.taskType = taskType;
+    public Task(String name) {
         this.name = name;
     }
 
@@ -22,19 +22,27 @@ public abstract class Task {
      * Marks the task as complete.
      */
     public void markAsComplete() {
-        isComplete = true;
+        complete = true;
     }
 
     /**
      * Marks the task as incomplete.
      */
     public void markAsIncomplete() {
-        isComplete = false;
+        complete = false;
     }
 
-    public TaskType getType() {
-        return taskType;
-    };
+    public boolean isComplete() {
+        return complete;
+    }
+
+    protected void setComplete(boolean complete) {
+        this.complete = complete;
+    }
+
+    public boolean isOutstanding(LocalDate date) {
+        return false;
+    }
 
     /**
      * Returns a string representation of the task.
@@ -43,7 +51,7 @@ public abstract class Task {
      */
     @Override
     public String toString() {
-        return String.format("[%s] %s", isComplete ? "X" : " ", name);
+        return String.format("[%s] %s", complete ? "X" : " ", name);
     }
 
     public abstract String toSaveString();

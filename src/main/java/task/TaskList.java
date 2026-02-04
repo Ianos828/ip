@@ -2,6 +2,7 @@ package task;
 
 import exception.InvalidArgumentException;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -17,6 +18,10 @@ public class TaskList implements Iterable<Task>{
      */
     public TaskList() {
         tasks = new ArrayList<>();
+    }
+
+    public TaskList(List<Task> tasks) {
+        this.tasks = tasks;
     }
 
     /**
@@ -113,6 +118,14 @@ public class TaskList implements Iterable<Task>{
         System.out.println("Got it. I've added this task:");
         System.out.println(task);
         System.out.printf("Now you have %d task(s) in the list.\n", getSize());
+    }
+
+    public TaskList getOutstandingTasks(LocalDate date) {
+        List<Task> outstandingTasks = tasks.stream()
+                .filter(task -> task.isOutstanding(date))
+                .toList();
+
+        return new TaskList(outstandingTasks);
     }
 
     @Override
