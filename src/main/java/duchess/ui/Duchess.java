@@ -32,7 +32,7 @@ public class Duchess {
         try {
             tasks = storage.loadTasksFromFile();
         } catch (IOException e) {
-            ui.displayLoadingErrorMessage(e.getMessage());
+            ui.displayLoadingErrorMessage();
             tasks = new TaskList();
         }
     }

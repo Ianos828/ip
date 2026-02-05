@@ -21,7 +21,7 @@ public class Ui {
         display("Hello! I'm Duchess!\nWhat can I do for you?");
     }
 
-    public void displayLoadingErrorMessage(String exceptionMessage) {
-        display(String.format("Error loading tasks from file: %s", exceptionMessage));
+    public void displayLoadingErrorMessage() {
+        display("Error loading tasks from file. Starting fresh...");
     }
 }
