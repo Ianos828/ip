@@ -40,7 +40,7 @@ public class TaskList{
      */
     public Task removeTask(int index) throws InvalidArgumentException {
         if (isInvalidIndex(index)) {
-            throw new InvalidArgumentException("Invalid duchess.task index!");
+            throw new InvalidArgumentException("Invalid task index!");
         }
 
         Task task = tasks.get(index - 1);
@@ -55,7 +55,7 @@ public class TaskList{
      */
     public Task markTaskAsComplete(int index) throws InvalidArgumentException {
         if (isInvalidIndex(index)) {
-            throw new InvalidArgumentException("Invalid duchess.task index!");
+            throw new InvalidArgumentException("Invalid task index!");
         }
 
         Task task = tasks.get(index - 1);
@@ -70,7 +70,7 @@ public class TaskList{
      */
     public Task markTaskAsIncomplete(int index) throws InvalidArgumentException {
         if (isInvalidIndex(index)) {
-            throw new InvalidArgumentException("Invalid duchess.task index!");
+            throw new InvalidArgumentException("Invalid task index!");
         }
 
         Task task = tasks.get(index - 1);

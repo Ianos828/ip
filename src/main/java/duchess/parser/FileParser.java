@@ -24,17 +24,22 @@ public class FileParser {
         String[] taskComponents = splitInput[1].split(" \\| ");
 
         if (!validCompletionMarkers.contains(taskComponents[0])) {
-            throw new InvalidArgumentException("Invalid duchess.task completion marker!");
+            throw new InvalidArgumentException("Invalid task completion marker!");
         }
 
         boolean isComplete = taskComponents[0].equals("1");
 
-        Task task = null;
+        if (taskComponents.length < 2) {
+            throw new MissingArgumentException("Task name cannot be empty!");
+        }
+
         String name = taskComponents[1];
 
         if (Utility.isInvalidString(name)) {
             throw new InvalidArgumentException("Invalid task name!");
         }
+
+        Task task = null;
 
         switch(taskType) {
         case TODO:
