@@ -74,9 +74,7 @@ public class FileParserTest {
                     FileParser.getTask(rawTask)
                             .getClass(),
                     "ToDo object created successfully");
-            assertEquals(false,
-                    FileParser.getTask(rawTask)
-                            .isComplete(),
+            assertFalse(FileParser.getTask(rawTask).isComplete(),
                     "ToDo object initialised with correct completion status");
         } catch (Exception e) {
             //ignore
