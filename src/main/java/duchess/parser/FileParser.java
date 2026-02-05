@@ -24,7 +24,7 @@ public class FileParser {
         String[] taskComponents = splitInput[1].split(" \\| ");
 
         if (!validCompletionMarkers.contains(taskComponents[0])) {
-            throw new InvalidArgumentException("Invalid duchess.task completion marker!");
+            throw new InvalidArgumentException("Invalid task completion marker!");
         }
 
         boolean isComplete = taskComponents[0].equals("1");
