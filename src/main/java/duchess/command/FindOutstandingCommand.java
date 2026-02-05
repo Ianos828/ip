@@ -33,6 +33,6 @@ public class FindOutstandingCommand extends Command{
             return String.format("There are no outstanding tasks after %s!", Utility.formatDate(afterDate));
         }
 
-        return String.format("Here are the outstanding tasks in your list:\n%s", tasks);
+        return String.format("Here are the outstanding tasks in your list:\n%s", outstandingTasks);
     }
 }
