@@ -1,7 +1,5 @@
-package command;
+package duchess.command;
 
-import duchess.command.CommandType;
-import duchess.command.TerminateCommand;
 import duchess.storage.Storage;
 import duchess.task.TaskList;
 import org.junit.jupiter.api.AfterEach;

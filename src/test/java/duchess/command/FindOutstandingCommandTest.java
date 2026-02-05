@@ -1,7 +1,5 @@
-package command;
+package duchess.command;
 
-import duchess.command.CommandType;
-import duchess.command.FindOutstandingCommand;
 import duchess.exception.InvalidArgumentException;
 import duchess.storage.Storage;
 import duchess.task.Deadline;

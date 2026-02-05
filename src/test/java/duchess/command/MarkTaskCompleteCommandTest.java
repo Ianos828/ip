@@ -1,7 +1,5 @@
-package command;
+package duchess.command;
 
-import duchess.command.CommandType;
-import duchess.command.MarkTaskIncompleteCommand;
 import duchess.exception.InvalidArgumentException;
 import duchess.exception.MissingArgumentException;
 import duchess.storage.Storage;
@@ -17,14 +15,14 @@ import java.util.Map;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class MarkTaskIncompleteCommandTest {
+public class MarkTaskCompleteCommandTest {
     TaskList tasks;
     Storage storage;
 
     @BeforeEach
     public void setUp() {
         tasks = new TaskList();
-        tasks.addTask(new ToDo("Test Task 1", true));
+        tasks.addTask(new ToDo("Test Task 1"));
         storage = new Storage(Paths.get(".", "data", "tasks.txt"));
     }
 
@@ -37,7 +35,7 @@ public class MarkTaskIncompleteCommandTest {
     @Test
     public void testExecute_missingIndex_exceptionThrown() {
         assertThrows(MissingArgumentException.class,
-                () -> new MarkTaskIncompleteCommand(CommandType.UNMARK,
+                () -> new MarkTaskCompleteCommand(CommandType.MARK,
                         Map.of("/default", ""))
                         .execute(tasks, storage),
                 "No list index provided");
@@ -45,7 +43,7 @@ public class MarkTaskIncompleteCommandTest {
     @Test
     public void testExecute_invalidIndex_exceptionThrown() {
         assertThrows(InvalidArgumentException.class,
-                () -> new MarkTaskIncompleteCommand(CommandType.UNMARK,
+                () -> new MarkTaskCompleteCommand(CommandType.MARK,
                         Map.of("/default", "-1"))
                         .execute(tasks, storage),
                 "Index is out of range");
@@ -55,12 +53,12 @@ public class MarkTaskIncompleteCommandTest {
     public void testExecute_validIndex_exceptionThrown() {
         try {
             assertEquals("""
-                    OK, I've marked this task as not done yet:
-                    [T][ ] Test Task 1""",
-                    new MarkTaskIncompleteCommand(CommandType.UNMARK,
+                    Nice! I've marked this task as done:
+                    [T][X] Test Task 1""",
+                    new MarkTaskCompleteCommand(CommandType.MARK,
                             Map.of("/default", "1"))
                             .execute(tasks, storage),
-                    "Marks the only task as undone");
+                    "Marks the only task as done");
         } catch (Exception e) {
             //ignore
         }

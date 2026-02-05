@@ -1,7 +1,5 @@
-package command;
+package duchess.command;
 
-import duchess.command.CommandType;
-import duchess.command.DisplayListCommand;
 import duchess.storage.Storage;
 import duchess.task.TaskList;
 import duchess.task.ToDo;

@@ -1,7 +1,5 @@
-package command;
+package duchess.command;
 
-import duchess.command.CommandType;
-import duchess.command.CreateToDoCommand;
 import duchess.exception.MissingArgumentException;
 import duchess.storage.Storage;
 import duchess.task.TaskList;
