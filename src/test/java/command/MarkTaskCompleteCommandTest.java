@@ -22,14 +22,14 @@ public class MarkTaskCompleteCommandTest {
     Storage storage;
 
     @BeforeEach
-    void setUp() {
+    public void setUp() {
         tasks = new TaskList();
         tasks.addTask(new ToDo("Test Task 1"));
         storage = new Storage(Paths.get(".", "data", "tasks.txt"));
     }
 
     @AfterEach
-    void tearDown() {
+    public void tearDown() {
         tasks = null;
         storage = null;
     }
