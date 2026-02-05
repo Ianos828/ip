@@ -20,12 +20,16 @@ public class CommandParserTest {
         assertEquals(CreateDeadlineCommand.class, CommandParser.getCommand("deadline").getClass());
         assertEquals(CreateEventCommand.class, CommandParser.getCommand("event").getClass());
         assertEquals(CreateToDoCommand.class, CommandParser.getCommand("todo").getClass());
+
         assertEquals(DeleteTaskCommand.class, CommandParser.getCommand("delete").getClass());
         assertEquals(DisplayListCommand.class, CommandParser.getCommand("list").getClass());
         assertEquals(FindOutstandingCommand.class, CommandParser.getCommand("outstanding").getClass());
+
         assertEquals(MarkTaskCompleteCommand.class, CommandParser.getCommand("mark").getClass());
         assertEquals(MarkTaskIncompleteCommand.class, CommandParser.getCommand("unmark").getClass());
+
         assertEquals(TerminateCommand.class, CommandParser.getCommand("bye").getClass());
+
         assertEquals(UnknownCommand.class, CommandParser.getCommand("").getClass());
         assertEquals(UnknownCommand.class, CommandParser.getCommand("hello").getClass());
     }
