@@ -67,8 +67,7 @@ public class DeleteTaskCommandTest {
             assertEquals("""
                     Noted. I've removed this task:
                     [T][ ] Test Task
-                    Now you have 0 task(s) in the list.
-                    """,
+                    Now you have 0 task(s) in the list.""",
                     new DeleteTaskCommand(CommandType.DELETE,
                             Map.of("/default", "a"))
                             .execute(tasks, storage),

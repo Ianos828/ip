@@ -36,7 +36,7 @@ public class CreateDeadlineCommandTest {
                 () -> new CreateDeadlineCommand(CommandType.DEADLINE,
                         Map.of("/default", "",
                                 "/by", "2001-01-01"))
-                .execute(tasks, storage),
+                        .execute(tasks, storage),
                 "Deadline is missing name");
     }
 

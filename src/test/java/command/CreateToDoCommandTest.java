@@ -48,7 +48,7 @@ public class CreateToDoCommandTest {
                     new CreateToDoCommand(CommandType.TODO,
                         Map.of("/default", "a"))
                         .execute(tasks, storage),
-                "Todo task should be successfully created");
+                    "Todo task should be successfully created");
         } catch (Exception e) {
             //ignore
         }
