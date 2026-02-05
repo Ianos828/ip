@@ -31,20 +31,37 @@ public class CreateDeadlineCommandTest {
     }
 
     @Test
-    void testExecute() {
+    void testExecute_missingTaskName_exceptionThrown() {
         assertThrows(MissingArgumentException.class,
                 () -> new CreateDeadlineCommand(CommandType.DEADLINE,
-                        Map.of("/default", ""))
+                        Map.of("/default", "",
+                                "/by", "2001-01-01"))
                 .execute(tasks, storage),
-                "execute() should throw MissingArgumentException");
+                "Deadline is missing name");
+    }
 
+    @Test
+    void testExecute_missingEndDate_exceptionThrown() {
+        assertThrows(MissingArgumentException.class,
+                () -> new CreateDeadlineCommand(CommandType.DEADLINE,
+                        Map.of("/default", "a",
+                                "/by", ""))
+                        .execute(tasks, storage),
+                "Deadline is missing end date");
+    }
+
+    @Test
+    void testExecute_invalidEndDate_exceptionThrown() {
         assertThrows(InvalidArgumentException.class,
                 () -> new CreateDeadlineCommand(CommandType.DEADLINE,
                         Map.of("/default", "a",
                                 "/by", "now"))
-                .execute(tasks, storage),
-                "execute() should throw InvalidArgumentException");
+                        .execute(tasks, storage),
+                "End date is in invalid format");
+    }
 
+    @Test
+    void testExecute_validInputs_success() {
         try {
             assertEquals("""
                             Got it! I've added this task:
