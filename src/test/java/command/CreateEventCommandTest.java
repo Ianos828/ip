@@ -98,9 +98,9 @@ public class CreateEventCommandTest {
     void testExecute_validInputs_success() {
         try {
             assertEquals("""
-                            Got it! I've added this task:
-                            [E][ ] a (from: Mon, 01 Jan 2001 to: Tue, 02 Jan 2001)
-                            Now you have 1 task(s) in the list.""",
+                    Got it! I've added this task:
+                    [E][ ] a (from: Mon, 01 Jan 2001 to: Tue, 02 Jan 2001)
+                    Now you have 1 task(s) in the list.""",
                     new CreateEventCommand(CommandType.EVENT,
                             Map.of("/default", "a",
                                     "/from", "2001-01-01",

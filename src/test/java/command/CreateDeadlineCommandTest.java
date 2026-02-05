@@ -64,9 +64,9 @@ public class CreateDeadlineCommandTest {
     void testExecute_validInputs_success() {
         try {
             assertEquals("""
-                            Got it! I've added this task:
-                            [D][ ] a (by: Mon, 01 Jan 2001)
-                            Now you have 1 task(s) in the list.""",
+                    Got it! I've added this task:
+                    [D][ ] a (by: Mon, 01 Jan 2001)
+                    Now you have 1 task(s) in the list.""",
                     new CreateDeadlineCommand(CommandType.DEADLINE,
                             Map.of("/default", "a",
                                     "/by", "2001-01-01"))

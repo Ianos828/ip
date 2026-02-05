@@ -42,13 +42,13 @@ public class CreateToDoCommandTest {
     void testExecute_validInputs_success() {
         try {
             assertEquals("""
-                            Got it! I've added this task:
-                            [T][ ] a
-                            Now you have 1 task(s) in the list.""",
+                    Got it! I've added this task:
+                    [T][ ] a
+                    Now you have 1 task(s) in the list.""",
                     new CreateToDoCommand(CommandType.TODO,
-                            Map.of("/default", "a"))
-                            .execute(tasks, storage),
-                    "Todo task should be successfully created");
+                        Map.of("/default", "a"))
+                        .execute(tasks, storage),
+                "Todo task should be successfully created");
         } catch (Exception e) {
             //ignore
         }
