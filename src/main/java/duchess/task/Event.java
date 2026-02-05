@@ -34,7 +34,7 @@ public class Event extends Task {
     @Override
     public boolean isOutstanding(LocalDate date) {
         return (date.isAfter(startDate) || date.isEqual(startDate))
-                && (date.isBefore(endDate) || date.isEqual(startDate))
+                && (date.isBefore(endDate) || date.isEqual(endDate))
                 && !isComplete();
     }
 
