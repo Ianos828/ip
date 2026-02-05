@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * Class representing a list of tasks.
  */
-public class TaskList implements Iterable<Task>{
+public class TaskList{
     private final List<Task> tasks;
 
     /**
@@ -112,11 +112,6 @@ public class TaskList implements Iterable<Task>{
                 .toList();
 
         return new TaskList(outstandingTasks);
-    }
-
-    @Override
-    public Iterator<Task> iterator() {
-        return tasks.iterator();
     }
 
     /**
