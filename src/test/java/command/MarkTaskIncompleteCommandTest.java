@@ -1,0 +1,69 @@
+package command;
+
+import duchess.command.CommandType;
+import duchess.command.MarkTaskIncompleteCommand;
+import duchess.exception.InvalidArgumentException;
+import duchess.exception.MissingArgumentException;
+import duchess.storage.Storage;
+import duchess.task.TaskList;
+import duchess.task.ToDo;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import java.nio.file.Paths;
+import java.util.Map;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+public class MarkTaskIncompleteCommandTest {
+    TaskList tasks;
+    Storage storage;
+
+    @BeforeEach
+    void setUp() {
+        tasks = new TaskList();
+        tasks.addTask(new ToDo("Test Task 1", true));
+        storage = new Storage(Paths.get(".", "data", "tasks.txt"));
+    }
+
+    @AfterEach
+    void tearDown() {
+        tasks = null;
+        storage = null;
+    }
+
+    @Test
+    public void testExecute_missingIndex_exceptionThrown() {
+        assertThrows(MissingArgumentException.class,
+                () -> new MarkTaskIncompleteCommand(CommandType.UNMARK,
+                        Map.of("/default", ""))
+                        .execute(tasks, storage),
+                "No list index provided");
+    }
+    @Test
+    public void testExecute_invalidIndex_exceptionThrown() {
+        assertThrows(InvalidArgumentException.class,
+                () -> new MarkTaskIncompleteCommand(CommandType.UNMARK,
+                        Map.of("/default", "-1"))
+                        .execute(tasks, storage),
+                "Index is out of range");
+    }
+
+    @Test
+    public void testExecute_validIndex_exceptionThrown() {
+        try {
+            assertEquals("""
+                    OK, I've marked this task as not done yet:
+                    [T][ ] Test Task 1""",
+                    new MarkTaskIncompleteCommand(CommandType.UNMARK,
+                            Map.of("/default", "1"))
+                            .execute(tasks, storage),
+                    "Marks the only task as undone");
+        } catch (Exception e) {
+            //ignore
+        }
+
+    }
+}
