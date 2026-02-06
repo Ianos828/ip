@@ -9,9 +9,10 @@ import duchess.task.TaskList;
  */
 public class UnknownCommand extends Command {
     /**
-     * Prints an error message.
+     * Returns an error message.
      *
      * @param tasks list of tasks that commands will operate on
+     * @param storage storage for saving and loading task lists
      */
     @Override
     public String execute(TaskList tasks, Storage storage) {

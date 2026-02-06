@@ -34,8 +34,10 @@ public class MarkTaskCompleteCommand extends Command {
      * Marks the task at the specified index as completed in the specified task list.
      *
      * @param tasks list of tasks that commands will operate on
+     * @param storage storage for saving and loading task lists
      * @throws MissingArgumentException if the user does not specify the index
      * @throws InvalidArgumentException if the index provided is not a single number
+     * @throws IOException if the task list cannot be saved to the storage
      */
     @Override
     public String execute (TaskList tasks, Storage storage) throws MissingArgumentException, InvalidArgumentException, IOException {

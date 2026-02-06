@@ -12,12 +12,23 @@ import duchess.task.Deadline;
 import java.time.LocalDate;
 import java.util.Set;
 
+/**
+ * FileParser class for parsing tasks from a file.
+ */
 public class FileParser {
     private static final int TODO_NUMBER_OF_COMPONENTS = 2;
     private static final int DEADLINE_NUMBER_OF_COMPONENTS = 3;
     private static final int EVENT_NUMBER_OF_COMPONENTS = 4;
     private static final Set<String> validCompletionMarkers = Set.of("1", "0");
 
+    /**
+     * Returns a Task object based on the rawTask string.
+     *
+     * @param rawTask a string representing a task
+     * @return a Task object based on the rawTask string
+     * @throws MissingArgumentException if the string representation of the task is missing any arguments
+     * @throws InvalidArgumentException if the string representation of the task is invalid
+     */
     public static Task getTask(String rawTask) throws MissingArgumentException, InvalidArgumentException {
         String[] splitInput = Utility.splitIntoPair(rawTask, " \\| ");
         TaskType taskType = getTaskType(splitInput[0].toUpperCase());
@@ -84,6 +95,12 @@ public class FileParser {
         return task;
     }
 
+    /**
+     * Returns the task type of the input based on its string representation.
+     *
+     * @param input the task initial in string format
+     * @return the type of task of the input
+     */
     private static TaskType getTaskType(String input) {
         return TaskType.getTaskType(input);
     }

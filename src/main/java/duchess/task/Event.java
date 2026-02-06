@@ -24,6 +24,14 @@ public class Event extends Task {
         this.endDate = endDate;
     }
 
+    /**
+     * Constructor for Event class used for loading tasks from storage.
+     *
+     * @param taskName the name of the task
+     * @param startDate the start date of the event
+     * @param endDate the end date of the event
+     * @param complete the completion status of the task
+     */
     public Event(String taskName, LocalDate startDate, LocalDate endDate, boolean complete) {
         super(taskName);
         this.startDate = startDate;
@@ -31,6 +39,12 @@ public class Event extends Task {
         setComplete(complete);
     }
 
+    /**
+     * Returns true if the event is ongoing on the given date.
+     *
+     * @param date the date to check against
+     * @return true if the event is ongoing on the given date, false otherwise
+     */
     @Override
     public boolean isOutstanding(LocalDate date) {
         return (date.isAfter(startDate) || date.isEqual(startDate))

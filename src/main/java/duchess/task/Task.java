@@ -32,14 +32,29 @@ public abstract class Task {
         complete = false;
     }
 
+    /**
+     * Returns true if the task is complete, else false.
+     *
+     * @return true if the task is complete, else false
+     */
     public boolean isComplete() {
         return complete;
     }
 
+    /**
+     * Sets the completion status of the task.
+     *
+     * @param complete the completion status of the task
+     */
     protected void setComplete(boolean complete) {
         this.complete = complete;
     }
 
+    /**
+     * The default implementation of isOutstanding method.
+     * @param date the date to check against
+     * @return false
+     */
     public boolean isOutstanding(LocalDate date) {
         return false;
     }

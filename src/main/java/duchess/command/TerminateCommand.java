@@ -19,9 +19,10 @@ public class TerminateCommand extends Command {
     }
 
     /**
-     * Prints a terminating message.
+     * Returns a terminating message.
      *
      * @param tasks list of tasks that commands will operate on
+     * @param storage storage for saving and loading task lists
      */
     @Override
     public String execute(TaskList tasks, Storage storage) {

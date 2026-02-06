@@ -11,15 +11,29 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
+/**
+ * Storage class for loading and saving tasks to a file.
+ */
 public class Storage {
     private final File file;
 
+    /**
+     * Constructor for Storage class.
+     *
+     * @param filePath the path to the file
+     */
     public Storage(Path filePath) {
         this.file = filePath.toAbsolutePath()
                     .normalize()
                     .toFile();
     }
 
+    /**
+     * Loads tasks from a file.
+     *
+     * @return a list of tasks loaded from the file
+     * @throws IOException when the file cannot be found or read
+     */
     public TaskList loadTasksFromFile() throws IOException {
         String rawTask;
         TaskList tasks = new TaskList();
@@ -37,10 +51,14 @@ public class Storage {
             }
         }
 
-
         return tasks;
     }
 
+    /**
+     * Saves tasks to a file.
+     * @param tasks the tasks to save
+     * @throws IOException when the file cannot be created or written to
+     */
     public void saveTasksToFile(TaskList tasks) throws IOException{
         if (!file.exists()) {
             createFile();
@@ -50,6 +68,11 @@ public class Storage {
         Files.writeString(Path.of(file.getPath()), fileString, StandardCharsets.UTF_8);
     }
 
+    /**
+     * Creates a file and its parent directory if it does not exist.
+     *
+     * @throws IOException if the file or parent directory cannot be created
+     */
     private void createFile() throws IOException{
         boolean isFolderCreated = file.getParentFile().mkdirs();
         boolean isFileCreated;

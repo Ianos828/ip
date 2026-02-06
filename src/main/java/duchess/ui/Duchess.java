@@ -18,6 +18,10 @@ import java.util.Arrays;
 
 /**
  * The Duchess chatbot can manage tasks and their completion statuses.
+ *
+ * <p>
+ * The chatbot supports loading and saving tasks to a file.
+ * </p>
  */
 public class Duchess {
     private static final Path SAVE_FILE_PATH = Paths.get(".", "data", "tasks.txt");
@@ -25,6 +29,9 @@ public class Duchess {
     private TaskList tasks;
     private final Ui ui;
 
+    /**
+     * Constructor for Duchess class.
+     */
     public Duchess() {
         storage = new Storage(SAVE_FILE_PATH);
         ui = new Ui();
@@ -37,6 +44,9 @@ public class Duchess {
         }
     }
 
+    /**
+     * Runs the chatbot.
+     */
     public void run() {
         boolean shouldTerminate = false;
 
@@ -60,7 +70,7 @@ public class Duchess {
     }
 
     /**
-     * Runs the chatbot.
+     * main method for Duchess.
      *
      * @param args optional startup arguments
      */

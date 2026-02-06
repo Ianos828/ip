@@ -9,9 +9,12 @@ import duchess.task.TaskList;
  */
 public class DisplayListCommand extends Command {
     /**
-     * Prints the task list if the list is not empty. Otherwise, print an error message.
+     * Returns a string representation of the task list if the list is not empty.
+     * Otherwise, print an error message.
      *
      * @param tasks list of tasks that commands will operate on
+     * @param storage storage for saving and loading task lists
+     * @return a string representation of the task list or an error message if the list is empty
      */
     @Override
     public String execute(TaskList tasks, Storage storage) {

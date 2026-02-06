@@ -34,8 +34,11 @@ public class DeleteTaskCommand extends Command {
      * Deletes the task at the specified index in the specified task list.
      *
      * @param tasks list of tasks that commands will operate on
+     * @param storage storage for saving and loading task lists
+     * @return a string representation of the result of the command
      * @throws MissingArgumentException if no list index is provided
      * @throws InvalidArgumentException if the index provided is not a single number
+     * @throws IOException if the task list cannot be saved to the storage
      */
     @Override
     public String execute (TaskList tasks, Storage storage) throws MissingArgumentException, InvalidArgumentException, IOException {

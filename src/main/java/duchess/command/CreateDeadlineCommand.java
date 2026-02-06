@@ -36,7 +36,11 @@ public class CreateDeadlineCommand extends Command {
      * Extracts the name and deadline from the command and creates a Deadline task with the specified arguments.
      *
      * @param tasks list of tasks that commands will operate on
+     * @param storage storage for saving and loading task lists
+     * @return a string representation of the result of the command
      * @throws MissingArgumentException if the user does not specify the name or deadline of the task
+     * @throws InvalidArgumentException if the deadline provided is not a valid date
+     * @throws IOException if the task list cannot be saved to the storage
      */
     @Override
     public String execute(TaskList tasks, Storage storage) throws MissingArgumentException, InvalidArgumentException, IOException {

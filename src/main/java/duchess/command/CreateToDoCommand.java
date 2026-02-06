@@ -34,7 +34,10 @@ public class CreateToDoCommand extends Command {
      * Extracts the name from the command and creates a todo task with the specified argument.
      *
      * @param tasks list of tasks that commands will operate on
+     * @param storage storage for saving and loading task lists
+     * @return a string representation of the result of the command
      * @throws MissingArgumentException if the user does not specify the name of the task
+     * @throws IOException if the task list cannot be saved to the storage
      */
     @Override
     public String execute(TaskList tasks, Storage storage) throws MissingArgumentException, IOException {
