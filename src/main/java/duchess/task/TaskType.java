@@ -1,11 +1,13 @@
 package duchess.task;
 
+/**
+ * Enum representing the different types of tasks.
+ */
 public enum TaskType {
     DEADLINE("D"),
     EVENT("E"),
     TODO("T"),
     UNKNOWN("");
-
 
     public final String input;
 

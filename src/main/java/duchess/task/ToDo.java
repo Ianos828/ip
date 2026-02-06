@@ -13,21 +13,32 @@ public class ToDo extends Task {
         super(name);
     }
 
-    public ToDo(String name, boolean complete) {
+    /**
+     * Constructor for ToDo class used for loading tasks from storage.
+     *
+     * @param name the name of the ToDo task
+     * @param isComplete the completion status of the task
+     */
+    public ToDo(String name, boolean isComplete) {
         super(name);
-        setComplete(complete);
+        setComplete(isComplete);
     }
 
     /**
-     * Returns a string representation of the todo.
+     * Returns a string representation of the ToDo.
      *
-     * @return a string representation of the todo
+     * @return a string representation of the ToDo
      */
     @Override
     public String toString() {
         return String.format("[T]%s", super.toString());
     }
 
+    /**
+     * Returns a string representation of the ToDo task for saving to storage.
+     *
+     * @return a string representation of the ToDo task for saving to storage
+     */
     @Override
     public String toSaveString() {
         return String.format("T | %s | %s", isComplete() ? "1" : "0", name);

@@ -2,14 +2,10 @@ package duchess.command;
 
 import duchess.exception.InvalidArgumentException;
 import duchess.exception.MissingArgumentException;
-
 import duchess.parser.Utility;
-
 import duchess.storage.Storage;
-
 import duchess.task.Task;
 import duchess.task.TaskList;
-
 import java.io.IOException;
 import java.util.Map;
 import java.util.Set;
@@ -34,16 +30,21 @@ public class MarkTaskIncompleteCommand extends Command {
      * Marks the task at the specified index as uncompleted in the specified task list.
      *
      * @param tasks list of tasks that commands will operate on
+     * @param storage storage for saving and loading task lists
+     * @return message to be displayed to the user
      * @throws MissingArgumentException if no list index is provided
      * @throws InvalidArgumentException if the index provided is not a single number
+     * @throws IOException if the task list cannot be saved to the storage
      */
     @Override
-    public String execute (TaskList tasks, Storage storage) throws MissingArgumentException, InvalidArgumentException, IOException {
+    public String execute (TaskList tasks, Storage storage)
+            throws MissingArgumentException, InvalidArgumentException, IOException {
         String indexAsString = commandArgs.get("/default");
         int index = Utility.parseInt(indexAsString);
         Task task = tasks.markTaskAsIncomplete(index);
         storage.saveTasksToFile(tasks);
 
-        return String.format("OK, I've marked this task as not done yet:\n%s", task);
+        return String.format("OK, I've marked this task as not done yet:\n%s",
+                task);
     }
 }

@@ -1,7 +1,6 @@
 package duchess.command;
 
 import duchess.storage.Storage;
-
 import duchess.task.TaskList;
 
 /**
@@ -9,9 +8,12 @@ import duchess.task.TaskList;
  */
 public class DisplayListCommand extends Command {
     /**
-     * Prints the task list if the list is not empty. Otherwise, print an error message.
+     * Returns a string representation of the task list if the list is not empty.
+     * Otherwise, print an error message.
      *
      * @param tasks list of tasks that commands will operate on
+     * @param storage storage for saving and loading task lists
+     * @return message to be displayed to the user
      */
     @Override
     public String execute(TaskList tasks, Storage storage) {
@@ -19,6 +21,6 @@ public class DisplayListCommand extends Command {
             return "Your list is empty!";
         }
 
-        return String.format("Here are the tasks in your list:\n%s", tasks);
+         return String.format("Here are the tasks in your list:\n%s", tasks);
     }
 }

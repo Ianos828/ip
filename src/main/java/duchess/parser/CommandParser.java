@@ -11,16 +11,6 @@ import java.util.Set;
  */
 public class CommandParser {
     /**
-     * Returns the command type of the input based on its string representation.
-     *
-     * @param input the input string
-     * @return the type of command of the input
-     */
-    private static CommandType getCommandType(String input) {
-        return CommandType.getCommandType(input);
-    }
-
-    /**
      * Returns a command from the specified input string
      *
      * @param input the user input string
@@ -68,6 +58,13 @@ public class CommandParser {
             arguments = parseArguments(FindOutstandingCommand.delimiters, splitInput[1]);
             command = new FindOutstandingCommand(arguments);
             break;
+        case FIND:
+            arguments = parseArguments(FindTaskCommand.delimiters, splitInput[1]);
+            command = new FindTaskCommand(arguments);
+            break;
+        case CHEER:
+            command = new DisplayQuoteCommand();
+            break;
         case UNKNOWN:
             command = new UnknownCommand();
             break;
@@ -110,5 +107,15 @@ public class CommandParser {
         argumentsMap.put(currentDelimiter, currentArgument.toString().strip().trim());
 
         return argumentsMap;
+    }
+
+    /**
+     * Returns the command type of the input based on its string representation.
+     *
+     * @param input the command in string format
+     * @return the type of command of the input
+     */
+    private static CommandType getCommandType(String input) {
+        return CommandType.getCommandType(input);
     }
 }
