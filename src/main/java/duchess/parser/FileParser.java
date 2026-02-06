@@ -2,13 +2,11 @@ package duchess.parser;
 
 import duchess.exception.InvalidArgumentException;
 import duchess.exception.MissingArgumentException;
-
+import duchess.task.Deadline;
+import duchess.task.Event;
 import duchess.task.Task;
 import duchess.task.TaskType;
 import duchess.task.ToDo;
-import duchess.task.Event;
-import duchess.task.Deadline;
-
 import java.time.LocalDate;
 import java.util.Set;
 
