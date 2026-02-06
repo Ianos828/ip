@@ -11,7 +11,6 @@ import duchess.command.MarkTaskIncompleteCommand;
 import duchess.command.TerminateCommand;
 import duchess.command.UnknownCommand;
 import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class CommandParserTest {
