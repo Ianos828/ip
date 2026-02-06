@@ -31,18 +31,20 @@ public class DeleteTaskCommand extends Command {
      *
      * @param tasks list of tasks that commands will operate on
      * @param storage storage for saving and loading task lists
-     * @return a string representation of the result of the command
+     * @return message to be displayed to the user
      * @throws MissingArgumentException if no list index is provided
      * @throws InvalidArgumentException if the index provided is not a single number
      * @throws IOException if the task list cannot be saved to the storage
      */
     @Override
-    public String execute (TaskList tasks, Storage storage) throws MissingArgumentException, InvalidArgumentException, IOException {
+    public String execute (TaskList tasks, Storage storage)
+            throws MissingArgumentException, InvalidArgumentException, IOException {
         String indexAsString = commandArgs.get("/default");
         int index = Utility.parseInt(indexAsString);
         Task task = tasks.removeTask(index);
         storage.saveTasksToFile(tasks);
 
-        return String.format("Noted. I've removed this task:\n%s\nNow you have %d task(s) in the list.", task, tasks.getSize());
+        return String.format("Noted. I've removed this task:\n%s\nNow you have %d task(s) in the list.",
+                task, tasks.getSize());
     }
 }

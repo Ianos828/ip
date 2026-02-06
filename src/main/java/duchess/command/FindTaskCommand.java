@@ -27,7 +27,7 @@ public class FindTaskCommand extends Command{
      *
      * @param tasks list of tasks that commands will operate on
      * @param storage storage for saving and loading task lists
-     * @return a string representation of the result of the command
+     * @return message to be displayed to the user
      * @throws MissingArgumentException if no keyword is provided
      */
     @Override
@@ -44,6 +44,7 @@ public class FindTaskCommand extends Command{
             return "No matching tasks found!";
         }
 
-        return String.format("Here are the matching tasks in your list:\n%s", matchedTasks);
+        return String.format("Here are the matching tasks in your list:\n%s",
+                matchedTasks);
     }
 }

@@ -33,13 +33,14 @@ public class CreateDeadlineCommand extends Command {
      *
      * @param tasks list of tasks that commands will operate on
      * @param storage storage for saving and loading task lists
-     * @return a string representation of the result of the command
+     * @return message to be displayed to the user
      * @throws MissingArgumentException if the user does not specify the name or deadline of the task
      * @throws InvalidArgumentException if the deadline provided is not a valid date
      * @throws IOException if the task list cannot be saved to the storage
      */
     @Override
-    public String execute(TaskList tasks, Storage storage) throws MissingArgumentException, InvalidArgumentException, IOException {
+    public String execute(TaskList tasks, Storage storage)
+            throws MissingArgumentException, InvalidArgumentException, IOException {
         String name = commandArgs.get("/default");
         String endDateAsString = commandArgs.get("/by");
 
@@ -54,6 +55,7 @@ public class CreateDeadlineCommand extends Command {
         tasks.addTask(deadline);
         storage.saveTasksToFile(tasks);
 
-        return String.format("Got it! I've added this task:\n%s\nNow you have %d task(s) in the list.", deadline, tasks.getSize());
+        return String.format("Got it! I've added this task:\n%s\nNow you have %d task(s) in the list.",
+                deadline, tasks.getSize());
     }
 }

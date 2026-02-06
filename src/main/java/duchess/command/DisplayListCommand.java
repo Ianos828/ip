@@ -13,7 +13,7 @@ public class DisplayListCommand extends Command {
      *
      * @param tasks list of tasks that commands will operate on
      * @param storage storage for saving and loading task lists
-     * @return a string representation of the task list or an error message if the list is empty
+     * @return message to be displayed to the user
      */
     @Override
     public String execute(TaskList tasks, Storage storage) {
@@ -21,6 +21,6 @@ public class DisplayListCommand extends Command {
             return "Your list is empty!";
         }
 
-        return String.format("Here are the tasks in your list:\n%s", tasks);
+         return String.format("Here are the tasks in your list:\n%s", tasks);
     }
 }

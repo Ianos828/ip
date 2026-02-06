@@ -31,17 +31,20 @@ public class MarkTaskCompleteCommand extends Command {
      *
      * @param tasks list of tasks that commands will operate on
      * @param storage storage for saving and loading task lists
+     * @return message to be displayed to the user
      * @throws MissingArgumentException if the user does not specify the index
      * @throws InvalidArgumentException if the index provided is not a single number
      * @throws IOException if the task list cannot be saved to the storage
      */
     @Override
-    public String execute (TaskList tasks, Storage storage) throws MissingArgumentException, InvalidArgumentException, IOException {
+    public String execute (TaskList tasks, Storage storage)
+            throws MissingArgumentException, InvalidArgumentException, IOException {
         String indexAsString = commandArgs.get("/default");
         int index = Utility.parseInt(indexAsString);
         Task task = tasks.markTaskAsComplete(index);
         storage.saveTasksToFile(tasks);
 
-        return String.format("Nice! I've marked this task as done:\n%s", task);
+        return String.format("Nice! I've marked this task as done:\n%s",
+                task);
     }
 }

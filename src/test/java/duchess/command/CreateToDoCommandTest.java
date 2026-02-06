@@ -18,7 +18,9 @@ public class CreateToDoCommandTest {
     @BeforeEach
     void setUp() {
         tasks = new TaskList();
-        storage = new Storage(Paths.get(".", "data", "tasks.txt"));
+        storage = new Storage(
+                Paths.get(".", "data", "tasks.txt"),
+                Paths.get(".", "data", "cheer.txt"));
     }
 
     @AfterEach

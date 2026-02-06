@@ -21,7 +21,9 @@ public class DeleteTaskCommandTest {
     @BeforeEach
     void setUp() {
         tasks = new TaskList();
-        storage = new Storage(Paths.get(".", "data", "tasks.txt"));
+        storage = new Storage(
+                Paths.get(".", "data", "tasks.txt"),
+                Paths.get(".", "data", "cheer.txt"));
         Task todo = new ToDo("Test Task");
         tasks.addTask(todo);
     }
