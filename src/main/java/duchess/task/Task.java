@@ -36,8 +36,13 @@ public abstract class Task {
         return isComplete;
     }
 
-    protected void setComplete(boolean complete) {
-        this.isComplete = complete;
+    /**
+     * Sets the completion status of the task.
+     *
+     * @param isComplete the completion status of the task
+     */
+    protected void setComplete(boolean isComplete) {
+        this.isComplete = isComplete;
     }
 
     public boolean isOutstanding(LocalDate date) {
