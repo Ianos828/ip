@@ -1,11 +1,15 @@
 package duchess.command;
 
 import duchess.exception.MissingArgumentException;
+
 import duchess.parser.Utility;
+
 import duchess.storage.Storage;
+
 import duchess.task.Task;
 import duchess.task.TaskList;
 import duchess.task.ToDo;
+
 import java.io.IOException;
 import java.util.Map;
 import java.util.Set;
@@ -30,14 +34,10 @@ public class CreateToDoCommand extends Command {
      * Extracts the name from the command and creates a todo task with the specified argument.
      *
      * @param tasks list of tasks that commands will operate on
-     * @param storage storage for saving and loading task lists
-     * @return message to be displayed to the user
      * @throws MissingArgumentException if the user does not specify the name of the task
-     * @throws IOException if the task list cannot be saved to the storage
      */
     @Override
-    public String execute(TaskList tasks, Storage storage)
-            throws MissingArgumentException, IOException {
+    public String execute(TaskList tasks, Storage storage) throws MissingArgumentException, IOException {
         String name = commandArgs.get("/default");
 
         if (Utility.isInvalidString(name)) {
@@ -49,7 +49,6 @@ public class CreateToDoCommand extends Command {
         tasks.addTask(toDo);
         storage.saveTasksToFile(tasks);
 
-         return String.format("Got it! I've added this task:\n%s\nNow you have %d task(s) in the list.",
-                toDo, tasks.getSize());
+        return String.format("Got it! I've added this task:\n%s\nNow you have %d task(s) in the list.", toDo, tasks.getSize());
     }
 }

@@ -2,19 +2,16 @@ package duchess.parser;
 
 import duchess.exception.InvalidArgumentException;
 import duchess.exception.MissingArgumentException;
+
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
-/**
- * Utility class for parsing string inputs.
- */
 public class Utility {
     /**
      * Returns the specified input as an array of length 2, after splitting with a specified string as the delimiter.
      *
      * @param input the input command string from the user
-     * @param delimiter the delimiter to split the input string with
      * @return a String array of length 2
      */
     public static String[] splitIntoPair(String input, String delimiter) {
@@ -26,6 +23,10 @@ public class Utility {
 
         split[1] = split[1].strip();
         return split;
+    }
+
+    public static boolean isInvalidString(String name) {
+        return name == null || name.isEmpty();
     }
 
     /**
@@ -52,14 +53,6 @@ public class Utility {
         return index;
     }
 
-    /**
-     * Returns a LocalDate object from a string representation of a date.
-     *
-     * @param dateAsString the string representation of a date
-     * @return a LocalDate object
-     * @throws MissingArgumentException if the string is empty or null
-     * @throws InvalidArgumentException if the string is not in the correct format
-     */
     public static LocalDate parseDate(String dateAsString) throws MissingArgumentException, InvalidArgumentException {
         if (isInvalidString(dateAsString)) {
             throw new MissingArgumentException("No date provided! Expected format: YYYY-MM-DD");
@@ -76,22 +69,6 @@ public class Utility {
         return date;
     }
 
-    /**
-     * Checks if the specified string is null or empty.
-     *
-     * @param name the string to check
-     * @return true if the string is null or empty, false otherwise
-     */
-    public static boolean isInvalidString(String name) {
-        return name == null || name.isEmpty();
-    }
-
-    /**
-     * Formats a LocalDate object into a string representation of the date.
-     *
-     * @param date the LocalDate object to format
-     * @return a string representation of the date
-     */
     public static String formatDate(LocalDate date) {
         return date.format(DateTimeFormatter.ofPattern("EEE, dd LLL yyyy"));
     }

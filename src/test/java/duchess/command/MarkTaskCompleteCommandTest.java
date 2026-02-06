@@ -8,26 +8,27 @@ import duchess.task.ToDo;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import java.nio.file.Paths;
 import java.util.Map;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.mockito.Mockito.mock;
 
 public class MarkTaskCompleteCommandTest {
     TaskList tasks;
-    Storage mockStorage;
+    Storage storage;
 
     @BeforeEach
     public void setUp() {
         tasks = new TaskList();
         tasks.addTask(new ToDo("Test Task 1"));
-        mockStorage = mock(Storage.class);
+        storage = new Storage(Paths.get(".", "data", "tasks.txt"));
     }
 
     @AfterEach
     public void tearDown() {
         tasks = null;
-        mockStorage = null;
+        storage = null;
     }
 
     @Test
@@ -35,7 +36,7 @@ public class MarkTaskCompleteCommandTest {
         assertThrows(MissingArgumentException.class,
                 () -> new MarkTaskCompleteCommand(
                         Map.of("/default", ""))
-                        .execute(tasks, mockStorage),
+                        .execute(tasks, storage),
                 "No list index provided");
     }
     @Test
@@ -43,7 +44,7 @@ public class MarkTaskCompleteCommandTest {
         assertThrows(InvalidArgumentException.class,
                 () -> new MarkTaskCompleteCommand(
                         Map.of("/default", "-1"))
-                        .execute(tasks, mockStorage),
+                        .execute(tasks, storage),
                 "Index is out of range");
     }
 
@@ -55,7 +56,7 @@ public class MarkTaskCompleteCommandTest {
                     [T][X] Test Task 1""",
                     new MarkTaskCompleteCommand(
                             Map.of("/default", "1"))
-                            .execute(tasks, mockStorage),
+                            .execute(tasks, storage),
                     "Marks the only task as done");
         } catch (Exception e) {
             //ignore

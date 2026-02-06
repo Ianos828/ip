@@ -7,7 +7,7 @@ import java.time.LocalDate;
  */
 public abstract class Task {
     protected final String name;
-    private boolean isComplete = false;
+    private boolean complete = false;
 
     /**
      * Constructor for Task class.
@@ -19,51 +19,27 @@ public abstract class Task {
     }
 
     /**
-     * Returns the name of the task.
-     *
-     * @return the name of the task
-     */
-    public String getName() {
-        return name;
-    }
-
-    /**
      * Marks the task as complete.
      */
     public void markAsComplete() {
-        isComplete = true;
+        complete = true;
     }
 
     /**
      * Marks the task as incomplete.
      */
     public void markAsIncomplete() {
-        isComplete = false;
+        complete = false;
     }
 
-    /**
-     * Returns true if the task is complete, else false.
-     *
-     * @return true if the task is complete, else false
-     */
     public boolean isComplete() {
-        return isComplete;
+        return complete;
     }
 
-    /**
-     * Sets the completion status of the task.
-     *
-     * @param isComplete the completion status of the task
-     */
-    protected void setComplete(boolean isComplete) {
-        this.isComplete = isComplete;
+    protected void setComplete(boolean complete) {
+        this.complete = complete;
     }
 
-    /**
-     * The default implementation of isOutstanding method.
-     * @param date the date to check against
-     * @return false
-     */
     public boolean isOutstanding(LocalDate date) {
         return false;
     }
@@ -75,7 +51,7 @@ public abstract class Task {
      */
     @Override
     public String toString() {
-        return String.format("[%s] %s", isComplete() ? "X" : " ", name);
+        return String.format("[%s] %s", complete ? "X" : " ", name);
     }
 
     public abstract String toSaveString();

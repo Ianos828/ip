@@ -2,11 +2,15 @@ package duchess.command;
 
 import duchess.exception.InvalidArgumentException;
 import duchess.exception.MissingArgumentException;
+
 import duchess.parser.Utility;
+
 import duchess.storage.Storage;
+
 import duchess.task.Event;
 import duchess.task.Task;
 import duchess.task.TaskList;
+
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.Map;
@@ -22,7 +26,7 @@ public class CreateEventCommand extends Command {
     /**
      * Constructor for CreateEventCommand class.
      *
-     * @param commandArgs a map of delimiter-argument pairs specifying the name, start, and end dates of the task
+     * @param commandArgs a map of delimiter-argument pairs specifying the name, start and end dates of the task
      */
     public CreateEventCommand(Map<String, String> commandArgs) {
         this.commandArgs = commandArgs;
@@ -32,15 +36,9 @@ public class CreateEventCommand extends Command {
      * Extracts the name, start and end dates from the command and creates an Event task with the specified arguments.
      *
      * @param tasks list of tasks that commands will operate on
-     * @param storage storage for saving and loading task lists
-     * @return message to be displayed to the user
      * @throws MissingArgumentException if the user does not specify the name, start or end dates of the task
-     * @throws InvalidArgumentException if the start date is after the end date, or if the dates are not valid
-     * @throws IOException if the task list cannot be saved to the storage
      */
-    @Override
-    public String execute(TaskList tasks, Storage storage)
-            throws InvalidArgumentException, MissingArgumentException, IOException {
+    public String execute(TaskList tasks, Storage storage) throws InvalidArgumentException, MissingArgumentException, IOException {
         String name = commandArgs.get("/default");
         String startDateAsString = commandArgs.get("/from");
         String endDateAsString = commandArgs.get("/to");
@@ -61,7 +59,6 @@ public class CreateEventCommand extends Command {
         tasks.addTask(event);
         storage.saveTasksToFile(tasks);
 
-         return String.format("Got it! I've added this task:\n%s\nNow you have %d task(s) in the list.",
-                event, tasks.getSize());
+        return String.format("Got it! I've added this task:\n%s\nNow you have %d task(s) in the list.", event, tasks.getSize());
     }
 }

@@ -6,38 +6,38 @@ import duchess.task.TaskList;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import java.nio.file.Paths;
 import java.util.Map;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.mockito.Mockito.mock;
 
 public class CreateToDoCommandTest {
     TaskList tasks;
-    Storage mockStorage;
+    Storage storage;
 
     @BeforeEach
-    public void setUp() {
+    void setUp() {
         tasks = new TaskList();
-        mockStorage = mock(Storage.class);
+        storage = new Storage(Paths.get(".", "data", "tasks.txt"));
     }
 
     @AfterEach
-    public void tearDown() {
+    void tearDown() {
         tasks = null;
-        mockStorage = null;
+        storage = null;
     }
 
     @Test
-    public void testExecute_missingTaskName_exceptionThrown() {
+    void testExecute_missingTaskName_exceptionThrown() {
         assertThrows(MissingArgumentException.class,
                 () -> new CreateToDoCommand(
                         Map.of("/default", ""))
-                        .execute(tasks, mockStorage),
+                        .execute(tasks, storage),
                 "Todo is missing name");
     }
 
     @Test
-    public void testExecute_validInputs_success() {
+    void testExecute_validInputs_success() {
         try {
             assertEquals("""
                     Got it! I've added this task:
@@ -45,7 +45,7 @@ public class CreateToDoCommandTest {
                     Now you have 1 task(s) in the list.""",
                     new CreateToDoCommand(
                         Map.of("/default", "a"))
-                        .execute(tasks, mockStorage),
+                        .execute(tasks, storage),
                     "Todo task should be successfully created");
         } catch (Exception e) {
             //ignore

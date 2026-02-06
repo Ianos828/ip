@@ -1,6 +1,7 @@
 package duchess.command;
 
 import duchess.storage.Storage;
+
 import duchess.task.TaskList;
 
 /**
@@ -8,11 +9,9 @@ import duchess.task.TaskList;
  */
 public class UnknownCommand extends Command {
     /**
-     * Returns an error message.
+     * Prints an error message.
      *
      * @param tasks list of tasks that commands will operate on
-     * @param storage storage for saving and loading task lists
-     * @return message to be displayed to the user
      */
     @Override
     public String execute(TaskList tasks, Storage storage) {

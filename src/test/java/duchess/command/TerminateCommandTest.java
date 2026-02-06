@@ -7,31 +7,30 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import java.nio.file.Paths;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.mock;
 
 public class TerminateCommandTest {
     TerminateCommand command;
     TaskList tasks;
-    Storage mockStorage;
+    Storage storage;
 
     @BeforeEach
     public void setUp() {
         command = new TerminateCommand();
         tasks = new TaskList();
-        mockStorage = mock(Storage.class);
+        storage = new Storage(Paths.get(".", "data", "tasks.txt"));
     }
 
     @AfterEach
     public void tearDown() {
         command = null;
         tasks = null;
-        mockStorage = null;
+        storage = null;
     }
 
     @Test
     public void testExecute() {
         assertEquals("Bye. Hope to see you again soon!",
-                command.execute(tasks, mockStorage),
+                command.execute(tasks, storage),
                 "Ends the program");
     }
 }

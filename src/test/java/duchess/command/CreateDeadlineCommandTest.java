@@ -7,59 +7,59 @@ import duchess.task.TaskList;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import java.nio.file.Paths;
 import java.util.Map;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.mockito.Mockito.mock;
 
 public class CreateDeadlineCommandTest {
     TaskList tasks;
-    Storage mockStorage;
+    Storage storage;
 
     @BeforeEach
-    public void setUp() {
+    void setUp() {
         tasks = new TaskList();
-        mockStorage = mock(Storage.class);
+        storage = new Storage(Paths.get(".", "data", "tasks.txt"));
     }
 
     @AfterEach
-    public void tearDown() {
+    void tearDown() {
         tasks = null;
-        mockStorage = null;
+        storage = null;
     }
 
     @Test
-    public void testExecute_missingTaskName_exceptionThrown() {
+    void testExecute_missingTaskName_exceptionThrown() {
         assertThrows(MissingArgumentException.class,
                 () -> new CreateDeadlineCommand(
                         Map.of("/default", "",
                                 "/by", "2001-01-01"))
-                        .execute(tasks, mockStorage),
+                        .execute(tasks, storage),
                 "Deadline is missing name");
     }
 
     @Test
-    public void testExecute_missingEndDate_exceptionThrown() {
+    void testExecute_missingEndDate_exceptionThrown() {
         assertThrows(MissingArgumentException.class,
                 () -> new CreateDeadlineCommand(
                         Map.of("/default", "a",
                                 "/by", ""))
-                        .execute(tasks, mockStorage),
+                        .execute(tasks, storage),
                 "Deadline is missing end date");
     }
 
     @Test
-    public void testExecute_invalidEndDate_exceptionThrown() {
+    void testExecute_invalidEndDate_exceptionThrown() {
         assertThrows(InvalidArgumentException.class,
                 () -> new CreateDeadlineCommand(
                         Map.of("/default", "a",
                                 "/by", "now"))
-                        .execute(tasks, mockStorage),
+                        .execute(tasks, storage),
                 "End date is in invalid format");
     }
 
     @Test
-    public void testExecute_validInputs_success() {
+    void testExecute_validInputs_success() {
         try {
             assertEquals("""
                     Got it! I've added this task:
@@ -68,7 +68,7 @@ public class CreateDeadlineCommandTest {
                     new CreateDeadlineCommand(
                             Map.of("/default", "a",
                                     "/by", "2001-01-01"))
-                            .execute(tasks, mockStorage),
+                            .execute(tasks, storage),
                     "Deadline task should be successfully created");
         } catch (Exception e) {
             //ignore
