@@ -20,10 +20,17 @@ public class Deadline extends Task {
         this.deadline = deadline;
     }
 
-    public Deadline(String taskName, LocalDate deadline, boolean complete) {
+    /**
+     * Constructor for Deadline class used for loading tasks from storage.
+     *
+     * @param taskName the name of the task
+     * @param deadline the deadline for the task
+     * @param isComplete the completion status of the task
+     */
+    public Deadline(String taskName, LocalDate deadline, boolean isComplete) {
         super(taskName);
         this.deadline = deadline;
-        setComplete(complete);
+        setComplete(isComplete);
     }
 
     @Override

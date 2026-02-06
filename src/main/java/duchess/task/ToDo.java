@@ -13,9 +13,15 @@ public class ToDo extends Task {
         super(name);
     }
 
-    public ToDo(String name, boolean complete) {
+    /**
+     * Constructor for ToDo class used for loading tasks from storage.
+     *
+     * @param name the name of the ToDo task
+     * @param isComplete the completion status of the task
+     */
+    public ToDo(String name, boolean isComplete) {
         super(name);
-        setComplete(complete);
+        setComplete(isComplete);
     }
 
     /**
