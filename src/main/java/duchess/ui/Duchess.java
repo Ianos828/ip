@@ -63,7 +63,7 @@ public class Duchess {
     }
 
     /**
-     * Runs the chatbot.
+     * Main method for Duchess.
      *
      * @param args optional startup arguments
      */
