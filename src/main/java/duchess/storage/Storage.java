@@ -8,13 +8,12 @@ import duchess.task.TaskList;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.charset.StandardCharsets;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
 
 /**
  * Storage class for loading and saving information to a file.
