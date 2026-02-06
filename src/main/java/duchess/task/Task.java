@@ -19,6 +19,15 @@ public abstract class Task {
     }
 
     /**
+     * Returns the name of the task.
+     *
+     * @return the name of the task
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
      * Marks the task as complete.
      */
     public void markAsComplete() {
