@@ -5,6 +5,7 @@ import duchess.exception.MissingArgumentException;
 import duchess.storage.Storage;
 import duchess.task.TaskList;
 import duchess.task.ToDo;
+import duchess.ui.Ui;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -17,12 +18,15 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 public class MarkTaskCompleteCommandTest {
     TaskList tasks;
     Storage storage;
+    Ui ui;
 
     @BeforeEach
     public void setUp() {
         tasks = new TaskList();
         tasks.addTask(new ToDo("Test Task 1"));
-        storage = new Storage(Paths.get(".", "data", "tasks.txt"));
+        storage = new Storage(
+                Paths.get(".", "data", "tasks.txt"),
+                Paths.get(".", "data", "cheer.txt"));
     }
 
     @AfterEach
