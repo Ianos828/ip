@@ -8,20 +8,28 @@ import duchess.storage.Storage;
 import duchess.task.TaskList;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Arrays;
 import java.io.IOException;
+import java.util.Arrays;
 
 /**
  * The Duchess chatbot can manage tasks and their completion statuses.
  */
 public class Duchess {
     private static final Path SAVE_FILE_PATH = Paths.get(".", "data", "tasks.txt");
+    private static final Path QUOTES_FILE_PATH = Paths.get(".", "data", "cheer.txt");
     private final Storage storage;
     private TaskList tasks;
     private final Ui ui;
 
+    /**
+     * Constructor for Duchess class.
+     * <p>
+     * Tries to load tasks and quotes from files.
+     * If loading fails, creates a new TaskList and empty list of quotes.
+     * </p>
+     */
     public Duchess() {
-        storage = new Storage(SAVE_FILE_PATH);
+        storage = new Storage(SAVE_FILE_PATH, QUOTES_FILE_PATH);
         ui = new Ui();
 
         try {
@@ -42,8 +50,8 @@ public class Duchess {
             Command command = CommandParser.getCommand(input);
 
             try {
-                String commandOutput = command.execute(tasks, storage);
-                ui.display(commandOutput);
+                String result = command.execute(tasks, storage);
+                ui.display(result);
                 shouldTerminate = command.isTerminatingCommand();
             } catch (InvalidArgumentException | MissingArgumentException e) {
                 ui.display(e.getMessage());
