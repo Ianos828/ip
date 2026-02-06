@@ -12,22 +12,23 @@ import java.nio.file.Paths;
 import java.util.Map;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.Mockito.mock;
 
 public class MarkTaskIncompleteCommandTest {
     TaskList tasks;
-    Storage storage;
+    Storage mockStorage;
 
     @BeforeEach
     public void setUp() {
         tasks = new TaskList();
         tasks.addTask(new ToDo("Test Task 1", true));
-        storage = new Storage(Paths.get(".", "data", "tasks.txt"));
+        mockStorage = mock(Storage.class);
     }
 
     @AfterEach
     public void tearDown() {
         tasks = null;
-        storage = null;
+        mockStorage = null;
     }
 
     @Test
@@ -35,7 +36,7 @@ public class MarkTaskIncompleteCommandTest {
         assertThrows(MissingArgumentException.class,
                 () -> new MarkTaskIncompleteCommand(
                         Map.of("/default", ""))
-                        .execute(tasks, storage),
+                        .execute(tasks, mockStorage),
                 "No list index provided");
     }
     @Test
@@ -43,7 +44,7 @@ public class MarkTaskIncompleteCommandTest {
         assertThrows(InvalidArgumentException.class,
                 () -> new MarkTaskIncompleteCommand(
                         Map.of("/default", "-1"))
-                        .execute(tasks, storage),
+                        .execute(tasks, mockStorage),
                 "Index is out of range");
     }
 
@@ -55,7 +56,7 @@ public class MarkTaskIncompleteCommandTest {
                     [T][ ] Test Task 1""",
                     new MarkTaskIncompleteCommand(
                             Map.of("/default", "1"))
-                            .execute(tasks, storage),
+                            .execute(tasks, mockStorage),
                     "Marks the only task as undone");
         } catch (Exception e) {
             //ignore

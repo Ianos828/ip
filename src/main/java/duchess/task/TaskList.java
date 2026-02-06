@@ -1,10 +1,8 @@
 package duchess.task;
 
 import duchess.exception.InvalidArgumentException;
-
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -112,6 +110,22 @@ public class TaskList{
                 .toList();
 
         return new TaskList(outstandingTasks);
+    }
+
+    /**
+     * Finds tasks matching a keyword.
+     *
+     * @param keyword the keyword to search for
+     * @return a list of matching tasks
+     */
+    public TaskList findMatchingTasks(String keyword) {
+        List<Task> matchedTasks = tasks.stream()
+                .filter(task -> task.getName()
+                        .toLowerCase()
+                        .contains(keyword))
+                .toList();
+
+        return new TaskList(matchedTasks);
     }
 
     /**

@@ -13,7 +13,9 @@ public enum CommandType {
     UNMARK("unmark"),
     UNKNOWN(""),
     DELETE("delete"),
-    OUTSTANDING("outstanding");
+    OUTSTANDING("outstanding"),
+    FIND("find"),
+    CHEER("cheer");
 
     public final String input;
 

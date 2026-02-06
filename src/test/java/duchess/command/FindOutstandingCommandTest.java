@@ -6,6 +6,7 @@ import duchess.task.Deadline;
 import duchess.task.Event;
 import duchess.task.TaskList;
 import duchess.task.ToDo;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import java.nio.file.Paths;
@@ -13,15 +14,16 @@ import java.time.LocalDate;
 import java.util.Map;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.Mockito.mock;
 
 public class FindOutstandingCommandTest {
     TaskList tasks;
-    Storage storage;
+    Storage mockStorage;
 
     @BeforeEach
     public void setUp() {
         tasks = new TaskList();
-        storage = new Storage(Paths.get(".", "data", "tasks.txt"));
+        mockStorage = mock(Storage.class);
 
         tasks.addTask(new ToDo("Test Task 1"));
         tasks.addTask(new Deadline("Test Task 2",
@@ -31,9 +33,10 @@ public class FindOutstandingCommandTest {
                 LocalDate.parse("2001-01-05")));
     }
 
+    @AfterEach
     public void tearDown() {
         tasks = null;
-        storage = null;
+        mockStorage = null;
     }
 
     @Test
@@ -41,7 +44,7 @@ public class FindOutstandingCommandTest {
         assertThrows(InvalidArgumentException.class,
                 () -> new FindOutstandingCommand(
                         Map.of("/default", "a"))
-                        .execute(tasks, storage),
+                        .execute(tasks, mockStorage),
                 "Invalid date");
     }
 
@@ -52,7 +55,7 @@ public class FindOutstandingCommandTest {
                     There are no outstanding tasks after Tue, 02 Jan 2001!""",
                     new FindOutstandingCommand(
                             Map.of("/default", "2001-01-02"))
-                            .execute(tasks, storage),
+                            .execute(tasks, mockStorage),
                     "No tasks match the criteria");
         } catch (Exception e) {
             //ignore
@@ -67,7 +70,7 @@ public class FindOutstandingCommandTest {
                     1. [E][ ] Test Task 3 (from: Wed, 03 Jan 2001 to: Fri, 05 Jan 2001)""",
                     new FindOutstandingCommand(
                             Map.of("/default", "2001-01-04"))
-                            .execute(tasks, storage),
+                            .execute(tasks, mockStorage),
                     "Only event gets filtered out");
         } catch (Exception e) {
             //ignore
