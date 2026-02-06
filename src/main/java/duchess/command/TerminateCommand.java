@@ -9,15 +9,6 @@ import duchess.task.TaskList;
  */
 public class TerminateCommand extends Command {
     /**
-     * Constructor for TerminateCommand class
-     *
-     * @param commandType the type of Command
-     */
-    public TerminateCommand(CommandType commandType) {
-        super(commandType);
-    }
-
-    /**
      * Returns true to terminate the main program.
      *
      * @return a boolean to terminate the main program

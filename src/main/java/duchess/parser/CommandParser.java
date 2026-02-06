@@ -35,41 +35,41 @@ public class CommandParser {
 
         switch (commandType) {
         case BYE:
-            command = new TerminateCommand(commandType);
+            command = new TerminateCommand();
             break;
         case LIST:
-            command = new DisplayListCommand(commandType);
+            command = new DisplayListCommand();
             break;
         case MARK:
             arguments = parseArguments(MarkTaskCompleteCommand.delimiters, splitInput[1]);
-            command = new MarkTaskCompleteCommand(commandType, arguments);
+            command = new MarkTaskCompleteCommand(arguments);
             break;
         case UNMARK:
             arguments = parseArguments(MarkTaskIncompleteCommand.delimiters, splitInput[1]);
-            command = new MarkTaskIncompleteCommand(commandType, arguments);
+            command = new MarkTaskIncompleteCommand(arguments);
             break;
         case DELETE:
             arguments = parseArguments(DeleteTaskCommand.delimiters, splitInput[1]);
-            command = new DeleteTaskCommand(commandType, arguments);
+            command = new DeleteTaskCommand(arguments);
             break;
         case DEADLINE:
             arguments = parseArguments(CreateDeadlineCommand.delimiters, splitInput[1]);
-            command = new CreateDeadlineCommand(commandType, arguments);
+            command = new CreateDeadlineCommand(arguments);
             break;
         case EVENT:
             arguments = parseArguments(CreateEventCommand.delimiters, splitInput[1]);
-            command = new CreateEventCommand(commandType, arguments);
+            command = new CreateEventCommand(arguments);
             break;
         case TODO:
             arguments = parseArguments(CreateToDoCommand.delimiters, splitInput[1]);
-            command = new CreateToDoCommand(commandType, arguments);
+            command = new CreateToDoCommand(arguments);
             break;
         case OUTSTANDING:
             arguments = parseArguments(FindOutstandingCommand.delimiters, splitInput[1]);
-            command = new FindOutstandingCommand(commandType, arguments);
+            command = new FindOutstandingCommand(arguments);
             break;
         case UNKNOWN:
-            command = new UnknownCommand(commandType);
+            command = new UnknownCommand();
             break;
         default:
             break;

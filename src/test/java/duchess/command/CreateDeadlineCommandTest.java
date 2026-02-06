@@ -31,7 +31,7 @@ public class CreateDeadlineCommandTest {
     @Test
     void testExecute_missingTaskName_exceptionThrown() {
         assertThrows(MissingArgumentException.class,
-                () -> new CreateDeadlineCommand(CommandType.DEADLINE,
+                () -> new CreateDeadlineCommand(
                         Map.of("/default", "",
                                 "/by", "2001-01-01"))
                         .execute(tasks, storage),
@@ -41,7 +41,7 @@ public class CreateDeadlineCommandTest {
     @Test
     void testExecute_missingEndDate_exceptionThrown() {
         assertThrows(MissingArgumentException.class,
-                () -> new CreateDeadlineCommand(CommandType.DEADLINE,
+                () -> new CreateDeadlineCommand(
                         Map.of("/default", "a",
                                 "/by", ""))
                         .execute(tasks, storage),
@@ -51,7 +51,7 @@ public class CreateDeadlineCommandTest {
     @Test
     void testExecute_invalidEndDate_exceptionThrown() {
         assertThrows(InvalidArgumentException.class,
-                () -> new CreateDeadlineCommand(CommandType.DEADLINE,
+                () -> new CreateDeadlineCommand(
                         Map.of("/default", "a",
                                 "/by", "now"))
                         .execute(tasks, storage),
@@ -65,7 +65,7 @@ public class CreateDeadlineCommandTest {
                     Got it! I've added this task:
                     [D][ ] a (by: Mon, 01 Jan 2001)
                     Now you have 1 task(s) in the list.""",
-                    new CreateDeadlineCommand(CommandType.DEADLINE,
+                    new CreateDeadlineCommand(
                             Map.of("/default", "a",
                                     "/by", "2001-01-01"))
                             .execute(tasks, storage),

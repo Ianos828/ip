@@ -17,7 +17,7 @@ public class TerminateCommandTest {
 
     @BeforeEach
     public void setUp() {
-        command = new TerminateCommand(CommandType.BYE);
+        command = new TerminateCommand();
         tasks = new TaskList();
         storage = new Storage(Paths.get(".", "data", "tasks.txt"));
     }

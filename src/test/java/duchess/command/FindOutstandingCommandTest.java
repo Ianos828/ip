@@ -41,7 +41,7 @@ public class FindOutstandingCommandTest {
     @Test
     public void testExecute_invalidDate_exceptionThrown() {
         assertThrows(InvalidArgumentException.class,
-                () -> new FindOutstandingCommand(CommandType.OUTSTANDING,
+                () -> new FindOutstandingCommand(
                         Map.of("/default", "a"))
                         .execute(tasks, storage),
                 "Invalid date");
@@ -52,7 +52,7 @@ public class FindOutstandingCommandTest {
         try {
             assertEquals("""
                     There are no outstanding tasks after Tue, 02 Jan 2001!""",
-                    new FindOutstandingCommand(CommandType.OUTSTANDING,
+                    new FindOutstandingCommand(
                             Map.of("/default", "2001-01-02"))
                             .execute(tasks, storage),
                     "No tasks match the criteria");
@@ -67,7 +67,7 @@ public class FindOutstandingCommandTest {
             assertEquals("""
                     Here are the outstanding tasks in your list:
                     1. [E][ ] Test Task 3 (from: Wed, 03 Jan 2001 to: Fri, 05 Jan 2001)""",
-                    new FindOutstandingCommand(CommandType.OUTSTANDING,
+                    new FindOutstandingCommand(
                             Map.of("/default", "2001-01-04"))
                             .execute(tasks, storage),
                     "Only event gets filtered out");

@@ -35,7 +35,7 @@ public class DeleteTaskCommandTest {
     @Test
     void testExecute_missingIndex_exceptionThrown() {
         assertThrows(MissingArgumentException.class,
-                () -> new DeleteTaskCommand(CommandType.DELETE,
+                () -> new DeleteTaskCommand(
                         Map.of("/default", ""))
                         .execute(tasks, storage),
                 "No list index provided");
@@ -44,7 +44,7 @@ public class DeleteTaskCommandTest {
     @Test
     void testExecute_invalidIndex_exceptionThrown() {
         assertThrows(InvalidArgumentException.class,
-                () -> new DeleteTaskCommand(CommandType.DELETE,
+                () -> new DeleteTaskCommand(
                         Map.of("/default", "a"))
                         .execute(tasks, storage),
                 "List index is not a number");
@@ -53,7 +53,7 @@ public class DeleteTaskCommandTest {
     @Test
     void testExecute_indexOutOfRange_exceptionThrown() {
         assertThrows(InvalidArgumentException.class,
-                () -> new DeleteTaskCommand(CommandType.DELETE,
+                () -> new DeleteTaskCommand(
                         Map.of("/default", "-1"))
                         .execute(tasks, storage),
                 "Index is out of range");
@@ -66,7 +66,7 @@ public class DeleteTaskCommandTest {
                     Noted. I've removed this task:
                     [T][ ] Test Task
                     Now you have 0 task(s) in the list.""",
-                    new DeleteTaskCommand(CommandType.DELETE,
+                    new DeleteTaskCommand(
                             Map.of("/default", "a"))
                             .execute(tasks, storage),
                     "Successful task deletion");

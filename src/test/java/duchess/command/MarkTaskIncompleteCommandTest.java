@@ -35,7 +35,7 @@ public class MarkTaskIncompleteCommandTest {
     @Test
     public void testExecute_missingIndex_exceptionThrown() {
         assertThrows(MissingArgumentException.class,
-                () -> new MarkTaskIncompleteCommand(CommandType.UNMARK,
+                () -> new MarkTaskIncompleteCommand(
                         Map.of("/default", ""))
                         .execute(tasks, storage),
                 "No list index provided");
@@ -43,7 +43,7 @@ public class MarkTaskIncompleteCommandTest {
     @Test
     public void testExecute_invalidIndex_exceptionThrown() {
         assertThrows(InvalidArgumentException.class,
-                () -> new MarkTaskIncompleteCommand(CommandType.UNMARK,
+                () -> new MarkTaskIncompleteCommand(
                         Map.of("/default", "-1"))
                         .execute(tasks, storage),
                 "Index is out of range");
@@ -55,7 +55,7 @@ public class MarkTaskIncompleteCommandTest {
             assertEquals("""
                     OK, I've marked this task as not done yet:
                     [T][ ] Test Task 1""",
-                    new MarkTaskIncompleteCommand(CommandType.UNMARK,
+                    new MarkTaskIncompleteCommand(
                             Map.of("/default", "1"))
                             .execute(tasks, storage),
                     "Marks the only task as undone");

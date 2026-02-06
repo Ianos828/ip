@@ -24,11 +24,9 @@ public class DeleteTaskCommand extends Command {
     /**
      * Constructor for DeleteTaskCommand class.
      *
-     * @param commandType the type of command
      * @param commandArgs a map with a single delimiter-argument pair representing a list index
      */
-    public DeleteTaskCommand(CommandType commandType, Map<String, String> commandArgs) {
-        super(commandType);
+    public DeleteTaskCommand(Map<String, String> commandArgs) {
         this.commandArgs = commandArgs;
     }
 

@@ -27,7 +27,7 @@ public class DisplayListCommandTest {
     @Test
     public void testExecute_emptyList_success() {
         assertEquals("Your list is empty!",
-                new DisplayListCommand(CommandType.LIST)
+                new DisplayListCommand()
                         .execute(new TaskList(), storage),
                 "List is empty");
     }
@@ -42,7 +42,7 @@ public class DisplayListCommandTest {
                 Here are the tasks in your list:
                 1. [T][ ] Test Task
                 2. [T][ ] Test Task 2""",
-                new DisplayListCommand(CommandType.LIST)
+                new DisplayListCommand()
                         .execute(tasks, storage),
                 "2 tasks in list should be displayed");
     }

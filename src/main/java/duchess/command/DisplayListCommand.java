@@ -9,15 +9,6 @@ import duchess.task.TaskList;
  */
 public class DisplayListCommand extends Command {
     /**
-     * Constructor for DisplayListCommand class.
-     *
-     * @param commandType the type of command
-     */
-    public DisplayListCommand(CommandType commandType) {
-        super(commandType);
-    }
-
-    /**
      * Prints the task list if the list is not empty. Otherwise, print an error message.
      *
      * @param tasks list of tasks that commands will operate on

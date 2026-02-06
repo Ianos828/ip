@@ -35,7 +35,7 @@ public class MarkTaskCompleteCommandTest {
     @Test
     public void testExecute_missingIndex_exceptionThrown() {
         assertThrows(MissingArgumentException.class,
-                () -> new MarkTaskCompleteCommand(CommandType.MARK,
+                () -> new MarkTaskCompleteCommand(
                         Map.of("/default", ""))
                         .execute(tasks, storage),
                 "No list index provided");
@@ -43,7 +43,7 @@ public class MarkTaskCompleteCommandTest {
     @Test
     public void testExecute_invalidIndex_exceptionThrown() {
         assertThrows(InvalidArgumentException.class,
-                () -> new MarkTaskCompleteCommand(CommandType.MARK,
+                () -> new MarkTaskCompleteCommand(
                         Map.of("/default", "-1"))
                         .execute(tasks, storage),
                 "Index is out of range");
@@ -55,7 +55,7 @@ public class MarkTaskCompleteCommandTest {
             assertEquals("""
                     Nice! I've marked this task as done:
                     [T][X] Test Task 1""",
-                    new MarkTaskCompleteCommand(CommandType.MARK,
+                    new MarkTaskCompleteCommand(
                             Map.of("/default", "1"))
                             .execute(tasks, storage),
                     "Marks the only task as done");

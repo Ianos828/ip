@@ -17,7 +17,7 @@ public class UnknownCommandTest {
 
     @BeforeEach
     public void setUp() {
-        command = new UnknownCommand(CommandType.UNKNOWN);
+        command = new UnknownCommand();
         tasks = new TaskList();
         storage = new Storage(Paths.get(".", "data", "tasks.txt"));
     }

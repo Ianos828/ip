@@ -24,11 +24,9 @@ public class CreateToDoCommand extends Command {
     /**
      * Constructor for CreateToDoCommand class.
      *
-     * @param type the type of command
      * @param commandArgs a map with a single delimiter-argument pair specifying the name of the task
      */
-    public CreateToDoCommand(CommandType type, Map<String, String> commandArgs) {
-        super(type);
+    public CreateToDoCommand(Map<String, String> commandArgs) {
         this.commandArgs = commandArgs;
     }
 

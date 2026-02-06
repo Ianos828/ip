@@ -26,11 +26,9 @@ public class CreateDeadlineCommand extends Command {
     /**
      * Constructor for CreateDeadlineCommand class.
      *
-     * @param type the type of command
      * @param commandArgs a map of delimiter-argument pairs specifying the name and deadline of the task
      */
-    public CreateDeadlineCommand(CommandType type, Map<String, String> commandArgs) {
-        super(type);
+    public CreateDeadlineCommand(Map<String, String> commandArgs) {
         this.commandArgs = commandArgs;
     }
 

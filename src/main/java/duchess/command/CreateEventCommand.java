@@ -26,11 +26,9 @@ public class CreateEventCommand extends Command {
     /**
      * Constructor for CreateEventCommand class.
      *
-     * @param type the type of command
      * @param commandArgs a map of delimiter-argument pairs specifying the name, start and end dates of the task
      */
-    public CreateEventCommand(CommandType type, Map<String, String> commandArgs) {
-        super(type);
+    public CreateEventCommand(Map<String, String> commandArgs) {
         this.commandArgs = commandArgs;
     }
 

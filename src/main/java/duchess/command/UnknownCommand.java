@@ -9,15 +9,6 @@ import duchess.task.TaskList;
  */
 public class UnknownCommand extends Command {
     /**
-     * Constructor for UnknownCommand class.
-     *
-     * @param commandType the type of command
-     */
-    public UnknownCommand(CommandType commandType) {
-        super(commandType);
-    }
-
-    /**
      * Prints an error message.
      *
      * @param tasks list of tasks that commands will operate on

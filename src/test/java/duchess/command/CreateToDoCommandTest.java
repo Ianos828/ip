@@ -30,7 +30,7 @@ public class CreateToDoCommandTest {
     @Test
     void testExecute_missingTaskName_exceptionThrown() {
         assertThrows(MissingArgumentException.class,
-                () -> new CreateToDoCommand(CommandType.TODO,
+                () -> new CreateToDoCommand(
                         Map.of("/default", ""))
                         .execute(tasks, storage),
                 "Todo is missing name");
@@ -43,7 +43,7 @@ public class CreateToDoCommandTest {
                     Got it! I've added this task:
                     [T][ ] a
                     Now you have 1 task(s) in the list.""",
-                    new CreateToDoCommand(CommandType.TODO,
+                    new CreateToDoCommand(
                         Map.of("/default", "a"))
                         .execute(tasks, storage),
                     "Todo task should be successfully created");

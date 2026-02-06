@@ -31,7 +31,7 @@ public class CreateEventCommandTest {
     @Test
     void testExecute_missingTaskName_exceptionThrown() {
         assertThrows(MissingArgumentException.class,
-                () -> new CreateEventCommand(CommandType.EVENT,
+                () -> new CreateEventCommand(
                         Map.of("/default", ""))
                         .execute(tasks, storage),
                 "Event is missing name");
@@ -40,7 +40,7 @@ public class CreateEventCommandTest {
     @Test
     void testExecute_missingStartDate_exceptionThrown() {
         assertThrows(MissingArgumentException.class,
-                () -> new CreateEventCommand(CommandType.EVENT,
+                () -> new CreateEventCommand(
                         Map.of("/default", "a",
                                 "/from", "",
                                 "/to", "2001-01-02"))
@@ -51,7 +51,7 @@ public class CreateEventCommandTest {
     @Test
     void testExecute_missingEndDate_exceptionThrown() {
         assertThrows(MissingArgumentException.class,
-                () -> new CreateEventCommand(CommandType.EVENT,
+                () -> new CreateEventCommand(
                         Map.of("/default", "a",
                                 "/from", "2001-01-02",
                                 "/to", ""))
@@ -62,7 +62,7 @@ public class CreateEventCommandTest {
     @Test
     void testExecute_invalidStartDate_exceptionThrown() {
         assertThrows(InvalidArgumentException.class,
-                () -> new CreateEventCommand(CommandType.EVENT,
+                () -> new CreateEventCommand(
                         Map.of("/default", "a",
                                 "/from", "now",
                                 "/to", "2001-01-02"))
@@ -73,7 +73,7 @@ public class CreateEventCommandTest {
     @Test
     void testExecute_invalidEndDate_exceptionThrown() {
         assertThrows(InvalidArgumentException.class,
-                () -> new CreateEventCommand(CommandType.EVENT,
+                () -> new CreateEventCommand(
                         Map.of("/default", "a",
                                 "/from", "2001-01-02",
                                 "/to", "now"))
@@ -84,7 +84,7 @@ public class CreateEventCommandTest {
     @Test
     void testExecute_endDateBeforeStartDate_exceptionThrown() {
         assertThrows(InvalidArgumentException.class,
-                () -> new CreateEventCommand(CommandType.EVENT,
+                () -> new CreateEventCommand(
                         Map.of("/default", "a",
                                 "/from", "2001-01-03",
                                 "/to", "2001-01-02"))
@@ -99,7 +99,7 @@ public class CreateEventCommandTest {
                     Got it! I've added this task:
                     [E][ ] a (from: Mon, 01 Jan 2001 to: Tue, 02 Jan 2001)
                     Now you have 1 task(s) in the list.""",
-                    new CreateEventCommand(CommandType.EVENT,
+                    new CreateEventCommand(
                             Map.of("/default", "a",
                                     "/from", "2001-01-01",
                                     "/to", "2001-01-02"))

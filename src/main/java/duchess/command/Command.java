@@ -13,18 +13,7 @@ import java.io.IOException;
  * Class representing a generic user command.
  */
 public abstract class Command{
-    CommandType type;
-
-    /**
-     * Constructor for Command class.
-     *
-     * @param type the command type
-     */
-    public Command(CommandType type) {
-        this.type = type;
-    }
-
-    /**
+     /**
      * Returns true if the command should end the main program, else false.
      *
      * @return boolean representing if the command should terminate the main program

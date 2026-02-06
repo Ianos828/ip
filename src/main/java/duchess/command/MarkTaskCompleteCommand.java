@@ -24,11 +24,9 @@ public class MarkTaskCompleteCommand extends Command {
     /**
      * Constructor for MarkTaskCompleteCommand class.
      *
-     * @param commandType the type of command
      * @param commandArgs a map with a single delimiter-argument pair representing a list index
      */
-    public MarkTaskCompleteCommand(CommandType commandType, Map<String, String> commandArgs) {
-        super(commandType);
+    public MarkTaskCompleteCommand(Map<String, String> commandArgs) {
         this.commandArgs = commandArgs;
     }
 

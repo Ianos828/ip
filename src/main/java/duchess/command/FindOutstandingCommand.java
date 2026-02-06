@@ -17,8 +17,7 @@ public class FindOutstandingCommand extends Command{
     private final Map<String, String> commandArgs;
     public static final Set<String> delimiters = Set.of("/default");
 
-    public FindOutstandingCommand(CommandType type, Map<String, String> commandArgs) {
-        super(type);
+    public FindOutstandingCommand(Map<String, String> commandArgs) {
         this.commandArgs = commandArgs;
     }
 
