@@ -12,23 +12,62 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
- * Storage class for loading and saving tasks to a file.
+ * Storage class for loading and saving information to a file.
  */
 public class Storage {
-    private final File file;
+    private final File taskListFile;
+    private final File quotesFile;
+    private List<String> quotes;
+    private final static String DEFAULT_QUOTES = "Quote1\nQuote2\nQuote3\nQuote4\nQuote5";
 
     /**
      * Constructor for Storage class.
      *
-     * @param filePath the path to the file
+     * <p>
+     * The storage will attempt to load quotes from the specified file.
+     * If the file does not exist, an empty list of quotes will be initialised for the current session.
+     * Thereafter, a new set of default quotes will be created in a new file.
+     * </p>
+     *
+     * @param taskListFilePath the path to the task list file
+     * @param quotesFilePath the path to the quotes file
      */
-    public Storage(Path filePath) {
-        this.file = filePath.toAbsolutePath()
+    public Storage(Path taskListFilePath, Path quotesFilePath) {
+        this.taskListFile = taskListFilePath.toAbsolutePath()
                     .normalize()
                     .toFile();
+        this.quotesFile = quotesFilePath.toAbsolutePath()
+                .normalize()
+                .toFile();
+
+        try {
+            List<String> quotesFromFile = loadQuotesFromFile();
+            setQuotes(quotesFromFile);
+        } catch (IOException e) {
+            setQuotes(new ArrayList<>());
+        }
+
+        if (getQuotes().isEmpty()) {
+            try {
+                saveDefaultQuotesToFile();
+            } catch (IOException e) {
+                //ignore
+            }
+        }
+    }
+
+    /**
+     * Returns the list of quotes.
+     *
+     * @return the list of quotes
+     */
+    public List<String> getQuotes() {
+        return quotes;
     }
 
     /**
@@ -41,7 +80,7 @@ public class Storage {
         String rawTask;
         TaskList tasks = new TaskList();
 
-        BufferedReader reader = new BufferedReader(new FileReader(file.getPath()));
+        BufferedReader reader = new BufferedReader(new FileReader(taskListFile.getPath()));
 
         while ((rawTask = reader.readLine()) != null) {
             try {
@@ -54,6 +93,7 @@ public class Storage {
             }
         }
 
+        reader.close();
         return tasks;
     }
 
@@ -63,12 +103,12 @@ public class Storage {
      * @throws IOException when the file cannot be created or written to
      */
     public void saveTasksToFile(TaskList tasks) throws IOException{
-        if (!file.exists()) {
-            createFile();
+        if (!taskListFile.exists()) {
+            createFile(taskListFile);
         }
 
         String fileString = tasks.toSaveString();
-        Files.writeString(Path.of(file.getPath()), fileString, StandardCharsets.UTF_8);
+        Files.writeString(Path.of(taskListFile.getPath()), fileString, StandardCharsets.UTF_8);
     }
 
     /**
@@ -76,7 +116,7 @@ public class Storage {
      *
      * @throws IOException if the file or parent directory cannot be created
      */
-    private void createFile() throws IOException{
+    private void createFile(File file) throws IOException{
         boolean isFolderCreated = file.getParentFile().mkdirs();
         boolean isFileCreated;
 
@@ -89,5 +129,51 @@ public class Storage {
         if (!isFileCreated) {
             throw new IOException("Failed to create file.");
         }
+    }
+
+    /**
+     * Loads quotes from a file and saves it to Storage.
+     *
+     * @return a list of quotes loaded from the file
+     * @throws IOException when the file cannot be found or read
+     */
+    private List<String> loadQuotesFromFile() throws IOException {
+        String quote;
+        List<String> quotes = new ArrayList<>();
+
+        BufferedReader reader = new BufferedReader(new FileReader(quotesFile.getPath()));
+
+        while ((quote = reader.readLine()) != null) {
+            try {
+                quotes.add(quote.strip());
+            } catch (Exception e) {
+                //Ignore invalid quotes
+            }
+        }
+
+        reader.close();
+        return quotes;
+    }
+
+    /**
+     * Saves default quotes to a file if it does not exist.
+     *
+     * @throws IOException when the file cannot be created or written to
+     */
+    private void saveDefaultQuotesToFile() throws IOException {
+        if (!quotesFile.exists()) {
+            createFile(quotesFile);
+        }
+
+        Files.writeString(Path.of(quotesFile.getPath()), DEFAULT_QUOTES, StandardCharsets.UTF_8);
+    }
+
+    /**
+     * Sets the list of quotes.
+     *
+     * @param quotes the list of quotes
+     */
+    private void setQuotes(List<String> quotes) {
+        this.quotes = quotes;
     }
 }
