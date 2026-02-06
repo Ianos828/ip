@@ -17,11 +17,11 @@ public class ToDo extends Task {
      * Constructor for ToDo class used for loading tasks from storage.
      *
      * @param name the name of the ToDo task
-     * @param complete the completion status of the task
+     * @param isComplete the completion status of the task
      */
-    public ToDo(String name, boolean complete) {
+    public ToDo(String name, boolean isComplete) {
         super(name);
-        setComplete(complete);
+        setComplete(isComplete);
     }
 
     /**

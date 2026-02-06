@@ -29,13 +29,13 @@ public class Event extends Task {
      * @param taskName the name of the task
      * @param startDate the start date of the event
      * @param endDate the end date of the event
-     * @param complete the completion status of the task
+     * @param isComplete the completion status of the task
      */
-    public Event(String taskName, LocalDate startDate, LocalDate endDate, boolean complete) {
+    public Event(String taskName, LocalDate startDate, LocalDate endDate, boolean isComplete) {
         super(taskName);
         this.startDate = startDate;
         this.endDate = endDate;
-        setComplete(complete);
+        setComplete(isComplete);
     }
 
     /**

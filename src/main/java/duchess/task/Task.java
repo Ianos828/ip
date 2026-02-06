@@ -7,7 +7,7 @@ import java.time.LocalDate;
  */
 public abstract class Task {
     protected final String name;
-    private boolean complete = false;
+    private boolean isComplete = false;
 
     /**
      * Constructor for Task class.
@@ -22,14 +22,14 @@ public abstract class Task {
      * Marks the task as complete.
      */
     public void markAsComplete() {
-        complete = true;
+        isComplete = true;
     }
 
     /**
      * Marks the task as incomplete.
      */
     public void markAsIncomplete() {
-        complete = false;
+        isComplete = false;
     }
 
     /**
@@ -38,7 +38,7 @@ public abstract class Task {
      * @return true if the task is complete, else false
      */
     public boolean isComplete() {
-        return complete;
+        return isComplete;
     }
 
     /**
@@ -47,7 +47,7 @@ public abstract class Task {
      * @param complete the completion status of the task
      */
     protected void setComplete(boolean complete) {
-        this.complete = complete;
+        this.isComplete = complete;
     }
 
     /**
@@ -66,7 +66,7 @@ public abstract class Task {
      */
     @Override
     public String toString() {
-        return String.format("[%s] %s", complete ? "X" : " ", name);
+        return String.format("[%s] %s", isComplete() ? "X" : " ", name);
     }
 
     public abstract String toSaveString();
