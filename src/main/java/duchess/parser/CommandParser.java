@@ -62,6 +62,9 @@ public class CommandParser {
             arguments = parseArguments(FindTaskCommand.delimiters, splitInput[1]);
             command = new FindTaskCommand(arguments);
             break;
+        case CHEER:
+            command = new DisplayQuoteCommand();
+            break;
         case UNKNOWN:
             command = new UnknownCommand();
             break;
