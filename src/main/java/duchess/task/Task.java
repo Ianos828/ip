@@ -44,10 +44,10 @@ public abstract class Task {
     /**
      * Sets the completion status of the task.
      *
-     * @param complete the completion status of the task
+     * @param isComplete the completion status of the task
      */
-    protected void setComplete(boolean complete) {
-        this.isComplete = complete;
+    protected void setComplete(boolean isComplete) {
+        this.isComplete = isComplete;
     }
 
     /**
