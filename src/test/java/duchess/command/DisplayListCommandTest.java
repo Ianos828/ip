@@ -9,27 +9,26 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import java.nio.file.Paths;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.mock;
 
 public class DisplayListCommandTest {
-    Storage storage;
+    Storage mockStorage;
 
     @BeforeEach
-    void setUp() {
-        storage = new Storage(
-                Paths.get(".", "data", "tasks.txt"),
-                Paths.get(".", "data", "cheer.txt"));
+    public void setUp() {
+        mockStorage = mock(Storage.class);
     }
 
     @AfterEach
-    void tearDown() {
-        storage = null;
+    public void tearDown() {
+        mockStorage = null;
     }
 
     @Test
     public void testExecute_emptyList_success() {
         assertEquals("Your list is empty!",
                 new DisplayListCommand()
-                        .execute(new TaskList(), storage),
+                        .execute(new TaskList(), mockStorage),
                 "List is empty");
     }
 
@@ -44,7 +43,7 @@ public class DisplayListCommandTest {
                 1. [T][ ] Test Task
                 2. [T][ ] Test Task 2""",
                 new DisplayListCommand()
-                        .execute(tasks, storage),
+                        .execute(tasks, mockStorage),
                 "2 tasks in list should be displayed");
     }
 }
