@@ -1,7 +1,17 @@
 package duchess.parser;
 
-import duchess.command.*;
-
+import duchess.command.Command;
+import duchess.command.CommandType;
+import duchess.command.CreateDeadlineCommand;
+import duchess.command.CreateEventCommand;
+import duchess.command.CreateToDoCommand;
+import duchess.command.DeleteTaskCommand;
+import duchess.command.DisplayListCommand;
+import duchess.command.FindOutstandingCommand;
+import duchess.command.MarkTaskCompleteCommand;
+import duchess.command.MarkTaskIncompleteCommand;
+import duchess.command.TerminateCommand;
+import duchess.command.UnknownCommand;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;

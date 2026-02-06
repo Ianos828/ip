@@ -1,20 +1,15 @@
 package duchess.ui;
 
 import duchess.command.Command;
-
 import duchess.exception.InvalidArgumentException;
 import duchess.exception.MissingArgumentException;
-
 import duchess.parser.CommandParser;
-
 import duchess.storage.Storage;
-
 import duchess.task.TaskList;
-
-import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Arrays;
+import java.io.IOException;
 
 /**
  * The Duchess chatbot can manage tasks and their completion statuses.
