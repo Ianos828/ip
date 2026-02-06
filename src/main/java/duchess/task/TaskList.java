@@ -130,6 +130,22 @@ public class TaskList{
     }
 
     /**
+     * Finds tasks matching a keyword.
+     *
+     * @param keyword the keyword to search for
+     * @return a list of matching tasks
+     */
+    public TaskList findMatchingTasks(String keyword) {
+        List<Task> matchedTasks = tasks.stream()
+                .filter(task -> task.getName()
+                        .toLowerCase()
+                        .contains(keyword))
+                .toList();
+
+        return new TaskList(matchedTasks);
+    }
+
+    /**
      * Returns a string representation of the list.
      *
      * @return a string representation of the list
