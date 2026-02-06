@@ -2,7 +2,6 @@ package duchess.command;
 
 import duchess.storage.Storage;
 import duchess.task.TaskList;
-import duchess.ui.Ui;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -10,33 +9,31 @@ import org.junit.jupiter.api.Test;
 import java.nio.file.Paths;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.mock;
 
 public class TerminateCommandTest {
     TerminateCommand command;
     TaskList tasks;
-    Storage storage;
-    Ui ui;
+    Storage mockStorage;
 
     @BeforeEach
     public void setUp() {
         command = new TerminateCommand();
         tasks = new TaskList();
-        storage = new Storage(
-                Paths.get(".", "data", "tasks.txt"),
-                Paths.get(".", "data", "cheer.txt"));
+        mockStorage = mock(Storage.class);
     }
 
     @AfterEach
     public void tearDown() {
         command = null;
         tasks = null;
-        storage = null;
+        mockStorage = null;
     }
 
     @Test
     public void testExecute() {
         assertEquals("Bye. Hope to see you again soon!",
-                command.execute(tasks, storage),
+                command.execute(tasks, mockStorage),
                 "Ends the program");
     }
 }
