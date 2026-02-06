@@ -70,7 +70,7 @@ public class Duchess {
     }
 
     /**
-     * main method for Duchess.
+     * Main method for Duchess.
      *
      * @param args optional startup arguments
      */
