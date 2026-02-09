@@ -10,9 +10,15 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+/**
+ * Tests for the TaskList class.
+ */
 public class TaskListTest {
     private TaskList tasks;
 
+    /**
+     * Sets up the test environment.
+     */
     @BeforeEach
     public void setUp() {
         tasks = new TaskList();
@@ -24,17 +30,26 @@ public class TaskListTest {
                 LocalDate.parse("2001-01-05")));
     }
 
+    /**
+     * Cleans up the test environment.
+     */
     @AfterEach
     public void tearDown() {
         tasks = null;
     }
 
+    /**
+     * Tests that a task can be added to the list.
+     */
     @Test
     public void testAddTask() {
         tasks.addTask(new ToDo("Test Task 4"));
         assertEquals(4, tasks.getSize(), "1 more task is added to the list");
     }
 
+    /**
+     * Tests that a task can be removed from the list.
+     */
     @Test
     public void testRemoveTask() {
         try {
@@ -45,6 +60,9 @@ public class TaskListTest {
         }
     }
 
+    /**
+     * Tests that a task can be marked as complete.
+     */
     @Test
     public void testMarkTaskAsComplete() {
         try {
@@ -55,6 +73,9 @@ public class TaskListTest {
         }
     }
 
+    /**
+     * Tests that a task can be marked as incomplete.
+     */
     @Test
     public void testMarkTaskAsIncomplete() {
         try {
@@ -65,6 +86,9 @@ public class TaskListTest {
         }
     }
 
+    /**
+     * Tests that outstanding tasks are returned correctly.
+     */
     @Test
     public void testGetOutstandingTasks() {
         assertEquals("""

@@ -18,10 +18,16 @@ import duchess.task.Event;
 import duchess.task.TaskList;
 import duchess.task.ToDo;
 
+/**
+ * Tests for the FindOutstandingCommand class.
+ */
 public class FindOutstandingCommandTest {
     private TaskList tasks;
     private Storage mockStorage;
 
+    /**
+     * Sets up the test environment.
+     */
     @BeforeEach
     public void setUp() {
         tasks = new TaskList();
@@ -35,12 +41,18 @@ public class FindOutstandingCommandTest {
                 LocalDate.parse("2001-01-05")));
     }
 
+    /**
+     * Cleans up the test environment.
+     */
     @AfterEach
     public void tearDown() {
         tasks = null;
         mockStorage = null;
     }
 
+    /**
+     * Tests that an exception is thrown when the date is invalid.
+     */
     @Test
     public void testExecute_invalidDate_exceptionThrown() {
         assertThrows(InvalidArgumentException.class, () ->
@@ -50,6 +62,9 @@ public class FindOutstandingCommandTest {
                 "Invalid date");
     }
 
+    /**
+     * Tests that the command filters out no tasks correctly when the date is valid.
+     */
     @Test
     public void testExecute_validDateJan2nd2001_success() {
         try {
@@ -64,6 +79,9 @@ public class FindOutstandingCommandTest {
         }
     }
 
+    /**
+     * Tests that the command filters out the correct tasks when the date is valid.
+     */
     @Test
     public void testExecute_validDateJan4th2001_success() {
         try {

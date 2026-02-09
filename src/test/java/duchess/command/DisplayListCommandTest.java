@@ -11,19 +11,31 @@ import duchess.storage.Storage;
 import duchess.task.TaskList;
 import duchess.task.ToDo;
 
+/**
+ * Tests for the DisplayListCommand class.
+ */
 public class DisplayListCommandTest {
     private Storage mockStorage;
 
+    /**
+     * Sets up the test environment.
+     */
     @BeforeEach
     public void setUp() {
         mockStorage = mock(Storage.class);
     }
 
+    /**
+     * Cleans up the test environment.
+     */
     @AfterEach
     public void tearDown() {
         mockStorage = null;
     }
 
+    /**
+     * Tests that the list is empty when there are no tasks in the list.
+     */
     @Test
     public void testExecute_emptyList_success() {
         assertEquals("Your list is empty!",
@@ -32,6 +44,9 @@ public class DisplayListCommandTest {
                 "List is empty");
     }
 
+    /**
+     * Tests that the list is displayed correctly when there are tasks in the list.
+     */
     @Test
     public void testExecute_nonEmptyList_success() {
         TaskList tasks = new TaskList();

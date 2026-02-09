@@ -10,7 +10,13 @@ import org.junit.jupiter.api.Test;
 import duchess.exception.InvalidArgumentException;
 import duchess.exception.MissingArgumentException;
 
+/**
+ * Tests for the Utility class.
+ */
 public class UtilityTest {
+    /**
+     * Tests the splitIntoPair method can handle strings without the specified delimiters.
+     */
     @Test
     public void testSplitIntoPair_singleLengthArray_success() {
         assertEquals("",
@@ -18,6 +24,9 @@ public class UtilityTest {
                 "Handle single-length array");
     }
 
+    /**
+     * Tests the splitIntoPair method can handle empty strings.
+     */
     @Test
     public void testSplitIntoPair_emptyArray_success() {
         assertEquals("",
@@ -25,6 +34,9 @@ public class UtilityTest {
                 "Handle empty array");
     }
 
+    /**
+     * Tests the splitIntoPair method can handle valid input.
+     */
     @Test
     public void testSplitIntoPair_validInput_success() {
         assertEquals("world",
@@ -32,6 +44,9 @@ public class UtilityTest {
                 "Split valid input");
     }
 
+    /**
+     * Tests that an exception is thrown when input is missing.
+     */
     @Test
     public void testParseInt_missingNumber_exceptionThrown() {
         assertThrows(MissingArgumentException.class, () ->
@@ -39,6 +54,9 @@ public class UtilityTest {
                 "Missing number");
     }
 
+    /**
+     * Tests that an exception is thrown when input is invalid.
+     */
     @Test
     public void testParseInt_invalidNumber_exceptionThrown() {
         assertThrows(InvalidArgumentException.class, () ->
@@ -46,6 +64,9 @@ public class UtilityTest {
                 "Input is not a number");
     }
 
+    /**
+     * Tests that an exception is thrown when the input date is missing.
+     */
     @Test
     public void testParseDate_missingDate_exceptionThrown() {
         assertThrows(MissingArgumentException.class, () ->
@@ -53,6 +74,9 @@ public class UtilityTest {
                 "Missing date");
     }
 
+    /**
+     * Tests that an exception is thrown when the input date is invalid.
+     */
     @Test
     public void testParseDate_invalidDate_exceptionThrown() {
         assertThrows(InvalidArgumentException.class, () ->
@@ -60,6 +84,9 @@ public class UtilityTest {
                 "Input is not a date");
     }
 
+    /**
+     * Tests that the date is formatted correctly.
+     */
     @Test
     public void testFormatDate() {
         assertEquals("Thu, 05 Feb 2026",

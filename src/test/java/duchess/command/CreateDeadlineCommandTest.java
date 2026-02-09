@@ -15,22 +15,34 @@ import duchess.exception.MissingArgumentException;
 import duchess.storage.Storage;
 import duchess.task.TaskList;
 
+/**
+ * Tests for the CreateDeadlineCommand class.
+ */
 public class CreateDeadlineCommandTest {
     private TaskList tasks;
     private Storage mockStorage;
 
+    /**
+     * Sets up the test environment.
+     */
     @BeforeEach
     public void setUp() {
         tasks = new TaskList();
         mockStorage = mock(Storage.class);
     }
 
+    /**
+     * Cleans up the test environment.
+     */
     @AfterEach
     public void tearDown() {
         tasks = null;
         mockStorage = null;
     }
 
+    /**
+     * Tests that an exception is thrown when the task name is missing.
+     */
     @Test
     public void testExecute_missingTaskName_exceptionThrown() {
         assertThrows(MissingArgumentException.class, () ->
@@ -41,6 +53,9 @@ public class CreateDeadlineCommandTest {
                 "Deadline is missing name");
     }
 
+    /**
+     * Tests that an exception is thrown when the end date is missing.
+     */
     @Test
     public void testExecute_missingEndDate_exceptionThrown() {
         assertThrows(MissingArgumentException.class, () ->
@@ -51,6 +66,9 @@ public class CreateDeadlineCommandTest {
                 "Deadline is missing end date");
     }
 
+    /**
+     * Tests that an exception is thrown when the end date is invalid.
+     */
     @Test
     public void testExecute_invalidEndDate_exceptionThrown() {
         assertThrows(InvalidArgumentException.class, () ->
@@ -61,6 +79,9 @@ public class CreateDeadlineCommandTest {
                 "End date is in invalid format");
     }
 
+    /**
+     * Tests that a deadline task is successfully created when valid inputs are provided.
+     */
     @Test
     public void testExecute_validInputs_success() {
         try {
