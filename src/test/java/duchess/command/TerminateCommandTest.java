@@ -1,18 +1,19 @@
 package duchess.command;
 
-import duchess.storage.Storage;
-import duchess.task.TaskList;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import java.nio.file.Paths;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.mock;
 
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import duchess.storage.Storage;
+import duchess.task.TaskList;
+
 public class TerminateCommandTest {
-    TerminateCommand command;
-    TaskList tasks;
-    Storage mockStorage;
+    private TerminateCommand command;
+    private TaskList tasks;
+    private Storage mockStorage;
 
     @BeforeEach
     public void setUp() {

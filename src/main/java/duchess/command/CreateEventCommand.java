@@ -1,5 +1,10 @@
 package duchess.command;
 
+import java.io.IOException;
+import java.time.LocalDate;
+import java.util.Map;
+import java.util.Set;
+
 import duchess.exception.InvalidArgumentException;
 import duchess.exception.MissingArgumentException;
 import duchess.parser.Utility;
@@ -7,17 +12,13 @@ import duchess.storage.Storage;
 import duchess.task.Event;
 import duchess.task.Task;
 import duchess.task.TaskList;
-import java.io.IOException;
-import java.time.LocalDate;
-import java.util.Map;
-import java.util.Set;
 
 /**
  * Class representing a command to create an event.
  */
 public class CreateEventCommand extends Command {
+    public static final Set<String> DELIMITERS = Set.of("/default", "/from", "/to");
     private final Map<String, String> commandArgs;
-    public static final Set<String> delimiters = Set.of("/default", "/from", "/to");
 
     /**
      * Constructor for CreateEventCommand class.
@@ -59,7 +60,7 @@ public class CreateEventCommand extends Command {
         tasks.addTask(event);
         storage.saveTasksToFile(tasks);
 
-         return String.format("Got it! I've added this task:\n%s\nNow you have %d task(s) in the list.",
+        return String.format("Got it! I've added this task:\n%s\nNow you have %d task(s) in the list.",
                 event, tasks.getSize());
     }
 }

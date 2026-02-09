@@ -1,18 +1,19 @@
 package duchess.command;
 
+import java.util.Map;
+import java.util.Set;
+
 import duchess.exception.MissingArgumentException;
 import duchess.parser.Utility;
 import duchess.storage.Storage;
 import duchess.task.TaskList;
-import java.util.Map;
-import java.util.Set;
 
 /**
  * Class representing a command to find tasks by keyword.
  */
-public class FindTaskCommand extends Command{
+public class FindTaskCommand extends Command {
+    public static final Set<String> DELIMITERS = Set.of("/default");
     private final Map<String, String> commandArgs;
-    public static final Set<String> delimiters = Set.of("/default");
 
     /**
      * Constructor for FindTaskCommand class.

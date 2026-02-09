@@ -1,21 +1,22 @@
 package duchess.command;
 
-import duchess.storage.Storage;
-import duchess.task.TaskList;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import duchess.storage.Storage;
+import duchess.task.TaskList;
+
 public class DisplayQuoteCommandTest {
-    TaskList tasks;
-    Storage mockStorage;
+    private TaskList tasks;
+    private Storage mockStorage;
 
     @BeforeEach
     public void setUp() {

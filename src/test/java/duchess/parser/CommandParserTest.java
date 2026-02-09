@@ -1,17 +1,20 @@
 package duchess.parser;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import org.junit.jupiter.api.Test;
+
 import duchess.command.CreateDeadlineCommand;
 import duchess.command.CreateEventCommand;
 import duchess.command.CreateToDoCommand;
 import duchess.command.DeleteTaskCommand;
 import duchess.command.DisplayListCommand;
 import duchess.command.FindOutstandingCommand;
+import duchess.command.FindTaskCommand;
 import duchess.command.MarkTaskCompleteCommand;
 import duchess.command.MarkTaskIncompleteCommand;
 import duchess.command.TerminateCommand;
 import duchess.command.UnknownCommand;
-import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class CommandParserTest {
     @Test
@@ -23,6 +26,7 @@ public class CommandParserTest {
         assertEquals(DeleteTaskCommand.class, CommandParser.getCommand("delete").getClass());
         assertEquals(DisplayListCommand.class, CommandParser.getCommand("list").getClass());
         assertEquals(FindOutstandingCommand.class, CommandParser.getCommand("outstanding").getClass());
+        assertEquals(FindTaskCommand.class, CommandParser.getCommand("find").getClass());
 
         assertEquals(MarkTaskCompleteCommand.class, CommandParser.getCommand("mark").getClass());
         assertEquals(MarkTaskIncompleteCommand.class, CommandParser.getCommand("unmark").getClass());

@@ -1,21 +1,22 @@
 package duchess.command;
 
+import java.io.IOException;
+import java.util.Map;
+import java.util.Set;
+
 import duchess.exception.MissingArgumentException;
 import duchess.parser.Utility;
 import duchess.storage.Storage;
 import duchess.task.Task;
 import duchess.task.TaskList;
 import duchess.task.ToDo;
-import java.io.IOException;
-import java.util.Map;
-import java.util.Set;
 
 /**
  * Class representing a command to create a todo task.
  */
 public class CreateToDoCommand extends Command {
+    public static final Set<String> DELIMITERS = Set.of("/default");
     private final Map<String, String> commandArgs;
-    public static final Set<String> delimiters = Set.of("/default");
 
     /**
      * Constructor for CreateToDoCommand class.
@@ -48,7 +49,7 @@ public class CreateToDoCommand extends Command {
         tasks.addTask(toDo);
         storage.saveTasksToFile(tasks);
 
-         return String.format("Got it! I've added this task:\n%s\nNow you have %d task(s) in the list.",
+        return String.format("Got it! I've added this task:\n%s\nNow you have %d task(s) in the list.",
                 toDo, tasks.getSize());
     }
 }

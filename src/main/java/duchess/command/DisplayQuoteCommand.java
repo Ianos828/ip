@@ -1,17 +1,21 @@
 package duchess.command;
 
-import duchess.storage.Storage;
-import duchess.task.TaskList;
 import java.util.List;
 import java.util.Random;
 
-public class DisplayQuoteCommand extends Command{
-    Random random;
+import duchess.storage.Storage;
+import duchess.task.TaskList;
+
+/**
+ * Class representing a command to display a random quote.
+ */
+public class DisplayQuoteCommand extends Command {
+    private final Random random;
 
     /**
      * Constructor for DisplayQuoteCommand class.
      */
-    public DisplayQuoteCommand(){
+    public DisplayQuoteCommand() {
         random = new Random();
     }
 

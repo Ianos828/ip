@@ -1,7 +1,8 @@
 package duchess.task;
 
-import duchess.parser.Utility;
 import java.time.LocalDate;
+
+import duchess.parser.Utility;
 
 /**
  * Deadline class for tasks with deadlines.

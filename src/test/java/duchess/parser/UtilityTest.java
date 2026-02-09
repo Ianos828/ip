@@ -1,11 +1,14 @@
 package duchess.parser;
 
-import duchess.exception.InvalidArgumentException;
-import duchess.exception.MissingArgumentException;
-import org.junit.jupiter.api.Test;
-import java.time.LocalDate;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import java.time.LocalDate;
+
+import org.junit.jupiter.api.Test;
+
+import duchess.exception.InvalidArgumentException;
+import duchess.exception.MissingArgumentException;
 
 public class UtilityTest {
     @Test
@@ -31,29 +34,29 @@ public class UtilityTest {
 
     @Test
     public void testParseInt_missingNumber_exceptionThrown() {
-        assertThrows(MissingArgumentException.class,
-                () -> Utility.parseInt(""),
+        assertThrows(MissingArgumentException.class, () ->
+                Utility.parseInt(""),
                 "Missing number");
     }
 
     @Test
     public void testParseInt_invalidNumber_exceptionThrown() {
-        assertThrows(InvalidArgumentException.class,
-                () -> Utility.parseInt("hello"),
+        assertThrows(InvalidArgumentException.class, () ->
+                Utility.parseInt("hello"),
                 "Input is not a number");
     }
 
     @Test
     public void testParseDate_missingDate_exceptionThrown() {
-        assertThrows(MissingArgumentException.class,
-                () -> Utility.parseDate(""),
+        assertThrows(MissingArgumentException.class, () ->
+                Utility.parseDate(""),
                 "Missing date");
     }
 
     @Test
     public void testParseDate_invalidDate_exceptionThrown() {
-        assertThrows(InvalidArgumentException.class,
-                () -> Utility.parseInt("hello"),
+        assertThrows(InvalidArgumentException.class, () ->
+                Utility.parseInt("hello"),
                 "Input is not a date");
     }
 

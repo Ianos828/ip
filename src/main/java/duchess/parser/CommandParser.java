@@ -1,10 +1,23 @@
 package duchess.parser;
 
-import duchess.command.*;
-
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
+
+import duchess.command.Command;
+import duchess.command.CommandType;
+import duchess.command.CreateDeadlineCommand;
+import duchess.command.CreateEventCommand;
+import duchess.command.CreateToDoCommand;
+import duchess.command.DeleteTaskCommand;
+import duchess.command.DisplayListCommand;
+import duchess.command.DisplayQuoteCommand;
+import duchess.command.FindOutstandingCommand;
+import duchess.command.FindTaskCommand;
+import duchess.command.MarkTaskCompleteCommand;
+import duchess.command.MarkTaskIncompleteCommand;
+import duchess.command.TerminateCommand;
+import duchess.command.UnknownCommand;
 
 /**
  * CommandParser class for parsing user input into commands.
@@ -41,35 +54,35 @@ public class CommandParser {
             command = new DisplayListCommand();
             break;
         case MARK:
-            arguments = parseArguments(MarkTaskCompleteCommand.delimiters, splitInput[1]);
+            arguments = parseArguments(MarkTaskCompleteCommand.DELIMITERS, splitInput[1]);
             command = new MarkTaskCompleteCommand(arguments);
             break;
         case UNMARK:
-            arguments = parseArguments(MarkTaskIncompleteCommand.delimiters, splitInput[1]);
+            arguments = parseArguments(MarkTaskIncompleteCommand.DELIMITERS, splitInput[1]);
             command = new MarkTaskIncompleteCommand(arguments);
             break;
         case DELETE:
-            arguments = parseArguments(DeleteTaskCommand.delimiters, splitInput[1]);
+            arguments = parseArguments(DeleteTaskCommand.DELIMITERS, splitInput[1]);
             command = new DeleteTaskCommand(arguments);
             break;
         case DEADLINE:
-            arguments = parseArguments(CreateDeadlineCommand.delimiters, splitInput[1]);
+            arguments = parseArguments(CreateDeadlineCommand.DELIMITERS, splitInput[1]);
             command = new CreateDeadlineCommand(arguments);
             break;
         case EVENT:
-            arguments = parseArguments(CreateEventCommand.delimiters, splitInput[1]);
+            arguments = parseArguments(CreateEventCommand.DELIMITERS, splitInput[1]);
             command = new CreateEventCommand(arguments);
             break;
         case TODO:
-            arguments = parseArguments(CreateToDoCommand.delimiters, splitInput[1]);
+            arguments = parseArguments(CreateToDoCommand.DELIMITERS, splitInput[1]);
             command = new CreateToDoCommand(arguments);
             break;
         case OUTSTANDING:
-            arguments = parseArguments(FindOutstandingCommand.delimiters, splitInput[1]);
+            arguments = parseArguments(FindOutstandingCommand.DELIMITERS, splitInput[1]);
             command = new FindOutstandingCommand(arguments);
             break;
         case FIND:
-            arguments = parseArguments(FindTaskCommand.delimiters, splitInput[1]);
+            arguments = parseArguments(FindTaskCommand.DELIMITERS, splitInput[1]);
             command = new FindTaskCommand(arguments);
             break;
         case CHEER:

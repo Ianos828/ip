@@ -1,14 +1,15 @@
 package duchess.task;
 
-import duchess.exception.InvalidArgumentException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import duchess.exception.InvalidArgumentException;
+
 /**
  * Class representing a list of tasks.
  */
-public class TaskList{
+public class TaskList {
     private final List<Task> tasks;
 
     /**
@@ -145,6 +146,10 @@ public class TaskList{
         return sb.toString().strip().trim();
     }
 
+    /**
+     * Returns a string representation of the list for saving to file.
+     * @return a string representation of the list for saving to file
+     */
     public String toSaveString() {
         StringBuilder sb = new StringBuilder();
 

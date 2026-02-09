@@ -1,22 +1,25 @@
 package duchess.command;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.Mockito.mock;
+
+import java.util.Map;
+
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
 import duchess.exception.InvalidArgumentException;
 import duchess.exception.MissingArgumentException;
 import duchess.storage.Storage;
 import duchess.task.Task;
 import duchess.task.TaskList;
 import duchess.task.ToDo;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import java.util.Map;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.mockito.Mockito.mock;
 
 public class DeleteTaskCommandTest {
-    TaskList tasks;
-    Storage mockStorage;
+    private TaskList tasks;
+    private Storage mockStorage;
 
     @BeforeEach
     public void setUp() {
@@ -34,8 +37,8 @@ public class DeleteTaskCommandTest {
 
     @Test
     public void testExecute_missingIndex_exceptionThrown() {
-        assertThrows(MissingArgumentException.class,
-                () -> new DeleteTaskCommand(
+        assertThrows(MissingArgumentException.class, () ->
+                new DeleteTaskCommand(
                         Map.of("/default", ""))
                         .execute(tasks, mockStorage),
                 "No list index provided");
@@ -43,8 +46,8 @@ public class DeleteTaskCommandTest {
 
     @Test
     public void testExecute_invalidIndex_exceptionThrown() {
-        assertThrows(InvalidArgumentException.class,
-                () -> new DeleteTaskCommand(
+        assertThrows(InvalidArgumentException.class, () ->
+                new DeleteTaskCommand(
                         Map.of("/default", "a"))
                         .execute(tasks, mockStorage),
                 "List index is not a number");
@@ -52,8 +55,8 @@ public class DeleteTaskCommandTest {
 
     @Test
     public void testExecute_indexOutOfRange_exceptionThrown() {
-        assertThrows(InvalidArgumentException.class,
-                () -> new DeleteTaskCommand(
+        assertThrows(InvalidArgumentException.class, () ->
+                new DeleteTaskCommand(
                         Map.of("/default", "-1"))
                         .execute(tasks, mockStorage),
                 "Index is out of range");

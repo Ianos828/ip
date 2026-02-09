@@ -1,16 +1,17 @@
 package duchess.command;
 
+import java.io.IOException;
+
 import duchess.exception.InvalidArgumentException;
 import duchess.exception.MissingArgumentException;
 import duchess.storage.Storage;
 import duchess.task.TaskList;
-import java.io.IOException;
 
 /**
  * Class representing a generic user command.
  */
-public abstract class Command{
-     /**
+public abstract class Command {
+    /**
      * Returns true if the command should end the main program, else false.
      *
      * @return boolean representing if the command should terminate the main program

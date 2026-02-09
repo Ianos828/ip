@@ -1,20 +1,23 @@
 package duchess.command;
 
-import duchess.exception.InvalidArgumentException;
-import duchess.exception.MissingArgumentException;
-import duchess.storage.Storage;
-import duchess.task.TaskList;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import java.util.Map;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.mock;
 
+import java.util.Map;
+
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import duchess.exception.InvalidArgumentException;
+import duchess.exception.MissingArgumentException;
+import duchess.storage.Storage;
+import duchess.task.TaskList;
+
 public class CreateEventCommandTest {
-    TaskList tasks;
-    Storage mockStorage;
+    private TaskList tasks;
+    private Storage mockStorage;
 
     @BeforeEach
     public void setUp() {
@@ -30,8 +33,8 @@ public class CreateEventCommandTest {
 
     @Test
     public void testExecute_missingTaskName_exceptionThrown() {
-        assertThrows(MissingArgumentException.class,
-                () -> new CreateEventCommand(
+        assertThrows(MissingArgumentException.class, () ->
+                new CreateEventCommand(
                         Map.of("/default", ""))
                         .execute(tasks, mockStorage),
                 "Event is missing name");
@@ -39,8 +42,8 @@ public class CreateEventCommandTest {
 
     @Test
     public void testExecute_missingStartDate_exceptionThrown() {
-        assertThrows(MissingArgumentException.class,
-                () -> new CreateEventCommand(
+        assertThrows(MissingArgumentException.class, () ->
+                new CreateEventCommand(
                         Map.of("/default", "a",
                                 "/from", "",
                                 "/to", "2001-01-02"))
@@ -50,8 +53,8 @@ public class CreateEventCommandTest {
 
     @Test
     public void testExecute_missingEndDate_exceptionThrown() {
-        assertThrows(MissingArgumentException.class,
-                () -> new CreateEventCommand(
+        assertThrows(MissingArgumentException.class, () ->
+                new CreateEventCommand(
                         Map.of("/default", "a",
                                 "/from", "2001-01-02",
                                 "/to", ""))
@@ -61,8 +64,8 @@ public class CreateEventCommandTest {
 
     @Test
     public void testExecute_invalidStartDate_exceptionThrown() {
-        assertThrows(InvalidArgumentException.class,
-                () -> new CreateEventCommand(
+        assertThrows(InvalidArgumentException.class, () ->
+                new CreateEventCommand(
                         Map.of("/default", "a",
                                 "/from", "now",
                                 "/to", "2001-01-02"))
@@ -72,8 +75,8 @@ public class CreateEventCommandTest {
 
     @Test
     public void testExecute_invalidEndDate_exceptionThrown() {
-        assertThrows(InvalidArgumentException.class,
-                () -> new CreateEventCommand(
+        assertThrows(InvalidArgumentException.class, () ->
+                new CreateEventCommand(
                         Map.of("/default", "a",
                                 "/from", "2001-01-02",
                                 "/to", "now"))
@@ -83,8 +86,8 @@ public class CreateEventCommandTest {
 
     @Test
     public void testExecute_endDateBeforeStartDate_exceptionThrown() {
-        assertThrows(InvalidArgumentException.class,
-                () -> new CreateEventCommand(
+        assertThrows(InvalidArgumentException.class, () ->
+                new CreateEventCommand(
                         Map.of("/default", "a",
                                 "/from", "2001-01-03",
                                 "/to", "2001-01-02"))

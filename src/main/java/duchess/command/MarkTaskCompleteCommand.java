@@ -1,21 +1,22 @@
 package duchess.command;
 
+import java.io.IOException;
+import java.util.Map;
+import java.util.Set;
+
 import duchess.exception.InvalidArgumentException;
 import duchess.exception.MissingArgumentException;
 import duchess.parser.Utility;
 import duchess.storage.Storage;
 import duchess.task.Task;
 import duchess.task.TaskList;
-import java.io.IOException;
-import java.util.Map;
-import java.util.Set;
 
 /**
  * Class representing a command to mark a task as completed.
  */
 public class MarkTaskCompleteCommand extends Command {
+    public static final Set<String> DELIMITERS = Set.of("/default");
     private final Map<String, String> commandArgs;
-    public static final Set<String> delimiters = Set.of("/default");
 
     /**
      * Constructor for MarkTaskCompleteCommand class.
@@ -36,7 +37,7 @@ public class MarkTaskCompleteCommand extends Command {
      * @throws InvalidArgumentException if the index provided is not a single number
      */
     @Override
-    public String execute (TaskList tasks, Storage storage)
+    public String execute(TaskList tasks, Storage storage)
             throws MissingArgumentException, InvalidArgumentException, IOException {
         String indexAsString = commandArgs.get("/default");
         int index = Utility.parseInt(indexAsString);

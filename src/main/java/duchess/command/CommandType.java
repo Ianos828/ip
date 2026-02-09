@@ -17,7 +17,7 @@ public enum CommandType {
     FIND("find"),
     CHEER("cheer");
 
-    public final String input;
+    private final String input;
 
     /**
      * Constructor for CommandType enum.

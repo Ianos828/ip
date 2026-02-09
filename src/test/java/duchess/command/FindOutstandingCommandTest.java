@@ -1,23 +1,26 @@
 package duchess.command;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.Mockito.mock;
+
+import java.time.LocalDate;
+import java.util.Map;
+
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
 import duchess.exception.InvalidArgumentException;
 import duchess.storage.Storage;
 import duchess.task.Deadline;
 import duchess.task.Event;
 import duchess.task.TaskList;
 import duchess.task.ToDo;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import java.time.LocalDate;
-import java.util.Map;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.mockito.Mockito.mock;
 
 public class FindOutstandingCommandTest {
-    TaskList tasks;
-    Storage mockStorage;
+    private TaskList tasks;
+    private Storage mockStorage;
 
     @BeforeEach
     public void setUp() {
@@ -40,8 +43,8 @@ public class FindOutstandingCommandTest {
 
     @Test
     public void testExecute_invalidDate_exceptionThrown() {
-        assertThrows(InvalidArgumentException.class,
-                () -> new FindOutstandingCommand(
+        assertThrows(InvalidArgumentException.class, () ->
+                new FindOutstandingCommand(
                         Map.of("/default", "a"))
                         .execute(tasks, mockStorage),
                 "Invalid date");

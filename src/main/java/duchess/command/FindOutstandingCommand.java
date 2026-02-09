@@ -1,17 +1,21 @@
 package duchess.command;
 
+import java.time.LocalDate;
+import java.util.Map;
+import java.util.Set;
+
 import duchess.exception.InvalidArgumentException;
 import duchess.exception.MissingArgumentException;
 import duchess.parser.Utility;
 import duchess.storage.Storage;
 import duchess.task.TaskList;
-import java.time.LocalDate;
-import java.util.Map;
-import java.util.Set;
 
-public class FindOutstandingCommand extends Command{
+/**
+ * Class representing a command to find outstanding tasks.
+ */
+public class FindOutstandingCommand extends Command {
+    public static final Set<String> DELIMITERS = Set.of("/default");
     private final Map<String, String> commandArgs;
-    public static final Set<String> delimiters = Set.of("/default");
 
     public FindOutstandingCommand(Map<String, String> commandArgs) {
         this.commandArgs = commandArgs;

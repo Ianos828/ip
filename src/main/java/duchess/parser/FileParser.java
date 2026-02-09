@@ -1,5 +1,8 @@
 package duchess.parser;
 
+import java.time.LocalDate;
+import java.util.Set;
+
 import duchess.exception.InvalidArgumentException;
 import duchess.exception.MissingArgumentException;
 import duchess.task.Deadline;
@@ -7,9 +10,10 @@ import duchess.task.Event;
 import duchess.task.Task;
 import duchess.task.TaskType;
 import duchess.task.ToDo;
-import java.time.LocalDate;
-import java.util.Set;
 
+/**
+ * FileParser class for parsing tasks from a file.
+ */
 public class FileParser {
     private static final int TODO_NUMBER_OF_COMPONENTS = 2;
     private static final int DEADLINE_NUMBER_OF_COMPONENTS = 3;

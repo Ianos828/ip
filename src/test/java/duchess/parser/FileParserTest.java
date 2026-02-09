@@ -1,70 +1,72 @@
 package duchess.parser;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import org.junit.jupiter.api.Test;
+
 import duchess.exception.InvalidArgumentException;
 import duchess.exception.MissingArgumentException;
 import duchess.task.Deadline;
 import duchess.task.Event;
 import duchess.task.ToDo;
-import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.junit.jupiter.api.Assertions.assertFalse;
 
 public class FileParserTest {
     @Test
     public void testGetTask_invalidCompletionMarker_exceptionThrown() {
-        assertThrows(InvalidArgumentException.class,
-                () -> FileParser.getTask("T | 2 | hello"),
+        assertThrows(InvalidArgumentException.class, () ->
+                FileParser.getTask("T | 2 | hello"),
                 "Invalid completion marker");
     }
 
     @Test
     public void testGetTask_toDoMissingName_exceptionThrown() {
-        assertThrows(MissingArgumentException.class,
-                () -> FileParser.getTask("T | 1"),
+        assertThrows(MissingArgumentException.class, () ->
+                FileParser.getTask("T | 1"),
                 "Missing task name");
     }
 
     @Test
     public void testGetTask_toDoTooManyArguments_exceptionThrown() {
-        assertThrows(MissingArgumentException.class,
-                () -> FileParser.getTask("T | 1 | hello | world"),
+        assertThrows(MissingArgumentException.class, () ->
+                FileParser.getTask("T | 1 | hello | world"),
                 "Invalid toDo task format");
     }
 
     @Test
     public void testGetTask_eventTooManyArguments_exceptionThrown() {
-        assertThrows(MissingArgumentException.class,
-                () -> FileParser.getTask("E | 1 | task | a | 2001-01-01 | 2001-01-02"),
+        assertThrows(MissingArgumentException.class, () ->
+                FileParser.getTask("E | 1 | task | a | 2001-01-01 | 2001-01-02"),
                 "Invalid event task format");
     }
 
     @Test
     public void testGetTask_deadlineTooManyArguments_exceptionThrown() {
-        assertThrows(MissingArgumentException.class,
-                () -> FileParser.getTask("D | 1 | hello | 2001-01-01 | 2001-01-01"),
+        assertThrows(MissingArgumentException.class, () ->
+                FileParser.getTask("D | 1 | hello | 2001-01-01 | 2001-01-01"),
                 "Invalid deadline task format");
     }
 
     @Test
     public void testGetTask_eventTooLittleArguments_exceptionThrown() {
-        assertThrows(MissingArgumentException.class,
-                () -> FileParser.getTask("E | 1 | task"),
+        assertThrows(MissingArgumentException.class, () ->
+                FileParser.getTask("E | 1 | task"),
                 "Invalid event task format");
     }
 
     @Test
     public void testGetTask_deadlineTooLittleArguments_exceptionThrown() {
-        assertThrows(MissingArgumentException.class,
-                () -> FileParser.getTask("D | 1 | hello"),
+        assertThrows(MissingArgumentException.class, () ->
+                FileParser.getTask("D | 1 | hello"),
                 "Invalid deadline task format");
     }
 
     @Test
     public void testGetTask_invalidTaskType_exceptionThrown() {
-        assertThrows(InvalidArgumentException.class,
-                () -> FileParser.getTask("F | 1 | hello"),
+        assertThrows(InvalidArgumentException.class, () ->
+                FileParser.getTask("F | 1 | hello"),
                 "Invalid task type");
     }
 

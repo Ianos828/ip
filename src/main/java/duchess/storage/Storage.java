@@ -1,28 +1,29 @@
 package duchess.storage;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.List;
+
 import duchess.exception.InvalidArgumentException;
 import duchess.exception.MissingArgumentException;
 import duchess.parser.FileParser;
 import duchess.task.Task;
 import duchess.task.TaskList;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.charset.StandardCharsets;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Storage class for loading and saving information to a file.
  */
 public class Storage {
+    private static final String DEFAULT_QUOTES = "Quote1\nQuote2\nQuote3\nQuote4\nQuote5";
     private final File taskListFile;
     private final File quotesFile;
     private List<String> quotes;
-    private final static String DEFAULT_QUOTES = "Quote1\nQuote2\nQuote3\nQuote4\nQuote5";
 
     /**
      * Constructor for Storage class.
@@ -69,6 +70,11 @@ public class Storage {
         return quotes;
     }
 
+    /**
+     * Loads tasks from a file and saves it to a TaskList.
+     * @return a TaskList containing the tasks loaded from the file
+     * @throws IOException if the file cannot be found or read
+     */
     public TaskList loadTasksFromFile() throws IOException {
         String rawTask;
         TaskList tasks = new TaskList();
@@ -90,7 +96,12 @@ public class Storage {
         return tasks;
     }
 
-    public void saveTasksToFile(TaskList tasks) throws IOException{
+    /**
+     * Saves a TaskList to a file.
+     * @param tasks the TaskList to be saved
+     * @throws IOException if the file cannot be created or written to
+     */
+    public void saveTasksToFile(TaskList tasks) throws IOException {
         if (!taskListFile.exists()) {
             createFile(taskListFile);
         }
@@ -104,7 +115,7 @@ public class Storage {
      *
      * @throws IOException if the file or parent directory cannot be created
      */
-    private void createFile(File file) throws IOException{
+    private void createFile(File file) throws IOException {
         boolean isFolderCreated = file.getParentFile().mkdirs();
         boolean isFileCreated;
 

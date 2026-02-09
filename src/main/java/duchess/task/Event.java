@@ -1,7 +1,8 @@
 package duchess.task;
 
-import duchess.parser.Utility;
 import java.time.LocalDate;
+
+import duchess.parser.Utility;
 
 /**
  * Event class for tasks with start and end dates.

@@ -20,6 +20,6 @@ public class DisplayListCommand extends Command {
             return "Your list is empty!";
         }
 
-         return String.format("Here are the tasks in your list:\n%s", tasks);
+        return String.format("Here are the tasks in your list:\n%s", tasks);
     }
 }

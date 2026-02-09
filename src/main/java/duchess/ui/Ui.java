@@ -2,6 +2,9 @@ package duchess.ui;
 
 import java.util.Scanner;
 
+/**
+ * Ui class to display messages and read user input.
+ */
 public class Ui {
     private final Scanner scanner;
 
