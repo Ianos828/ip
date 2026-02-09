@@ -29,9 +29,16 @@ public class Duchess {
      * If loading fails, creates a new TaskList and empty list of quotes.
      * </p>
      */
-    public Duchess() {
+    public Duchess(String... args) {
         storage = new Storage(SAVE_FILE_PATH, QUOTES_FILE_PATH);
         ui = new Ui();
+
+        for (String arg : args) {
+            if (arg.equals("noload")) {
+                tasks = new TaskList();
+                return;
+            }
+        }
 
         try {
             tasks = storage.loadTasksFromFile();
@@ -69,9 +76,9 @@ public class Duchess {
     /**
      * Main method for Duchess.
      *
-     * @param args optional startup arguments
+     * @param args accepts "noload" as an argument to skip loading tasks from a file
      */
-    public static void main(String[] args) {
-        new Duchess().run();
+    public static void main(String... args) {
+        new Duchess(args).run();
     }
 }
