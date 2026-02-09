@@ -14,22 +14,34 @@ import duchess.exception.MissingArgumentException;
 import duchess.storage.Storage;
 import duchess.task.TaskList;
 
+/**
+ * Tests for the CreateToDoCommand class.
+ */
 public class CreateToDoCommandTest {
     private TaskList tasks;
     private Storage mockStorage;
 
+    /**
+     * Sets up the test environment.
+     */
     @BeforeEach
     public void setUp() {
         tasks = new TaskList();
         mockStorage = mock(Storage.class);
     }
 
+    /**
+     * Cleans up the test environment.
+     */
     @AfterEach
     public void tearDown() {
         tasks = null;
         mockStorage = null;
     }
 
+    /**
+     * Tests that an exception is thrown when the task name is missing.
+     */
     @Test
     public void testExecute_missingTaskName_exceptionThrown() {
         assertThrows(MissingArgumentException.class, () ->
@@ -39,6 +51,9 @@ public class CreateToDoCommandTest {
                 "Todo is missing name");
     }
 
+    /**
+     * Tests that a todo task is successfully created when valid inputs are provided.
+     */
     @Test
     public void testExecute_validInputs_success() {
         try {

@@ -13,7 +13,13 @@ import duchess.task.Deadline;
 import duchess.task.Event;
 import duchess.task.ToDo;
 
+/**
+ * Tests for the FileParser class.
+ */
 public class FileParserTest {
+    /**
+     * Tests that an exception is thrown when an invalid completion marker is provided.
+     */
     @Test
     public void testGetTask_invalidCompletionMarker_exceptionThrown() {
         assertThrows(InvalidArgumentException.class, () ->
@@ -21,6 +27,9 @@ public class FileParserTest {
                 "Invalid completion marker");
     }
 
+    /**
+     * Tests that an exception is thrown when a todo task is missing its name.
+     */
     @Test
     public void testGetTask_toDoMissingName_exceptionThrown() {
         assertThrows(MissingArgumentException.class, () ->
@@ -28,6 +37,9 @@ public class FileParserTest {
                 "Missing task name");
     }
 
+    /**
+     * Tests that an exception is thrown when a todo task has too many arguments provided.
+     */
     @Test
     public void testGetTask_toDoTooManyArguments_exceptionThrown() {
         assertThrows(MissingArgumentException.class, () ->
@@ -35,6 +47,9 @@ public class FileParserTest {
                 "Invalid toDo task format");
     }
 
+    /**
+     * Tests that an exception is thrown when an event task has too many arguments provided.
+     */
     @Test
     public void testGetTask_eventTooManyArguments_exceptionThrown() {
         assertThrows(MissingArgumentException.class, () ->
@@ -42,6 +57,9 @@ public class FileParserTest {
                 "Invalid event task format");
     }
 
+    /**
+     * Tests that an exception is thrown when a deadline task has too many arguments provided.
+     */
     @Test
     public void testGetTask_deadlineTooManyArguments_exceptionThrown() {
         assertThrows(MissingArgumentException.class, () ->
@@ -49,20 +67,29 @@ public class FileParserTest {
                 "Invalid deadline task format");
     }
 
+    /**
+     * Tests that an exception is thrown when an event task has too few arguments provided.
+     */
     @Test
-    public void testGetTask_eventTooLittleArguments_exceptionThrown() {
+    public void testGetTask_eventTooFewArguments_exceptionThrown() {
         assertThrows(MissingArgumentException.class, () ->
                 FileParser.getTask("E | 1 | task"),
                 "Invalid event task format");
     }
 
+    /**
+     * Tests that an exception is thrown when a deadline task has too few arguments provided.
+     */
     @Test
-    public void testGetTask_deadlineTooLittleArguments_exceptionThrown() {
+    public void testGetTask_deadlineTooFewArguments_exceptionThrown() {
         assertThrows(MissingArgumentException.class, () ->
                 FileParser.getTask("D | 1 | hello"),
                 "Invalid deadline task format");
     }
 
+    /**
+     * Tests that an exception is thrown when an invalid task type is provided.
+     */
     @Test
     public void testGetTask_invalidTaskType_exceptionThrown() {
         assertThrows(InvalidArgumentException.class, () ->
@@ -70,6 +97,9 @@ public class FileParserTest {
                 "Invalid task type");
     }
 
+    /**
+     * Tests that a valid todo object is returned when a valid task is provided.
+     */
     @Test
     public void testGetTask_toDo_success() {
         String rawTask = "T | 0 | task";
@@ -85,6 +115,9 @@ public class FileParserTest {
         }
     }
 
+    /**
+     * Tests that a valid event object is returned when a valid task is provided.
+     */
     @Test
     public void testGetTask_event_success() {
         String rawTask = "E | 1 | task | 2001-01-01 | 2001-01-02";
@@ -100,6 +133,9 @@ public class FileParserTest {
         }
     }
 
+    /**
+     * Tests that a valid deadline object is returned when a valid task is provided.
+     */
     @Test
     public void testGetTask_deadline_success() {
         String rawTask = "D | 1 | task | 2001-01-01";

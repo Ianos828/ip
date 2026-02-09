@@ -10,11 +10,17 @@ import org.junit.jupiter.api.Test;
 import duchess.storage.Storage;
 import duchess.task.TaskList;
 
+/**
+ * Tests for the TerminateCommand class.
+ */
 public class TerminateCommandTest {
     private TerminateCommand command;
     private TaskList tasks;
     private Storage mockStorage;
 
+    /**
+     * Sets up the test environment.
+     */
     @BeforeEach
     public void setUp() {
         command = new TerminateCommand();
@@ -22,6 +28,9 @@ public class TerminateCommandTest {
         mockStorage = mock(Storage.class);
     }
 
+    /**
+     * Cleans up the test environment.
+     */
     @AfterEach
     public void tearDown() {
         command = null;
@@ -29,6 +38,9 @@ public class TerminateCommandTest {
         mockStorage = null;
     }
 
+    /**
+     * Tests that the command ends the program.
+     */
     @Test
     public void testExecute() {
         assertEquals("Bye. Hope to see you again soon!",

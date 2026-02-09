@@ -16,10 +16,16 @@ import duchess.storage.Storage;
 import duchess.task.TaskList;
 import duchess.task.ToDo;
 
+/**
+ * Tests for the MarkTaskIncompleteCommand class.
+ */
 public class MarkTaskIncompleteCommandTest {
     private TaskList tasks;
     private Storage mockStorage;
 
+    /**
+     * Sets up the test environment.
+     */
     @BeforeEach
     public void setUp() {
         tasks = new TaskList();
@@ -27,12 +33,18 @@ public class MarkTaskIncompleteCommandTest {
         mockStorage = mock(Storage.class);
     }
 
+    /**
+     * Cleans up the test environment.
+     */
     @AfterEach
     public void tearDown() {
         tasks = null;
         mockStorage = null;
     }
 
+    /**
+     * Tests that an exception is thrown when the task index is missing.
+     */
     @Test
     public void testExecute_missingIndex_exceptionThrown() {
         assertThrows(MissingArgumentException.class, () ->
@@ -41,6 +53,10 @@ public class MarkTaskIncompleteCommandTest {
                         .execute(tasks, mockStorage),
                 "No list index provided");
     }
+
+    /**
+     * Tests that an exception is thrown when the task index is invalid.
+     */
     @Test
     public void testExecute_invalidIndex_exceptionThrown() {
         assertThrows(InvalidArgumentException.class, () ->
@@ -50,8 +66,11 @@ public class MarkTaskIncompleteCommandTest {
                 "Index is out of range");
     }
 
+    /**
+     * Tests that a task is successfully marked as incomplete when a valid index is provided.
+     */
     @Test
-    public void testExecute_validIndex_exceptionThrown() {
+    public void testExecute_validIndex_success() {
         try {
             assertEquals("""
                     OK, I've marked this task as not done yet:

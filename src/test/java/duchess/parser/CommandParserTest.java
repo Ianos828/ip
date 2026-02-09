@@ -16,7 +16,13 @@ import duchess.command.MarkTaskIncompleteCommand;
 import duchess.command.TerminateCommand;
 import duchess.command.UnknownCommand;
 
+/**
+ * Tests for the CommandParser class.
+ */
 public class CommandParserTest {
+    /**
+     * Tests the getCommand method to create the correct command object.
+     */
     @Test
     public void testGetCommand() {
         assertEquals(CreateDeadlineCommand.class, CommandParser.getCommand("deadline").getClass());
