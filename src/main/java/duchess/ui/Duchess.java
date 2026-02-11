@@ -81,4 +81,26 @@ public class Duchess {
     public static void main(String... args) {
         new Duchess(args).run();
     }
+
+    /**
+     * Executes a command and returns a Response object containing the result of executing a command.
+     * @param input the input string
+     * @return a Response object containing the result of executing a command
+     */
+    public Response getResponse(String input) {
+        Command command = CommandParser.getCommand(input);
+        String result;
+        boolean shouldTerminate = false;
+
+        try {
+            result = command.execute(tasks, storage);
+            shouldTerminate = command.isTerminatingCommand();
+        } catch (InvalidArgumentException | MissingArgumentException e) {
+            result = e.getMessage();
+        } catch (Exception e) {
+            result = "An unknown error has occurred. Please try again. Error: " + e.getMessage();
+        }
+
+        return new Response(result, shouldTerminate);
+    }
 }
