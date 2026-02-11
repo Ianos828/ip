@@ -1,7 +1,7 @@
 package duchess.ui.components;
 
-import javafx.util.Duration;
-
+import duchess.ui.Duchess;
+import duchess.ui.Response;
 import javafx.animation.PauseTransition;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -11,9 +11,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
-
-import duchess.ui.Duchess;
-import duchess.ui.Response;
+import javafx.util.Duration;
 
 /**
  * Controller for the main GUI.

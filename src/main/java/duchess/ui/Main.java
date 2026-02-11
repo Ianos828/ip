@@ -2,13 +2,12 @@ package duchess.ui;
 
 import java.io.IOException;
 
+import duchess.ui.components.MainWindow;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.Scene;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-
-import duchess.ui.components.MainWindow;
 
 /**
  * The GUI for Duchess using FXML.
@@ -27,7 +26,7 @@ public class Main extends Application {
             AnchorPane anchorPane = fxmlLoader.load();
             Scene scene = new Scene(anchorPane);
             stage.setScene(scene);
-            fxmlLoader.<MainWindow>getController().setDuchess(duchess);  // inject the Duchess instance
+            fxmlLoader.<MainWindow>getController().setDuchess(duchess); // inject the Duchess instance
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
