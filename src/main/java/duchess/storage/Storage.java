@@ -39,8 +39,8 @@ public class Storage {
      */
     public Storage(Path taskListFilePath, Path quotesFilePath) {
         this.taskListFile = taskListFilePath.toAbsolutePath()
-                    .normalize()
-                    .toFile();
+                .normalize()
+                .toFile();
         this.quotesFile = quotesFilePath.toAbsolutePath()
                 .normalize()
                 .toFile();
