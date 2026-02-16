@@ -116,8 +116,12 @@ public class Storage {
      * @throws IOException if the file or parent directory cannot be created
      */
     private void createFile(File file) throws IOException {
-        boolean isFolderCreated = file.getParentFile().mkdirs();
-        boolean isFileCreated;
+        boolean isFolderCreated = true;
+        boolean isFileCreated = true;
+
+        if (!file.getParentFile().exists()) {
+            isFolderCreated = file.getParentFile().mkdirs();
+        }
 
         isFileCreated = file.createNewFile();
 
