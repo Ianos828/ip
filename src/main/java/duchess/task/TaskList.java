@@ -105,6 +105,11 @@ public class TaskList {
         return tasks.isEmpty();
     }
 
+    /**
+     * Returns a list of outstanding tasks.
+     * @param date the date to check for
+     * @return a list of outstanding tasks
+     */
     public TaskList getOutstandingTasks(LocalDate date) {
         List<Task> outstandingTasks = tasks.stream()
                 .filter(task -> task.isOutstanding(date))
@@ -119,7 +124,7 @@ public class TaskList {
      * @param keyword the keyword to search for
      * @return a list of matching tasks
      */
-    public TaskList findMatchingTasks(String keyword) {
+    public TaskList getMatchingTasks(String keyword) {
         List<Task> matchedTasks = tasks.stream()
                 .filter(task -> task.getName()
                         .toLowerCase()

@@ -39,7 +39,7 @@ public class FindTaskCommand extends Command {
             throw new MissingArgumentException("No keyword provided!");
         }
 
-        TaskList matchedTasks = tasks.findMatchingTasks(keyword.toLowerCase());
+        TaskList matchedTasks = tasks.getMatchingTasks(keyword.toLowerCase());
 
         if (matchedTasks.isEmpty()) {
             return "No matching tasks found!";
