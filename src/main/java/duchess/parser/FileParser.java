@@ -22,6 +22,7 @@ public class FileParser {
 
     public static Task getTask(String rawTask) throws MissingArgumentException, InvalidArgumentException {
         String[] splitInput = Utility.splitIntoPair(rawTask, " \\| ");
+        assert splitInput.length == 2;
 
         TaskType taskType = getTaskType(splitInput[0].toUpperCase());
 
@@ -37,6 +38,7 @@ public class FileParser {
             throw new MissingArgumentException("Task name cannot be empty!");
         }
 
+        assert taskComponents.length >= 2;
         String name = taskComponents[1];
 
         if (Utility.isInvalidString(name)) {
@@ -52,6 +54,7 @@ public class FileParser {
                         TODO_NUMBER_OF_COMPONENTS, taskComponents.length));
             }
 
+            assert taskComponents.length == 2;
             task = new ToDo(name, isComplete);
             break;
         case EVENT:
@@ -60,6 +63,7 @@ public class FileParser {
                         TODO_NUMBER_OF_COMPONENTS, taskComponents.length));
             }
 
+            assert taskComponents.length == 4;
             String startDateAsString = taskComponents[2];
             String endDateAsString = taskComponents[3];
 
@@ -74,6 +78,7 @@ public class FileParser {
                         TODO_NUMBER_OF_COMPONENTS, taskComponents.length));
             }
 
+            assert taskComponents.length == 3;
             String deadlineAsString = taskComponents[2];
             LocalDate deadline = Utility.parseDate(deadlineAsString);
 
