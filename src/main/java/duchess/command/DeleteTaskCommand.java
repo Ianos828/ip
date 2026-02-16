@@ -40,7 +40,9 @@ public class DeleteTaskCommand extends Command {
     public String execute(TaskList tasks, Storage storage)
             throws MissingArgumentException, InvalidArgumentException, IOException {
         String indexAsString = commandArgs.get("/default");
+
         int index = Utility.parseInt(indexAsString);
+
         Task task = tasks.removeTask(index);
         storage.saveTasksToFile(tasks);
 
