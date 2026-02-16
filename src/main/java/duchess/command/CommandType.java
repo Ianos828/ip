@@ -17,15 +17,15 @@ public enum CommandType {
     FIND("find"),
     CHEER("cheer");
 
-    private final String input;
+    private final String commandString;
 
     /**
      * Constructor for CommandType enum.
      *
-     * @param input the input string
+     * @param commandString the string representation of the command
      */
-    CommandType(String input) {
-        this.input = input;
+    CommandType(String commandString) {
+        this.commandString = commandString;
     }
 
     /**
@@ -36,7 +36,7 @@ public enum CommandType {
      */
     public static CommandType getCommandType(String input) {
         for (CommandType type : CommandType.values()) {
-            if (type.input.equals(input)) {
+            if (type.commandString.startsWith(input)) {
                 return type;
             }
         }
