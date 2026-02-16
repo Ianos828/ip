@@ -41,6 +41,8 @@ public class CommandParser {
      */
     public static Command getCommand(String input) {
         String[] splitInput = Utility.splitIntoPair(input, " ");
+        assert splitInput.length == 2;
+
         CommandType commandType = CommandParser.getCommandType(splitInput[0].toLowerCase());
 
         Command command = null;
