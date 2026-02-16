@@ -42,7 +42,7 @@ public class Utility {
      *
      * @param indexAsString map containing a delimiter-argument pair
      * @return an integer denoting the list index
-     * @throws MissingArgumentException if argument is empty string or null
+     * @throws MissingArgumentException if the argument is an empty string or null
      * @throws InvalidArgumentException if the argument is not a number or multiple numbers are specified
      */
     public static int parseInt(String indexAsString) throws MissingArgumentException, InvalidArgumentException {
