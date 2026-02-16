@@ -18,7 +18,7 @@ public class Utility {
      * @return a String array of length 2
      */
     public static String[] splitIntoPair(String input, String delimiter) {
-        String[] split = input.split(delimiter, 2);
+        String[] split = input.strip().split(delimiter, 2);
 
         if (split.length == 1) {
             return new String[]{ split[0], "" };
