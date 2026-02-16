@@ -25,8 +25,10 @@ public class Main extends Application {
             FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/view/MainWindow.fxml"));
             AnchorPane anchorPane = fxmlLoader.load();
             Scene scene = new Scene(anchorPane);
+
             stage.setScene(scene);
             fxmlLoader.<MainWindow>getController().setDuchess(duchess); // inject the Duchess instance
+
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
