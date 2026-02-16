@@ -22,7 +22,9 @@ public class FileParser {
 
     public static Task getTask(String rawTask) throws MissingArgumentException, InvalidArgumentException {
         String[] splitInput = Utility.splitIntoPair(rawTask, " \\| ");
+
         TaskType taskType = getTaskType(splitInput[0].toUpperCase());
+
         String[] taskComponents = splitInput[1].split(" \\| ");
 
         if (!VALID_COMPLETION_MARKERS.contains(taskComponents[0])) {
