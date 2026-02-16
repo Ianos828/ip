@@ -23,15 +23,6 @@ import duchess.command.UnknownCommand;
  * CommandParser class for parsing user input into commands.
  */
 public class CommandParser {
-    /**
-     * Returns the command type of the input based on its string representation.
-     *
-     * @param input the input string
-     * @return the type of command of the input
-     */
-    private static CommandType getCommandType(String input) {
-        return CommandType.getCommandType(input);
-    }
 
     /**
      * Returns a command from the specified input string
@@ -43,7 +34,7 @@ public class CommandParser {
         String[] splitInput = Utility.splitIntoPair(input, " ");
         assert splitInput.length == 2;
 
-        CommandType commandType = CommandParser.getCommandType(splitInput[0].toLowerCase());
+        CommandType commandType = CommandType.getCommandType(splitInput[0].toLowerCase());
 
         Command command = null;
         Map<String, String> arguments;
