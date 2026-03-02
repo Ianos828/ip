@@ -1,5 +1,7 @@
 package duchess.command;
 
+import duchess.parser.Utility;
+
 /**
  * Enum representing the different types of commands.
  */
@@ -35,6 +37,10 @@ public enum CommandType {
      * @return the command type of the input
      */
     public static CommandType getCommandType(String input) {
+        if (Utility.isInvalidString(input)) {
+            return UNKNOWN;
+        }
+
         for (CommandType type : CommandType.values()) {
             if (type.commandString.startsWith(input)) {
                 return type;

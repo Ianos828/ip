@@ -79,7 +79,7 @@ public class Utility {
             date = LocalDate.parse(dateAsString);
         } catch (DateTimeParseException e) {
             throw new InvalidArgumentException(
-                    "Date provided is not in the correct format! Expected format: YYYY-MM-DD");
+                    "Invalid Date provided! Expected format: YYYY-MM-DD");
         }
 
         return date;
