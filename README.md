@@ -49,7 +49,8 @@ Format: `deadline NAME /by END_DATE`
 `event`: Adds a new event to the list with a start and end date.\
 Format: `event NAME /from START_DATE /to END_DATE`
 
-> [!TIP] **Some notes about the date format:**
+> [!TIP]
+> **Some notes about the date format:**
 > - Dates must be in the format `YYYY-MM-DD`.
 > - Event `START_DATE` must occur before `END_DATE`.
 
