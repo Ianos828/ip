@@ -7,27 +7,27 @@
 }
 
 .text-field {
-    -fx-background-color: #d9ffe2;
+    -fx-background-color: #fafad2;
     -fx-font: 18px "Arial";
 }
 
 .button {
-    -fx-background-color: mediumspringgreen;
+    -fx-background-color: #b8860b;
     -fx-font: italic bold 16px "Arial";
 }
 
 .button:hover {
-    -fx-background-color:cyan;
+    -fx-background-color: #e0ffff;
     -fx-font-size: 18px;
 }
 
 .button:pressed {
-    -fx-background-color:orange;
+    -fx-background-color: #daa520;
     -fx-font-size: 20px;
 }
 
 .scroll-pane {
-    -fx-background-color: rgba(0,0,0,.5);
+    -fx-background-color: rgba(0,0,0,0);
 }
 
 .scroll-pane .viewport {
