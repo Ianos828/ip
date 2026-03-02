@@ -78,7 +78,7 @@ public class MainWindow extends AnchorPane {
      * Exits the application with a delay.
      */
     private void exitWithDelay() {
-        PauseTransition delay = new PauseTransition(Duration.seconds(1));
+        PauseTransition delay = new PauseTransition(Duration.seconds(2));
         delay.setOnFinished(event -> Platform.exit());
         delay.play();
     }
