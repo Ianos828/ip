@@ -39,6 +39,11 @@ public class Event extends Task {
         setComplete(isComplete);
     }
 
+    /**
+     * Returns true if the event is ongoing and the task is not complete.
+     * @param date the date to compare with the event
+     * @return true if the event is ongoing and the task is not complete, false otherwise
+     */
     @Override
     public boolean isOutstanding(LocalDate date) {
         return (date.isAfter(startDate) || date.isEqual(startDate))

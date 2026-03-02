@@ -34,6 +34,11 @@ public class Deadline extends Task {
         setComplete(isComplete);
     }
 
+    /**
+     * Returns true if the deadline is after the specified date and the task is not complete.
+     * @param date the date to compare with the deadline
+     * @return true if the deadline is after the specified date and the task is not complete, false otherwise
+     */
     @Override
     public boolean isOutstanding(LocalDate date) {
         return deadline.isAfter(date) && !isComplete();
