@@ -13,7 +13,7 @@ Below is a user guide on how to use Duchess.
    and use the `java -jar duchess.jar` command to run the application.
    A GUI similar to the below should appear in a few seconds.
 
-![Duchess GUI](/docs/Ui.png)
+![Duchess GUI](Ui.png)
 
 5. Type your command in the text box and press enter to execute it.
    Some examples of commands are:
