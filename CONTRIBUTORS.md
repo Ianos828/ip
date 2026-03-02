@@ -7,3 +7,5 @@ Display | Name | Github Profile | Homepage
 # I would like to join this list. How can I help the project
 
 For more information, please refer to our [contributor's guide](https://oss-generic.github.io/process/).
+
+# References
