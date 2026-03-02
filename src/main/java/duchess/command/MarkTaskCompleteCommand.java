@@ -46,7 +46,7 @@ public class MarkTaskCompleteCommand extends Command {
         Task task = tasks.markTaskAsComplete(index);
         storage.saveTasksToFile(tasks);
 
-        return String.format("Nice! I've marked this task as done:\n%s",
+        return String.format("Hark! I have marked this task as done, and 'tis well:\n%s",
                 task);
     }
 }

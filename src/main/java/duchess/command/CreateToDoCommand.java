@@ -41,7 +41,7 @@ public class CreateToDoCommand extends Command {
         String name = commandArgs.get("/default");
 
         if (Utility.isInvalidString(name)) {
-            throw new MissingArgumentException("Task name cannot be empty!");
+            throw new MissingArgumentException("Hark, the task's name must not be barren!");
         }
 
         Task toDo = new ToDo(name);
@@ -49,7 +49,7 @@ public class CreateToDoCommand extends Command {
         tasks.addTask(toDo);
         storage.saveTasksToFile(tasks);
 
-        return String.format("Got it! I've added this task:\n%s\nNow you have %d task(s) in the list.",
+        return String.format("Hark! I have appended this task:\n%s\nNow, thou hast %d task(s) upon thy scroll.",
                 toDo, tasks.getSize());
     }
 }

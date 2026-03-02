@@ -16,6 +16,6 @@ public class UnknownCommand extends Command {
      */
     @Override
     public String execute(TaskList tasks, Storage storage) {
-        return "I'm sorry, but I don't know what that means :(";
+        return "Hark, I know not what that doth signify.";
     }
 }

@@ -20,7 +20,13 @@ import duchess.task.TaskList;
  * Storage class for loading and saving information to a file.
  */
 public class Storage {
-    private static final String DEFAULT_QUOTES = "Quote1\nQuote2\nQuote3\nQuote4\nQuote5";
+    private static final String DEFAULT_QUOTES = """
+        All the world’s a stage, and all the men and women merely players. — As You Like It, Shakespeare
+        Not all those who wander are lost. — J.R.R. Tolkien
+        In a time of deceit telling the truth is a revolutionary act. — George Orwell
+        Time is the longest distance between two places. — Tennessee Williams
+        Be yourself; everyone else is already taken. — Oscar Wilde
+        """;
     private final File taskListFile;
     private final File quotesFile;
     private List<String> quotes;

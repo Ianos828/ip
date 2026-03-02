@@ -70,7 +70,7 @@ public class MainWindow extends AnchorPane {
      */
     private void showWelcomeMessage() {
         dialogueContainer.getChildren().addAll(
-                DialogueBox.getDuchessDialog("Hello! I'm Duchess!\nWhat can I do for you?", duchessImage)
+                DialogueBox.getDuchessDialog("Hark, I be Duchess! What service dost thou require of me?", duchessImage)
         );
     }
 
@@ -78,7 +78,7 @@ public class MainWindow extends AnchorPane {
      * Exits the application with a delay.
      */
     private void exitWithDelay() {
-        PauseTransition delay = new PauseTransition(Duration.seconds(1));
+        PauseTransition delay = new PauseTransition(Duration.seconds(2));
         delay.setOnFinished(event -> Platform.exit());
         delay.play();
     }

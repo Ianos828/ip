@@ -44,11 +44,11 @@ public class FindOutstandingCommand extends Command {
         TaskList outstandingTasks = tasks.getOutstandingTasks(afterDate);
 
         if (outstandingTasks.isEmpty()) {
-            return String.format("There are no outstanding tasks after %s!",
+            return String.format("Verily, no tasks remain outstanding past %s!",
                     Utility.formatDate(afterDate));
         }
 
-        return String.format("Here are the outstanding tasks in your list:\n%s",
+        return String.format("Hark, yon tasks of import that yet linger on thy scroll:\n%s",
                 outstandingTasks);
     }
 }

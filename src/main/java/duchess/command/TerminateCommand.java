@@ -26,6 +26,6 @@ public class TerminateCommand extends Command {
      */
     @Override
     public String execute(TaskList tasks, Storage storage) {
-        return "Bye. Hope to see you again soon!";
+        return "Farewell! Mayhap we shall meet anon!";
     }
 }

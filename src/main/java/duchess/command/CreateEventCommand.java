@@ -45,14 +45,14 @@ public class CreateEventCommand extends Command {
         String endDateAsString = commandArgs.get("/to");
 
         if (Utility.isInvalidString(name)) {
-            throw new MissingArgumentException("Event name cannot be empty!");
+            throw new MissingArgumentException("Hark, the task's name must not be barren!");
         }
 
         LocalDate startDate = Utility.parseDate(startDateAsString);
         LocalDate endDate = Utility.parseDate(endDateAsString);
 
         if (startDate.isAfter(endDate)) {
-            throw new InvalidArgumentException("Start date cannot be after end date!");
+            throw new InvalidArgumentException("Hark! The day of inception may not succeed the day of conclusion!");
         }
 
         Task event = new Event(name, startDate, endDate);
@@ -60,7 +60,7 @@ public class CreateEventCommand extends Command {
         tasks.addTask(event);
         storage.saveTasksToFile(tasks);
 
-        return String.format("Got it! I've added this task:\n%s\nNow you have %d task(s) in the list.",
+        return String.format("Hark! I have appended this task:\n%s\nNow, thou hast %d task(s) upon thy scroll.",
                 event, tasks.getSize());
     }
 }

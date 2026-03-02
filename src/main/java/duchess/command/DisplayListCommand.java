@@ -17,9 +17,9 @@ public class DisplayListCommand extends Command {
     @Override
     public String execute(TaskList tasks, Storage storage) {
         if (tasks.isEmpty()) {
-            return "Your list is empty!";
+            return "Hark, thy scroll be bare of any note!";
         }
 
-        return String.format("Here are the tasks in your list:\n%s", tasks);
+        return String.format("Hark, attend to the tasks upon thy scroll:\n%s", tasks);
     }
 }

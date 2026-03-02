@@ -30,7 +30,7 @@ public class DisplayQuoteCommand extends Command {
         List<String> quotes = storage.getQuotes();
 
         if (quotes.isEmpty()) {
-            return "There are no quotes available!";
+            return "Hark! No sayings of yore be at hand!";
         }
 
         int randomIndex = random.nextInt(quotes.size());

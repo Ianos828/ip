@@ -36,16 +36,16 @@ public class FindTaskCommand extends Command {
         String keyword = commandArgs.get("/default");
 
         if (Utility.isInvalidString(keyword)) {
-            throw new MissingArgumentException("No keyword provided!");
+            throw new MissingArgumentException("Hark! No word be spoken!");
         }
 
         TaskList matchedTasks = tasks.getMatchingTasks(keyword.toLowerCase());
 
         if (matchedTasks.isEmpty()) {
-            return "No matching tasks found!";
+            return "Hark! No tasks of such sort art found within!";
         }
 
-        return String.format("Here are the matching tasks in your list:\n%s",
+        return String.format("Hark, the tasks that doth align within thy roster:\n%s",
                 matchedTasks);
     }
 }
