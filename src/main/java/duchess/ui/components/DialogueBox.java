@@ -13,6 +13,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
+import javafx.scene.shape.Rectangle;
 
 /**
  * Represents a dialogue box consisting of an ImageView to represent the speaker's face
@@ -41,16 +42,24 @@ public class DialogueBox extends HBox {
 
         dialogue.setText(text);
         displayPicture.setImage(image);
+
+//        // Clip the ImageView to give it rounded corners (or a circle if the radius is large enough).
+//        double size = displayPicture.getFitWidth();
+//        Rectangle clip = new Rectangle(size, size);
+//        clip.setArcWidth(size); // For a circle, use clip.setArcWidth(size); clip.setArcHeight(size);
+//        clip.setArcHeight(size);
+//        displayPicture.setClip(clip);
     }
 
     /**
      * Flips the dialogue box such that the ImageView is on the left and text on the right.
      */
     private void flip() {
+        this.setAlignment(Pos.TOP_LEFT);
         ObservableList<Node> tmp = FXCollections.observableArrayList(this.getChildren());
-        Collections.reverse(tmp);
-        getChildren().setAll(tmp);
-        setAlignment(Pos.TOP_LEFT);
+        FXCollections.reverse(tmp);
+        this.getChildren().setAll(tmp);
+        dialogue.getStyleClass().add("reply-label");
     }
 
     /**
@@ -70,8 +79,8 @@ public class DialogueBox extends HBox {
      * @return a DialogBox from Duchess's perspective
      */
     public static DialogueBox getDuchessDialog(String text, Image image) {
-        DialogueBox dialogBox = new DialogueBox(text, image);
-        dialogBox.flip();
-        return dialogBox;
+        DialogueBox dialogueBox = new DialogueBox(text, image);
+        dialogueBox.flip();
+        return dialogueBox;
     }
 }
