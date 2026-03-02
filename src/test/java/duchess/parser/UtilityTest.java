@@ -1,7 +1,9 @@
 package duchess.parser;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.time.LocalDate;
 
@@ -92,5 +94,36 @@ public class UtilityTest {
         assertEquals("Thu, 05 Feb 2026",
                 Utility.formatDate(LocalDate.parse("2026-02-05")),
                 "Format LocalDate into specific String format");
+    }
+
+    /**
+     * Tests that an exception is thrown when parsing a non-integer.
+     */
+    @Test
+    public void testParseInt_nonInteger_exceptionThrown() {
+        assertThrows(InvalidArgumentException.class, () ->
+                Utility.parseInt("1.5"),
+                "Input is not an integer");
+    }
+
+    /**
+     * Tests that a valid string is detected correctly.
+     */
+    @Test
+    public void testIsInvalidString() {
+        assertTrue(Utility.isInvalidString(null), "Null should be invalid");
+        assertTrue(Utility.isInvalidString(""), "Empty should be invalid");
+        assertTrue(Utility.isInvalidString("   "), "Whitespace should be invalid");
+        assertFalse(Utility.isInvalidString("a"), "Non-empty should be valid");
+    }
+
+    /**
+     * Tests that an exception is thrown when the input date format is invalid.
+     */
+    @Test
+    public void testParseDate_wrongFormat_exceptionThrown() {
+        assertThrows(InvalidArgumentException.class, () ->
+                Utility.parseDate("05-02-2026"),
+                "Input date is in wrong format");
     }
 }

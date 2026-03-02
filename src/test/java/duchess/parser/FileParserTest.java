@@ -138,4 +138,24 @@ public class FileParserTest {
         assertTrue(FileParser.getTask(rawTask).isComplete(),
                 "Deadline object initialised with correct completion status");
     }
+
+    /**
+     * Tests that an exception is thrown when the task name is whitespace.
+     */
+    @Test
+    public void testGetTask_whitespaceName_exceptionThrown() {
+        assertThrows(InvalidArgumentException.class, () ->
+                FileParser.getTask("T | 1 |    "),
+                "Whitespace name");
+    }
+
+    /**
+     * Tests that an exception is thrown when the task name is null/empty after split.
+     */
+    @Test
+    public void testGetTask_emptyName_exceptionThrown() {
+        assertThrows(MissingArgumentException.class, () ->
+                FileParser.getTask("T | 1"),
+                "Missing name");
+    }
 }
