@@ -1,6 +1,7 @@
 package duchess.command;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.mock;
 
 import org.junit.jupiter.api.AfterEach;
@@ -43,7 +44,8 @@ public class TerminateCommandTest {
      */
     @Test
     public void testExecute() {
-        assertEquals("Bye. Hope to see you again soon!",
+        assertTrue(command.isTerminatingCommand());
+        assertEquals("Farewell! Mayhap we shall meet anon!",
                 command.execute(tasks, mockStorage),
                 "Ends the program");
     }

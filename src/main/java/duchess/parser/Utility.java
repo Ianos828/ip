@@ -30,17 +30,17 @@ public class Utility {
 
     /**
      * Checks if the specified string is null or empty.
-     * @param name the string to check
+     * @param string the string to check
      * @return true if the string is null or empty, false otherwise
      */
-    public static boolean isInvalidString(String name) {
-        return name == null || name.isEmpty();
+    public static boolean isInvalidString(String string) {
+        return string == null || string.isBlank();
     }
 
     /**
      * Returns an index to a list as an integer after extracting the argument from the delimiter-argument pair.
      *
-     * @param indexAsString map containing a delimiter-argument pair
+     * @param indexAsString string containing the index
      * @return an integer denoting the list index
      * @throws MissingArgumentException if the argument is an empty string or null
      * @throws InvalidArgumentException if the argument is not a number or multiple numbers are specified

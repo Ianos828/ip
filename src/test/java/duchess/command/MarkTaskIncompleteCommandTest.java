@@ -70,18 +70,13 @@ public class MarkTaskIncompleteCommandTest {
      * Tests that a task is successfully marked as incomplete when a valid index is provided.
      */
     @Test
-    public void testExecute_validIndex_success() {
-        try {
-            assertEquals("""
-                    OK, I've marked this task as not done yet:
-                    [T][ ] Test Task 1""",
-                    new MarkTaskIncompleteCommand(
-                            Map.of("/default", "1"))
-                            .execute(tasks, mockStorage),
-                    "Marks the only task as undone");
-        } catch (Exception e) {
-            //ignore
-        }
-
+    public void testExecute_validIndex_success() throws Exception {
+        assertEquals("""
+                Hark, I have set this labour as yet unfinishen:
+                [T][ ] Test Task 1""",
+                new MarkTaskIncompleteCommand(
+                        Map.of("/default", "1"))
+                        .execute(tasks, mockStorage),
+                "Marks the only task as undone");
     }
 }

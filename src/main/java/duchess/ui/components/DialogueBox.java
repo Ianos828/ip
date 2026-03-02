@@ -1,7 +1,6 @@
 package duchess.ui.components;
 
 import java.io.IOException;
-import java.util.Collections;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -13,7 +12,6 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
-import javafx.scene.shape.Rectangle;
 
 /**
  * Represents a dialogue box consisting of an ImageView to represent the speaker's face
@@ -42,13 +40,6 @@ public class DialogueBox extends HBox {
 
         dialogue.setText(text);
         displayPicture.setImage(image);
-
-//        // Clip the ImageView to give it rounded corners (or a circle if the radius is large enough).
-//        double size = displayPicture.getFitWidth();
-//        Rectangle clip = new Rectangle(size, size);
-//        clip.setArcWidth(size); // For a circle, use clip.setArcWidth(size); clip.setArcHeight(size);
-//        clip.setArcHeight(size);
-//        displayPicture.setClip(clip);
     }
 
     /**

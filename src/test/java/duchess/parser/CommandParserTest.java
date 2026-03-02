@@ -9,6 +9,7 @@ import duchess.command.CreateEventCommand;
 import duchess.command.CreateToDoCommand;
 import duchess.command.DeleteTaskCommand;
 import duchess.command.DisplayListCommand;
+import duchess.command.DisplayQuoteCommand;
 import duchess.command.FindOutstandingCommand;
 import duchess.command.FindTaskCommand;
 import duchess.command.MarkTaskCompleteCommand;
@@ -26,6 +27,8 @@ public class CommandParserTest {
     @Test
     public void testGetCommand() {
         assertEquals(CreateDeadlineCommand.class, CommandParser.getCommand("deadline").getClass());
+        assertEquals(CreateDeadlineCommand.class,
+                CommandParser.getCommand("deadline task /by 2026-02-05").getClass());
         assertEquals(CreateEventCommand.class, CommandParser.getCommand("event").getClass());
         assertEquals(CreateToDoCommand.class, CommandParser.getCommand("todo").getClass());
 
@@ -41,5 +44,6 @@ public class CommandParserTest {
 
         assertEquals(UnknownCommand.class, CommandParser.getCommand("").getClass());
         assertEquals(UnknownCommand.class, CommandParser.getCommand("hello").getClass());
+        assertEquals(DisplayQuoteCommand.class, CommandParser.getCommand("cheer").getClass());
     }
 }

@@ -70,18 +70,13 @@ public class MarkTaskCompleteCommandTest {
      * Tests that a task is successfully marked as complete when a valid index is provided.
      */
     @Test
-    public void testExecute_validIndex_success() {
-        try {
-            assertEquals("""
-                    Nice! I've marked this task as done:
-                    [T][X] Test Task 1""",
-                    new MarkTaskCompleteCommand(
-                            Map.of("/default", "1"))
-                            .execute(tasks, mockStorage),
-                    "Marks the only task as done");
-        } catch (Exception e) {
-            //ignore
-        }
-
+    public void testExecute_validIndex_success() throws Exception {
+        assertEquals("""
+                Hark! I have marked this task as done, and 'tis well:
+                [T][X] Test Task 1""",
+                new MarkTaskCompleteCommand(
+                        Map.of("/default", "1"))
+                        .execute(tasks, mockStorage),
+                "Marks the only task as done");
     }
 }

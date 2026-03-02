@@ -55,18 +55,14 @@ public class CreateToDoCommandTest {
      * Tests that a todo task is successfully created when valid inputs are provided.
      */
     @Test
-    public void testExecute_validInputs_success() {
-        try {
-            assertEquals("""
-                    Got it! I've added this task:
-                    [T][ ] a
-                    Now you have 1 task(s) in the list.""",
-                    new CreateToDoCommand(
-                            Map.of("/default", "a"))
-                            .execute(tasks, mockStorage),
-                    "Todo task should be successfully created");
-        } catch (Exception e) {
-            //ignore
-        }
+    public void testExecute_validInputs_success() throws Exception {
+        assertEquals("""
+                Hark! I have appended this task:
+                [T][ ] a
+                Now, thou hast 1 task(s) upon thy scroll.""",
+                new CreateToDoCommand(
+                        Map.of("/default", "a"))
+                        .execute(tasks, mockStorage),
+                "Todo task should be successfully created");
     }
 }

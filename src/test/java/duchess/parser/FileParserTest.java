@@ -101,53 +101,61 @@ public class FileParserTest {
      * Tests that a valid todo object is returned when a valid task is provided.
      */
     @Test
-    public void testGetTask_toDo_success() {
+    public void testGetTask_toDo_success() throws Exception {
         String rawTask = "T | 0 | task";
-        try {
-            assertEquals(ToDo.class,
-                    FileParser.getTask(rawTask)
-                            .getClass(),
-                    "ToDo object created successfully");
-            assertFalse(FileParser.getTask(rawTask).isComplete(),
-                    "ToDo object initialised with correct completion status");
-        } catch (Exception e) {
-            //ignore
-        }
+        assertEquals(ToDo.class,
+                FileParser.getTask(rawTask)
+                        .getClass(),
+                "ToDo object created successfully");
+        assertFalse(FileParser.getTask(rawTask).isComplete(),
+                "ToDo object initialised with correct completion status");
     }
 
     /**
      * Tests that a valid event object is returned when a valid task is provided.
      */
     @Test
-    public void testGetTask_event_success() {
+    public void testGetTask_event_success() throws Exception {
         String rawTask = "E | 1 | task | 2001-01-01 | 2001-01-02";
-        try {
-            assertEquals(Event.class,
-                    FileParser.getTask(rawTask)
-                            .getClass(),
-                    "Event object created successfully");
-            assertTrue(FileParser.getTask(rawTask).isComplete(),
-                    "Event object initialised with correct completion status");
-        } catch (Exception e) {
-            //ignore
-        }
+        assertEquals(Event.class,
+                FileParser.getTask(rawTask)
+                        .getClass(),
+                "Event object created successfully");
+        assertTrue(FileParser.getTask(rawTask).isComplete(),
+                "Event object initialised with correct completion status");
     }
 
     /**
      * Tests that a valid deadline object is returned when a valid task is provided.
      */
     @Test
-    public void testGetTask_deadline_success() {
+    public void testGetTask_deadline_success() throws Exception {
         String rawTask = "D | 1 | task | 2001-01-01";
-        try {
-            assertEquals(Deadline.class,
-                    FileParser.getTask(rawTask)
-                            .getClass(),
-                    "Deadline object created successfully");
-            assertTrue(FileParser.getTask(rawTask).isComplete(),
-                    "Deadline object initialised with correct completion status");
-        } catch (Exception e) {
-            //ignore
-        }
+        assertEquals(Deadline.class,
+                FileParser.getTask(rawTask)
+                        .getClass(),
+                "Deadline object created successfully");
+        assertTrue(FileParser.getTask(rawTask).isComplete(),
+                "Deadline object initialised with correct completion status");
+    }
+
+    /**
+     * Tests that an exception is thrown when the task name is whitespace.
+     */
+    @Test
+    public void testGetTask_whitespaceName_exceptionThrown() {
+        assertThrows(InvalidArgumentException.class, () ->
+                FileParser.getTask("T | 1 |    "),
+                "Whitespace name");
+    }
+
+    /**
+     * Tests that an exception is thrown when the task name is null/empty after split.
+     */
+    @Test
+    public void testGetTask_emptyName_exceptionThrown() {
+        assertThrows(MissingArgumentException.class, () ->
+                FileParser.getTask("T | 1"),
+                "Missing name");
     }
 }
