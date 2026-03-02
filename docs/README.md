@@ -24,7 +24,8 @@ Below is a user guide on how to use Duchess.
 
 ## Features
 
-> :information_source: **Notes about the command format:**
+> [!NOTE]
+> **Notes about the command format:**
 > - Words in `UPPER_CASE` are the parameters to be supplied by the user.\
   e.g. in `todo NAME`, `NAME` is a parameter which can be used as `todo Go for a run.`.
 > - Aside from `NAME`, parameters can be in any order.\
