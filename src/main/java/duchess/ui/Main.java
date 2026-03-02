@@ -25,6 +25,8 @@ public class Main extends Application {
             stage.setMinHeight(220);
             stage.setMinWidth(417);
 
+            stage.setTitle("Duchess");
+
             FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/view/MainWindow.fxml"));
             AnchorPane anchorPane = fxmlLoader.load();
             Scene scene = new Scene(anchorPane);
