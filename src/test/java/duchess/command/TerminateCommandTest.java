@@ -43,7 +43,7 @@ public class TerminateCommandTest {
      */
     @Test
     public void testExecute() {
-        assertEquals("Bye. Hope to see you again soon!",
+        assertEquals("Farewell! Mayhap we shall meet anon!",
                 command.execute(tasks, mockStorage),
                 "Ends the program");
     }

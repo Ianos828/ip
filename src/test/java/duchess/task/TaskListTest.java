@@ -51,39 +51,27 @@ public class TaskListTest {
      * Tests that a task can be removed from the list.
      */
     @Test
-    public void testRemoveTask() {
-        try {
-            tasks.removeTask(0);
-            assertEquals(2, tasks.getSize(), "1 task is removed from the list");
-        } catch (Exception e) {
-            //ignore
-        }
+    public void testRemoveTask() throws Exception {
+        tasks.removeTask(1);
+        assertEquals(2, tasks.getSize(), "1 task is removed from the list");
     }
 
     /**
      * Tests that a task can be marked as complete.
      */
     @Test
-    public void testMarkTaskAsComplete() {
-        try {
-            tasks.markTaskAsComplete(0);
-            assertTrue(tasks.removeTask(0).isComplete(), "Removed task should be completed");
-        } catch (Exception e) {
-            //ignore
-        }
+    public void testMarkTaskAsComplete() throws Exception {
+        tasks.markTaskAsComplete(1);
+        assertTrue(tasks.removeTask(1).isComplete(), "Removed task should be completed");
     }
 
     /**
      * Tests that a task can be marked as incomplete.
      */
     @Test
-    public void testMarkTaskAsIncomplete() {
-        try {
-            tasks.markTaskAsIncomplete(0);
-            assertFalse(tasks.removeTask(0).isComplete(), "Removed task should be completed");
-        } catch (Exception e) {
-            //ignore
-        }
+    public void testMarkTaskAsIncomplete() throws Exception {
+        tasks.markTaskAsIncomplete(1);
+        assertFalse(tasks.removeTask(1).isComplete(), "Removed task should be completed");
     }
 
     /**

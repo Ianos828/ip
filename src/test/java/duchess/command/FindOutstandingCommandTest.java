@@ -66,34 +66,26 @@ public class FindOutstandingCommandTest {
      * Tests that the command filters out no tasks correctly when the date is valid.
      */
     @Test
-    public void testExecute_validDateJan2nd2001_success() {
-        try {
-            assertEquals("""
-                    There are no outstanding tasks after Tue, 02 Jan 2001!""",
-                    new FindOutstandingCommand(
-                            Map.of("/default", "2001-01-02"))
-                            .execute(tasks, mockStorage),
-                    "No tasks match the criteria");
-        } catch (Exception e) {
-            //ignore
-        }
+    public void testExecute_validDateJan2nd2001_success() throws Exception {
+        assertEquals("""
+                Verily, no tasks remain outstanding past Tue, 02 Jan 2001!""",
+                new FindOutstandingCommand(
+                        Map.of("/default", "2001-01-02"))
+                        .execute(tasks, mockStorage),
+                "No tasks match the criteria");
     }
 
     /**
      * Tests that the command filters out the correct tasks when the date is valid.
      */
     @Test
-    public void testExecute_validDateJan4th2001_success() {
-        try {
-            assertEquals("""
-                    Here are the outstanding tasks in your list:
-                    1. [E][ ] Test Task 3 (from: Wed, 03 Jan 2001 to: Fri, 05 Jan 2001)""",
-                    new FindOutstandingCommand(
-                            Map.of("/default", "2001-01-04"))
-                            .execute(tasks, mockStorage),
-                    "Only event gets filtered out");
-        } catch (Exception e) {
-            //ignore
-        }
+    public void testExecute_validDateJan4th2001_success() throws Exception {
+        assertEquals("""
+                Hark, yon tasks of import that yet linger on thy scroll:
+                1. [E][ ] Test Task 3 (from: Wed, 03 Jan 2001 to: Fri, 05 Jan 2001)""",
+                new FindOutstandingCommand(
+                        Map.of("/default", "2001-01-04"))
+                        .execute(tasks, mockStorage),
+                "Only event gets filtered out");
     }
 }

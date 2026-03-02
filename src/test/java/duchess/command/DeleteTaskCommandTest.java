@@ -84,18 +84,14 @@ public class DeleteTaskCommandTest {
      * Tests that a task is successfully deleted when a valid index is provided.
      */
     @Test
-    public void testExecute_validIndex_success() {
-        try {
-            assertEquals("""
-                    Noted. I've removed this task:
-                    [T][ ] Test Task
-                    Now you have 0 task(s) in the list.""",
-                    new DeleteTaskCommand(
-                            Map.of("/default", "a"))
-                            .execute(tasks, mockStorage),
-                    "Successful task deletion");
-        } catch (Exception e) {
-            //ignore
-        }
+    public void testExecute_validIndex_success() throws Exception {
+        assertEquals("""
+                Verily marked. I have stricken this labour from the rolls:
+                [T][ ] Test Task
+                Now doth thy hand hold 0 task(s) within the ledger.""",
+                new DeleteTaskCommand(
+                        Map.of("/default", "1"))
+                        .execute(tasks, mockStorage),
+                "Successful task deletion");
     }
 }

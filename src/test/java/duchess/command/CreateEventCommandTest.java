@@ -126,20 +126,16 @@ public class CreateEventCommandTest {
      * Tests that an event task is successfully created when valid inputs are provided.
      */
     @Test
-    public void testExecute_validInputs_success() {
-        try {
-            assertEquals("""
-                    Got it! I've added this task:
-                    [E][ ] a (from: Mon, 01 Jan 2001 to: Tue, 02 Jan 2001)
-                    Now you have 1 task(s) in the list.""",
-                    new CreateEventCommand(
-                            Map.of("/default", "a",
-                                    "/from", "2001-01-01",
-                                    "/to", "2001-01-02"))
-                            .execute(tasks, mockStorage),
-                    "Event task should be successfully created");
-        } catch (Exception e) {
-            //ignore
-        }
+    public void testExecute_validInputs_success() throws Exception {
+        assertEquals("""
+                Hark! I have appended this task:
+                [E][ ] a (from: Mon, 01 Jan 2001 to: Tue, 02 Jan 2001)
+                Now, thou hast 1 task(s) upon thy scroll.""",
+                new CreateEventCommand(
+                        Map.of("/default", "a",
+                                "/from", "2001-01-01",
+                                "/to", "2001-01-02"))
+                        .execute(tasks, mockStorage),
+                "Event task should be successfully created");
     }
 }

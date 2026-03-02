@@ -45,7 +45,7 @@ public class DisplayQuoteCommandTest {
     @Test
     public void testExecute_emptyList_success() {
         when(mockStorage.getQuotes()).thenReturn(new ArrayList<>());
-        assertEquals("There are no quotes available!",
+        assertEquals("Hark! No sayings of yore be at hand!",
                 new DisplayQuoteCommand()
                         .execute(tasks, mockStorage),
                 "No quotes available");

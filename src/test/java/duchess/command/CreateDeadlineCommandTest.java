@@ -83,19 +83,15 @@ public class CreateDeadlineCommandTest {
      * Tests that a deadline task is successfully created when valid inputs are provided.
      */
     @Test
-    public void testExecute_validInputs_success() {
-        try {
-            assertEquals("""
-                    Got it! I've added this task:
-                    [D][ ] a (by: Mon, 01 Jan 2001)
-                    Now you have 1 task(s) in the list.""",
-                    new CreateDeadlineCommand(
-                            Map.of("/default", "a",
-                                    "/by", "2001-01-01"))
-                            .execute(tasks, mockStorage),
-                    "Deadline task should be successfully created");
-        } catch (Exception e) {
-            //ignore
-        }
+    public void testExecute_validInputs_success() throws Exception {
+        assertEquals("""
+                Hark! I have appended this task:
+                [D][ ] a (by: Mon, 01 Jan 2001)
+                Now, thou hast 1 task(s) upon thy scroll.""",
+                new CreateDeadlineCommand(
+                        Map.of("/default", "a",
+                                "/by", "2001-01-01"))
+                        .execute(tasks, mockStorage),
+                "Deadline task should be successfully created");
     }
 }

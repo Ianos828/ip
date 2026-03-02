@@ -43,7 +43,7 @@ public class UnknownCommandTest {
      */
     @Test
     public void testExecute() {
-        assertEquals("I'm sorry, but I don't know what that means :(",
+        assertEquals("Hark, I know not what that doth signify.",
                 command.execute(tasks, mockStorage),
                 "Prints an error message");
     }

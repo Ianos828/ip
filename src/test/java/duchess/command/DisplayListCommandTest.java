@@ -38,7 +38,7 @@ public class DisplayListCommandTest {
      */
     @Test
     public void testExecute_emptyList_success() {
-        assertEquals("Your list is empty!",
+        assertEquals("Hark, thy scroll be bare of any note!",
                 new DisplayListCommand()
                         .execute(new TaskList(), mockStorage),
                 "List is empty");
@@ -54,7 +54,7 @@ public class DisplayListCommandTest {
         tasks.addTask(new ToDo("Test Task 2"));
 
         assertEquals("""
-                Here are the tasks in your list:
+                Hark, attend to the tasks upon thy scroll:
                 1. [T][ ] Test Task
                 2. [T][ ] Test Task 2""",
                 new DisplayListCommand()
