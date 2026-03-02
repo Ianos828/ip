@@ -24,7 +24,6 @@ Below is a user guide on how to use Duchess.
 
 ## Features
 
-> [!NOTE]
 > **Notes about the command format:**
 > - Words in `UPPER_CASE` are the parameters to be supplied by the user.\
   e.g. in `todo NAME`, `NAME` is a parameter which can be used as `todo Go for a run.`.
@@ -49,7 +48,7 @@ Format: `deadline NAME /by END_DATE`
 `event`: Adds a new event to the list with a start and end date.\
 Format: `event NAME /from START_DATE /to END_DATE`
 
-> :information_source: **Some notes about the date format:**
+> **Some notes about the date format:**
 > - Dates must be in the format `YYYY-MM-DD`.
 > - Event `START_DATE` must occur before `END_DATE`.
 
@@ -69,7 +68,7 @@ Format: `cheer`
 `outstanding`: Finds incomplete tasks at the specified date.\
 Format: `outstanding DATE`
 
-> :bulb: **An outstanding task should:**
+> **An outstanding task should:**
 > - Be incomplete.
 > - a `deadline` should end after `DATE`.
 > - an `event` should start on/before `DATE` and end on/after `DATE`.
@@ -99,5 +98,5 @@ There is no need to save manually.
 Duchess saves your tasks as a `.txt` file `[JAR file location]/data/tasks.txt`. Advanced users are welcome to update
 your tasks directly by editing that data file.
 
-> :exclamation: **Caution:** While Duchess tries to load your data from the file, any data in the wrong format will be
+> **Caution:** While Duchess tries to load your data from the file, any data in the wrong format will be
 ignored. This can lead to a loss of data!
