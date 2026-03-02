@@ -47,7 +47,7 @@ public class Utility {
      */
     public static int parseInt(String indexAsString) throws MissingArgumentException, InvalidArgumentException {
         if (isInvalidString(indexAsString)) {
-            throw new MissingArgumentException("No index provided!");
+            throw new MissingArgumentException("No index hath been given!");
         }
 
         int index;
@@ -55,7 +55,7 @@ public class Utility {
         try {
             index = Integer.parseInt(indexAsString);
         } catch (NumberFormatException e) {
-            throw new InvalidArgumentException("Index provided is not a single number!");
+            throw new InvalidArgumentException("Hark, the index given be not a solitary number, methinks!");
         }
 
         return index;
@@ -70,7 +70,8 @@ public class Utility {
      */
     public static LocalDate parseDate(String dateAsString) throws MissingArgumentException, InvalidArgumentException {
         if (isInvalidString(dateAsString)) {
-            throw new MissingArgumentException("No date provided! Expected format: YYYY-MM-DD");
+            throw new MissingArgumentException("Hark! No date hath been given!"
+                    + "I did expect it in the fashion of YYYY-MM-DD, methinks.");
         }
 
         LocalDate date;
@@ -78,8 +79,8 @@ public class Utility {
         try {
             date = LocalDate.parse(dateAsString);
         } catch (DateTimeParseException e) {
-            throw new InvalidArgumentException(
-                    "Invalid Date provided! Expected format: YYYY-MM-DD");
+            throw new InvalidArgumentException("Hark! A date most foul hath been given!"
+                    + "I crave one writ thus: YYYY-MM-DD");
         }
 
         return date;

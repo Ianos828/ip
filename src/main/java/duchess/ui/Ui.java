@@ -21,10 +21,10 @@ public class Ui {
     }
 
     public void displayWelcomeMessage() {
-        display("Hello! I'm Duchess!\nWhat can I do for you?");
+        display("Hark, I be Duchess! What service dost thou require of me?");
     }
 
     public void displayLoadingErrorMessage() {
-        display("Error loading tasks from file. Starting fresh...");
+        display("Hark! An error hath befallen, the tasks from yon file could not be summoned. Thus, we begin anew...");
     }
 }

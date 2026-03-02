@@ -46,7 +46,8 @@ public class DeleteTaskCommand extends Command {
         Task task = tasks.removeTask(index);
         storage.saveTasksToFile(tasks);
 
-        return String.format("Noted. I've removed this task:\n%s\nNow you have %d task(s) in the list.",
+        return String.format("Verily marked. I have stricken this labour from the rolls:\n%s\n"
+                        + "Now doth thy hand hold %d task(s) within the ledger.",
                 task, tasks.getSize());
     }
 }

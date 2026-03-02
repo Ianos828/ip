@@ -98,7 +98,7 @@ public class Duchess {
         } catch (InvalidArgumentException | MissingArgumentException e) {
             result = e.getMessage();
         } catch (Exception e) {
-            result = "An unknown error has occurred. Please try again. Error: " + e.getMessage();
+            result = "A most grievous error hath befallen. Pray, try again anon. Error: " + e.getMessage();
         }
 
         return new Response(result, shouldTerminate);

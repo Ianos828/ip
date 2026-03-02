@@ -46,7 +46,7 @@ public class MarkTaskIncompleteCommand extends Command {
         Task task = tasks.markTaskAsIncomplete(index);
         storage.saveTasksToFile(tasks);
 
-        return String.format("OK, I've marked this task as not done yet:\n%s",
+        return String.format("Hark, I have set this labour as yet unfinishen:\n%s",
                 task);
     }
 }
