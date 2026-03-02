@@ -47,10 +47,11 @@ public class DialogueBox extends HBox {
      * Flips the dialogue box such that the ImageView is on the left and text on the right.
      */
     private void flip() {
+        this.setAlignment(Pos.TOP_LEFT);
         ObservableList<Node> tmp = FXCollections.observableArrayList(this.getChildren());
-        Collections.reverse(tmp);
-        getChildren().setAll(tmp);
-        setAlignment(Pos.TOP_LEFT);
+        FXCollections.reverse(tmp);
+        this.getChildren().setAll(tmp);
+        dialogue.getStyleClass().add("reply-label");
     }
 
     /**
@@ -70,8 +71,8 @@ public class DialogueBox extends HBox {
      * @return a DialogBox from Duchess's perspective
      */
     public static DialogueBox getDuchessDialog(String text, Image image) {
-        DialogueBox dialogBox = new DialogueBox(text, image);
-        dialogBox.flip();
-        return dialogBox;
+        DialogueBox dialogueBox = new DialogueBox(text, image);
+        dialogueBox.flip();
+        return dialogueBox;
     }
 }
