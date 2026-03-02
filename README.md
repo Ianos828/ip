@@ -70,7 +70,8 @@ Format: `cheer`
 `outstanding`: Finds incomplete tasks at the specified date.\
 Format: `outstanding DATE`
 
-> [!TIP] **An outstanding task should:**
+> [!TIP]
+> **An outstanding task should:**
 > - Be incomplete.
 > - a `deadline` should end after `DATE`.
 > - an `event` should start on/before `DATE` and end on/after `DATE`.
