@@ -25,7 +25,7 @@ Some examples of commands are:
 ## Features
 
 > [!NOTE]
-> Notes about the command format:
+> **Notes about the command format:**
 > - Words in `UPPER_CASE` are the parameters to be supplied by the user.\
 > e.g. in `todo NAME`, `NAME` is a parameter which can be used as `todo Go for a run.`.
 > - Aside from `NAME`, parameters can be in any order.\
@@ -49,7 +49,7 @@ Format: `deadline NAME /by END_DATE`
 `event`: Adds a new event to the list with a start and end date.\
 Format: `event NAME /from START_DATE /to END_DATE`
 
-> [!TIP] Some notes about the date format:
+> [!TIP] **Some notes about the date format:**
 > - Dates must be in the format `YYYY-MM-DD`.
 > - Event `START_DATE` must occur before `END_DATE`.
 
@@ -69,7 +69,7 @@ Format: `cheer`
 `outstanding`: Finds incomplete tasks at the specified date.\
 Format: `outstanding DATE`
 
-> [!TIP] An outstanding task should:
+> [!TIP] **An outstanding task should:**
 > - Be incomplete.
 > - a `deadline` should end after `DATE`.
 > - an `event` should start on/before `DATE` and end on/after `DATE`.

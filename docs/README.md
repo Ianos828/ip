@@ -24,20 +24,19 @@ Below is a user guide on how to use Duchess.
 
 ## Features
 
-> [!NOTE]
-> Notes about the command format:
+> :information_source: **Notes about the command format:**
 > - Words in `UPPER_CASE` are the parameters to be supplied by the user.\
-    > e.g. in `todo NAME`, `NAME` is a parameter which can be used as `todo Go for a run.`.
+  e.g. in `todo NAME`, `NAME` is a parameter which can be used as `todo Go for a run.`.
 > - Aside from `NAME`, parameters can be in any order.\
-    > e.g. if the command specifies `/from START_DATE /to END_DATE`, `/to END_DATE /from START_DATE` is also acceptable.
+  e.g. if the command specifies `/from START_DATE /to END_DATE`, `/to END_DATE /from START_DATE` is also acceptable.
 > - Aside from `NAME`, if a parameter is expected only once in the command but multiple parameters are provided,\
-    > the last parameter will be taken.\
-    > e.g. `/by 2023-01-01 /by 2023-01-02` is taken as `/by 2023-01-02`.
+  the last parameter will be taken.\
+  e.g. `/by 2023-01-01 /by 2023-01-02` is taken as `/by 2023-01-02`.
 > - Extraneous parameters for commands that do not take in parameters (such as `list`, `cheer` and `bye`) will be
-    > ignored.\
-    > e.g. if the command specifies `list 123`, it will be interpreted as `list`.
+  ignored.\
+  e.g. if the command specifies `list 123`, it will be interpreted as `list`.
 > - Duchess supports partial matching of commands for advanced users.\
-    > e.g. `ch`, `che` and `c` will all match the `cheer` command.
+  e.g. `ch`, `che` and `c` will all match the `cheer` command.
 
 ## Adding a task:
 `todo`: Adds a new task to the list without any additional parameters.\
@@ -49,7 +48,7 @@ Format: `deadline NAME /by END_DATE`
 `event`: Adds a new event to the list with a start and end date.\
 Format: `event NAME /from START_DATE /to END_DATE`
 
-> [!TIP] Some notes about the date format:
+> :information_source: **Some notes about the date format:**
 > - Dates must be in the format `YYYY-MM-DD`.
 > - Event `START_DATE` must occur before `END_DATE`.
 
@@ -69,7 +68,7 @@ Format: `cheer`
 `outstanding`: Finds incomplete tasks at the specified date.\
 Format: `outstanding DATE`
 
-> [!TIP] An outstanding task should:
+> :bulb: **An outstanding task should:**
 > - Be incomplete.
 > - a `deadline` should end after `DATE`.
 > - an `event` should start on/before `DATE` and end on/after `DATE`.
@@ -99,6 +98,5 @@ There is no need to save manually.
 Duchess saves your tasks as a `.txt` file `[JAR file location]/data/tasks.txt`. Advanced users are welcome to update
 your tasks directly by editing that data file.
 
-> [!WARNING]
-> While Duchess tries to load your data from the file, any data in the wrong format will be ignored. This can lead to
-> a loss of data!
+> :exclamation: **Caution:** While Duchess tries to load your data from the file, any data in the wrong format will be
+ignored. This can lead to a loss of data!
