@@ -81,6 +81,10 @@ Format: `outstanding DATE`
 `find`: Finds tasks based on the specified keyword. Duchess will do partial matching on the keyword.\
 Format: `find KEYWORD`
 
+## Displaying help:
+`help`: Shows a list of available commands.\
+Format: `help`
+
 ## Marking a task as completed:
 `mark`: Marks a task as completed based on the specified task number.\
 Format: `mark INDEX`
@@ -104,3 +108,19 @@ your tasks directly by editing that data file.
 > [!WARNING]
 > While Duchess tries to load your data from the file, any data in the wrong format will be ignored. This can lead to
 > a loss of data!
+
+# References
+English Literature. (2025, July 23). _The 100 most famous quotes in english literature_. English Literature.
+https://englishliterature.in/the-100-most-famous-quotes-in-english-literature/
+
+pictore. (2021, June 16). _Queen Victoria in her coronation in 1837 -xxxl with lots of details- stock illustration_
+[Photograph]. iStock.
+https://www.istockphoto.com/en/vector/queen-victoria-in-her-coronation-in-1837-xxxl-with-lots-of-details-gm1323711024-409280322
+
+SE-EDU. (2026, March 1). _JavaFX tutorial_. SE-EDU. https://se-education.org/guides/tutorials/javaFx.html
+
+Sunriseforever. (2021, May 10). _Boy, peasant child, fur vest image_ [Photograph]. Pixabay.
+https://pixabay.com/photos/boy-peasant-child-fur-vest-shirt-6240696/
+
+titoOnz. (2017, July 4). _Gold damask pattern background stock photo_ [Photograph]. iStock.
+https://www.istockphoto.com/photo/gold-damask-pattern-background-gm809072960-130969091
