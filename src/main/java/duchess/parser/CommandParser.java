@@ -14,6 +14,7 @@ import duchess.command.DisplayListCommand;
 import duchess.command.DisplayQuoteCommand;
 import duchess.command.FindOutstandingCommand;
 import duchess.command.FindTaskCommand;
+import duchess.command.HelpCommand;
 import duchess.command.MarkTaskCompleteCommand;
 import duchess.command.MarkTaskIncompleteCommand;
 import duchess.command.TerminateCommand;
@@ -80,6 +81,9 @@ public class CommandParser {
             break;
         case CHEER:
             command = new DisplayQuoteCommand();
+            break;
+        case HELP:
+            command = new HelpCommand();
             break;
         case UNKNOWN:
             command = new UnknownCommand();

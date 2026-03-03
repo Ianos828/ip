@@ -17,7 +17,8 @@ public enum CommandType {
     DELETE("delete"),
     OUTSTANDING("outstanding"),
     FIND("find"),
-    CHEER("cheer");
+    CHEER("cheer"),
+    HELP("help");
 
     private final String commandString;
 
