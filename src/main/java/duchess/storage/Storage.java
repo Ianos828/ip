@@ -64,6 +64,7 @@ public class Storage {
             try {
                 saveDefaultQuotesToFile();
             } catch (IOException ignored) {
+                // Ignored
             }
         }
     }

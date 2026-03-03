@@ -6,7 +6,16 @@ import duchess.task.TaskList;
 /**
  * Class representing a command to display help information.
  */
-public class HelpCommand extends Command{
+public class HelpCommand extends Command {
+
+    /**
+     * Displays help information.
+     *
+     * @param tasks list of tasks that commands will operate on
+     * @param storage storage for saving and loading task lists
+     *
+     * @return help message to be displayed to the user
+     */
     public String execute(TaskList tasks, Storage storage) {
         return """
                 Hark, attend to the commands at thy disposal:

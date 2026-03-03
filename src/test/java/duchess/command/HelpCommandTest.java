@@ -3,7 +3,6 @@ package duchess.command;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.mock;
 
-import duchess.exception.MissingArgumentException;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -11,8 +10,9 @@ import org.junit.jupiter.api.Test;
 import duchess.storage.Storage;
 import duchess.task.TaskList;
 
-import java.util.Map;
-
+/**
+ * Tests for the HelpCommand class.
+ */
 public class HelpCommandTest {
     private TaskList tasks;
     private Storage mockStorage;
