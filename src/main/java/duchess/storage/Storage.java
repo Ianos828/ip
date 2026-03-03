@@ -8,6 +8,7 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import duchess.exception.InvalidArgumentException;
@@ -59,12 +60,21 @@ public class Storage {
         }
 
         if (getQuotes().isEmpty()) {
+            quotes = getDefaultQuotes();
             try {
                 saveDefaultQuotesToFile();
-            } catch (IOException e) {
-                //ignore
+            } catch (IOException ignored) {
             }
         }
+    }
+
+    /**
+     * Returns a list of default quotes from a string.
+     * @return a list of default quotes
+     */
+    private List<String> getDefaultQuotes() {
+        String[] quotes = DEFAULT_QUOTES.split("\n");
+        return Arrays.asList(quotes);
     }
 
     /**
